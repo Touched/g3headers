@@ -22,4 +22,4 @@ git config user.name $COMMIT_USER
 git config user.email $COMMIT_EMAIL
 git commit -m "Deploy code docs to GitHub Pages Travis build: ${TRAVIS_BUILD_NUMBER}" \
     -m "Commit: ${TRAVIS_COMMIT}"
-git push -f -q "https://Touched:$GITHUB_API_KEY@github.com/Touched/PokeAGB.git" gh-pages
+git push -f -q "https://Touched:$GITHUB_API_KEY@github.com/Touched/PokeAGB.git" gh-pages &2>/dev/null

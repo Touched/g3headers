@@ -1,6 +1,6 @@
 set -e
 
-REPO_PATH=git@github.com:Touched/PokeAGB.git
+REPO_PATH="https://github.com/Touched/PokeAGB.git"
 HTML_PATH=doc/html
 COMMIT_USER="Travis CI"
 COMMIT_EMAIL="travis@travis-ci.org"
@@ -22,4 +22,4 @@ git config user.name $COMMIT_USER
 git config user.email $COMMIT_EMAIL
 git commit -m "Deploy code docs to GitHub Pages Travis build: ${TRAVIS_BUILD_NUMBER}" \
     -m "Commit: ${TRAVIS_COMMIT}"
-git push "https://Touched:$GITHUB_API_KEY@github.com/Touched/PokeAGB.git" gh-pages
+git push -f -q "https://Touched:$GITHUB_API_KEY@github.com/Touched/PokeAGB.git" gh-pages

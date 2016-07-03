@@ -16,7 +16,7 @@ cd ..
 
 make
 
-cd $HTML_PATH
+cd html
 git add .
 git config user.name $COMMIT_USER
 git config user.email $COMMIT_EMAIL

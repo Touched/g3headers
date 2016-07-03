@@ -27,6 +27,16 @@ set_callback2 = 0x08000544|1;
 super = 0x030030F0;
 
 /*
+ * include/pokeagb/core/memory.h
+ */
+
+malloc = 0x08002B9C|1;
+malloc_and_clear = 0x08002BB0|1;
+free = 0x08002BC4|1;
+memcpy = 0x081E5E78|1;
+memset = 0x081E5ED8|1;
+
+/*
  * include/pokeagb/core/task.h
  */
 
@@ -57,3 +67,5 @@ npc_turn = 0x0805F218|1;
 
 walkrun_state = 0x02037078;
 npc_states = 0x02036E38;
+
+/

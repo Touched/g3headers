@@ -28,12 +28,12 @@ extern "C" {
   /**Task function.
    * @param id The ID of the the current task
    */
-  typedef void (*task_callback)(u8 id);
+  typedef void (*TaskCallback)(u8 id);
 
   /** A short-lived background function with state.
    */
-  struct task {
-    task_callback function; /**< Function to run */
+  struct Task {
+    TaskCallback function; /**< Function to run */
     bool inuse;
     u8 prev;
     u8 next;
@@ -45,7 +45,7 @@ extern "C" {
    * @param func Function pointer
    * @return Task ID
    */
-  LONG_CALL u8 task_add(task_callback func, u8 priority);
+  LONG_CALL u8 task_add(TaskCallback func, u8 priority);
 
   /** Delete a task.
    */
@@ -55,7 +55,7 @@ extern "C" {
 
   /** All the tasks.
    */
-  extern struct task tasks[16];
+  extern struct Task tasks[16];
 
 #ifdef __cplusplus
 }

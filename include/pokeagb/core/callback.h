@@ -26,22 +26,22 @@
 extern "C" {
 #endif
 
-  typedef void (*super_callback)(void);
+  typedef void (*SuperCallback)(void);
 
-  struct superstate {
-    super_callback callback1;
-    super_callback callback2;
-    super_callback callback2_backup;
-    super_callback vblank_handler;
-    super_callback hblank_handler;
-    super_callback field_14;
-    super_callback serial_callback;
+  struct Superstate {
+    SuperCallback callback1;
+    SuperCallback callback2;
+    SuperCallback callback2_backup;
+    SuperCallback vblank_handler;
+    SuperCallback hblank_handler;
+    SuperCallback field_14;
+    SuperCallback serial_callback;
 
     u32 bits_to_wait_for;
-    u16 *vblank_counter;
+    u16* vblank_counter;
     u32 field_24;
 
-    struct buttons {
+    struct Buttons {
       u16 held;
       u16 new;
       u16 held_remapped;
@@ -51,15 +51,15 @@ extern "C" {
     } buttons;
 
     u32 unused_apparently;
-    struct sprite sprites[128];
+    struct Sprite sprites[128];
     u8 multi_purpose_state_tracker;
     u8 gpu_sprites_upload_skip;
   };
 
-  LONG_CALL void set_callback1(super_callback func);
-  LONG_CALL void set_callback2(super_callback func);
+  LONG_CALL void set_callback1(SuperCallback func);
+  LONG_CALL void set_callback2(SuperCallback func);
 
-  extern struct superstate super;
+  extern struct Superstate super;
 
 #ifdef __cplusplus
 }

@@ -28,7 +28,7 @@ extern "C" {
 
   /** An NPC in the overworld
    */
-  struct npc_state {
+  struct NpcState {
     u8 bitfield;
     u8 field1;
     u8 field2;
@@ -41,9 +41,9 @@ extern "C" {
     u8 local_map_number;
     u8 local_map_bank;
     u8 height;
-    struct coords16 stay_around;
-    struct coords16 to;
-    struct coords16 from;
+    struct Coords16 stay_around;
+    struct Coords16 to;
+    struct Coords16 from;
     u8 direction;
     u8 movement_area;
     u8 field1A;
@@ -60,7 +60,7 @@ extern "C" {
 
   /** The player's movement state
    */
-  struct walkrun {
+  struct Walkrun {
     u8 bitfield;
     u8 bike;
     u8 running2;
@@ -84,7 +84,7 @@ extern "C" {
 
   /** An NPC in the ROM
    */
-  struct rom_npc {
+  struct RomNpc {
     u8 nr;
     u8 type_nr;
     u8 rival;
@@ -98,27 +98,27 @@ extern "C" {
     u8 trainer_or_mapnumber;
     u8 fieldD;
     u8 sight_distance_or_mapbank;
-    u8 *script;
+    u8* script;
     u16 local_id;
     u16 field16;
   };
 
   /** The player's movement state
    */
-  extern struct walkrun walkrun_state;
+  extern struct Walkrun walkrun_state;
 
   /** Currently loaded NPCs
    */
-  extern struct npc_state npc_states[16];
+  extern struct NpcState npc_states[16];
 
-  LONG_CALL u8 npc_half_reset_no_checks(struct npc_state*);
-  LONG_CALL void npc_half_reset(struct npc_state *);
-  LONG_CALL int npc_set_state_2(struct npc_state *, u8);
-  LONG_CALL u8 npc_half_reset_when_bit7_is_set(struct npc_state *);
-  LONG_CALL struct rom_npc *rom_npc_by_local_id_and_map(u8, u8, u8);
-  LONG_CALL u8 npc_instanciation_something(struct rom_npc*, u8, u8, u16, u16);
-  LONG_CALL void npc_change_sprite(struct npc_state*, u8);
-  LONG_CALL void npc_turn(struct npc_state*, u8);
+  LONG_CALL u8 npc_half_reset_no_checks(struct NpcState*);
+  LONG_CALL void npc_half_reset(struct NpcState*);
+  LONG_CALL int npc_set_state_2(struct NpcState*, u8);
+  LONG_CALL u8 npc_half_reset_when_bit7_is_set(struct NpcState*);
+  LONG_CALL struct RomNpc* rom_npc_by_local_id_and_map(u8, u8, u8);
+  LONG_CALL u8 npc_instanciation_something(struct RomNpc*, u8, u8, u16, u16);
+  LONG_CALL void npc_change_sprite(struct NpcState*, u8);
+  LONG_CALL void npc_turn(struct NpcState*, u8);
 
 #ifdef __cplusplus
 }

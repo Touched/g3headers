@@ -37,6 +37,13 @@ memcpy = 0x081E5E78|1;
 memset = 0x081E5ED8|1;
 
 /*
+ * include/pokeagb/core/random.h
+ */
+
+set_rand_seed = 0x08044EE8|1;
+rand = 0x08044EC8|1;
+
+/*
  * include/pokeagb/core/task.h
  */
 

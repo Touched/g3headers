@@ -1,3 +1,5 @@
+language: generic
+
 branches:
   except:
     - gh-pages
@@ -12,5 +14,4 @@ addons:
       - graphviz
 
 after_success:
-  - chmod +x doc/deploy.sh
-  - doc/deploy.sh
+  - bash doc/deploy.sh

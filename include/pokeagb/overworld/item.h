@@ -379,11 +379,20 @@ extern "C" {
   ASSERT_SIZEOF(enum ItemPocket, 1);
 
   enum ItemGenericType {
-    ITEM_TYPE_GENERIC_MAIL, /**> Mail */
-    ITEM_TYPE_GENERIC_OVERWORLD, /**> Items which can be used out-of-battle. */
-    ITEM_TYPE_GENERIC_REGISTER, /**> Items which can be assigned to select */
-    ITEM_TYPE_GENERIC_POKEBLOCK_CASE, /**> Only the Pokéblock case is of this type. */
-    ITEM_TYPE_GENERIC_BATTLE, /**> Items which cannot be used out-of-battle. */
+    /**> Mail */
+    ITEM_TYPE_GENERIC_MAIL,
+
+    /**> Items which can be used out-of-battle. */
+    ITEM_TYPE_GENERIC_OVERWORLD,
+
+    /**> Items which can be assigned to select */
+    ITEM_TYPE_GENERIC_REGISTER,
+
+    /**> Only the Pokéblock case is of this type. */
+    ITEM_TYPE_GENERIC_POKEBLOCK_CASE,
+
+    /**> Items which cannot be used out-of-battle. */
+    ITEM_TYPE_GENERIC_BATTLE,
   };
 
   ASSERT_SIZEOF(enum ItemGenericType, 1);

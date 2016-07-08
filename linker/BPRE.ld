@@ -82,6 +82,12 @@ walkrun_state = 0x02037078;
 npc_states = 0x02036E38;
 
 /*
+ * include/pokeagb/pokemon/ability.h
+ */
+
+pokemon_ability_names = 0x0824FC40;
+
+/*
  * include/pokeagb/pokemon/base.h
  */
 

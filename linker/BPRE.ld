@@ -60,6 +60,12 @@ tasks = 0x03005090;
 objects = 0x0202063C;
 
 /*
+ * include/pokeagb/overworld/item.h
+ */
+
+items = 0x083DB028;
+
+/*
  * include/pokeagb/overworld/npc.h
  */
 
@@ -75,4 +81,15 @@ npc_turn = 0x0805F218|1;
 walkrun_state = 0x02037078;
 npc_states = 0x02036E38;
 
-/
+/*
+ * include/pokeagb/pokemon/base.h
+ */
+
+pokemon_base_stats = 0x08254784;
+pokemon_names = 0x08245EE0;
+
+/*
+ * include/pokeagb/pokemon/type.h
+ */
+
+pokemon_type_names = 0x0824F1A0;

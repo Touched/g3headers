@@ -392,7 +392,7 @@ extern "C" {
     u8 select: 1; /**< Selected target */
     u8 variable: 1; /**< Depends on the attack */
     u8 unused: 1; /**< Unused
-                     @note LIES! More investigation required. Possible effects on trainer ai.) */
+                     @note LIES! More investigation required. Possible effects on trainer ai. */
     u8 random: 1; /**< Random target */
     u8 both: 1; /**< Both foes */
     u8 self: 1; /**< User */

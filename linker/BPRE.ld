@@ -95,6 +95,14 @@ pokemon_base_stats = 0x08254784;
 pokemon_names = 0x08245EE0;
 
 /*
+ * include/pokeagb/pokemon/move.h
+ */
+
+pokemon_moves = 0x08250C04;
+pokemon_move_names = 0x08247094;
+pokemon_learnset = 0x0825D7B4;
+
+/*
  * include/pokeagb/pokemon/type.h
  */
 

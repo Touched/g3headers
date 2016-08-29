@@ -7,4 +7,12 @@
                                                  "Expected size of '" \
                                                  #type "' to be " #size ".")
 
+#ifdef __cplusplus
+#define POKEAGB_BEGIN_DECL extern "C" {
+#define POKEAGB_END_DECL }
+#else
+#define POKEAGB_BEGIN_DECL
+#define POKEAGB_END_DECL
+#endif
+
 #endif /* POKEAGB_MACROS_H_ */

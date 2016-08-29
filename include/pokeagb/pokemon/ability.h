@@ -9,13 +9,11 @@
 #include <pokeagb/common.h>
 #include <pokeagb/core/string.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+POKEAGB_BEGIN_DECL
 
-  #define POKEAGB_ABILITY_NAME_LENGTH 13
+#define POKEAGB_ABILITY_NAME_LENGTH 13
 
-  enum PokemonAbility {
+enum PokemonAbility {
     ABILITY_NONE,
     ABILITY_STENCH,
     ABILITY_DRIZZLE,
@@ -95,19 +93,17 @@ extern "C" {
     ABILITY_CACOPHONY,
     ABILITY_AIR_LOCK,
     ABILITY_MAX,
-  };
+};
 
-  ASSERT_SIZEOF(enum PokemonAbility, 1);
+ASSERT_SIZEOF(enum PokemonAbility, 1);
 
-  /**
-   * Pokemon ability names table.
-   *
-   * @address{BPRE,0824FC40}
-   */
-  extern pchar pokemon_ability_names[ABILITY_MAX];
+/**
+ * Pokemon ability names table.
+ *
+ * @address{BPRE,0824FC40}
+ */
+extern pchar pokemon_ability_names[ABILITY_MAX];
 
-#ifdef __cplusplus
-}
-#endif
+POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEMON_ABILITY_H_ */

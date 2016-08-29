@@ -3,26 +3,23 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <pokeagb/common.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+POKEAGB_BEGIN_DECL
 
-  typedef unsigned char u8;
-  typedef unsigned short int u16;
-  typedef unsigned int u32;
-  typedef signed char s8;
-  typedef signed short int s16;
-  typedef signed int s32;
-  typedef volatile u8 vu8;
-  typedef volatile u16 vu16;
-  typedef volatile u32 vu32;
-  typedef volatile s8 vs8;
-  typedef volatile s16 vs16;
-  typedef volatile s32 vs32;
+typedef unsigned char u8;
+typedef unsigned short int u16;
+typedef unsigned int u32;
+typedef signed char s8;
+typedef signed short int s16;
+typedef signed int s32;
+typedef volatile u8 vu8;
+typedef volatile u16 vu16;
+typedef volatile u32 vu32;
+typedef volatile s8 vs8;
+typedef volatile s16 vs16;
+typedef volatile s32 vs32;
 
-#ifdef __cplusplus
-}
-#endif
+POKEAGB_END_DECL
 
 #endif /* POKEAGB_TYPES_H_ */

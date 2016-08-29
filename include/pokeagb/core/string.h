@@ -8,14 +8,10 @@
 
 #include <pokeagb/types.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+POKEAGB_BEGIN_DECL
 
-  typedef u8 pchar;
+typedef u8 pchar;
 
-#ifdef __cplusplus
-}
-#endif
+POKEAGB_END_DECL
 
 #endif /* POKEAGB_CORE_STRING_H_ */

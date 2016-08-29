@@ -9,47 +9,43 @@
 #include <pokeagb/types.h>
 #include <pokeagb/common.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+POKEAGB_BEGIN_DECL
 
-  /**
-   * Allocates a block of size bytes of memory, returning a pointer to the beginning of the block.
-   *
-   * @address{BPRE,08002B9C}
-   */
-  POKEAGB_EXTERN void* malloc(u32 size);
+/**
+ * Allocates a block of size bytes of memory, returning a pointer to the beginning of the block.
+ *
+ * @address{BPRE,08002B9C}
+ */
+POKEAGB_EXTERN void* malloc(u32 size);
 
-  /**
-   * Allocates a block of size bytes of memory and zero fills it.
-   *
-   * @address{BPRE,08002BB0}
-   */
-  POKEAGB_EXTERN void* malloc_and_clear(u32 size);
+/**
+ * Allocates a block of size bytes of memory and zero fills it.
+ *
+ * @address{BPRE,08002BB0}
+ */
+POKEAGB_EXTERN void* malloc_and_clear(u32 size);
 
-  /**
-   * Deallocate a block of memory previously allocated with malloc.
-   *
-   * @address{BPRE,08002BC4}
-   */
-  POKEAGB_EXTERN void free(void* ptr);
+/**
+ * Deallocate a block of memory previously allocated with malloc.
+ *
+ * @address{BPRE,08002BC4}
+ */
+POKEAGB_EXTERN void free(void* ptr);
 
-  /**
-   * Copies size bytes from src to dst.
-   *
-   * @address{BPRE,081E5E78}
-   */
-  POKEAGB_EXTERN void* memcpy(void* dst, const void* src, u32 size);
+/**
+ * Copies size bytes from src to dst.
+ *
+ * @address{BPRE,081E5E78}
+ */
+POKEAGB_EXTERN void* memcpy(void* dst, const void* src, u32 size);
 
-  /**
-   * Set size bytes at dst to value.
-   *
-   * @address{BPRE,081E5ED8}
-   */
-  POKEAGB_EXTERN void memset(void* dst, u8 value, u32 size);
+/**
+ * Set size bytes at dst to value.
+ *
+ * @address{BPRE,081E5ED8}
+ */
+POKEAGB_EXTERN void memset(void* dst, u8 value, u32 size);
 
-#ifdef __cplusplus
-}
-#endif
+POKEAGB_END_DECL
 
 #endif /* POKEAGB_CORE_MEMORY_H_ */

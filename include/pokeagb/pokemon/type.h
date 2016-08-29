@@ -9,13 +9,11 @@
 #include <pokeagb/common.h>
 #include <pokeagb/core/string.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+POKEAGB_BEGIN_DECL
 
-  #define POKEAGB_TYPE_NAME_LENGTH 7
+#define POKEAGB_TYPE_NAME_LENGTH 7
 
-  enum PokemonType {
+enum PokemonType {
     TYPE_NORMAL,
     TYPE_FIGHTING,
     TYPE_FLYING,
@@ -35,19 +33,17 @@ extern "C" {
     TYPE_DRAGON,
     TYPE_DARK,
     TYPE_MAX,
-  };
+};
 
-  ASSERT_SIZEOF(enum PokemonType, 1);
+ASSERT_SIZEOF(enum PokemonType, 1);
 
-  /**
-   * Pokemon type names table.
-   *
-   * @address{BPRE,0824F1A0}
-   */
-  extern pchar pokemon_type_names[TYPE_MAX][POKEAGB_TYPE_NAME_LENGTH];
+/**
+ * Pokemon type names table.
+ *
+ * @address{BPRE,0824F1A0}
+ */
+extern pchar pokemon_type_names[TYPE_MAX][POKEAGB_TYPE_NAME_LENGTH];
 
-#ifdef __cplusplus
-}
-#endif
+POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEMON_TYPE_H_ */

@@ -9,13 +9,11 @@
 #include <pokeagb/common.h>
 #include <pokeagb/core/string.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+POKEAGB_BEGIN_DECL
 
-  #define POKEAGB_MOVE_NAME_LENGTH 13
+#define POKEAGB_MOVE_NAME_LENGTH 13
 
-  enum Move {
+enum Move {
     MOVE_NONE,
     MOVE_POUND,
     MOVE_KARATE_CHOP,
@@ -372,11 +370,11 @@ extern "C" {
     MOVE_DOOM_DESIRE,
     MOVE_PYSCHO_BOOST,
     MOVE_MAX,
-  };
+};
 
-  ASSERT_SIZEOF(enum Move, 2);
+ASSERT_SIZEOF(enum Move, 2);
 
-  struct MoveDataTarget {
+struct MoveDataTarget {
     u8 select: 1; /**< Selected target */
     u8 variable: 1; /**< Depends on the attack */
     u8 unused: 1; /**< Unused
@@ -386,19 +384,19 @@ extern "C" {
     u8 self: 1; /**< User */
     u8 others: 1; /**< Both foes and partner */
     u8 opponents: 1; /**< Opponent field */
-  };
+};
 
-  struct MoveDataFlags {
-      u8 contact: 1; /**< This moves makes contact with the target. */
-      u8 protect: 1; /**< This move is affected by Protect. */
-      u8 magic_coat: 1; /**< This move is affected by Magic Coat. */
-      u8 snatch: 1; /**< This move is affected by Snatch.
-                       @note Mutually-exclusive with magic_coat */
-      u8 mirror_move: 1; /**< This move may be used with Mirror Move */
-      u8 kings_rock: 1; /**< This move is affected by the effects of Kings Rock. */
-  };
+struct MoveDataFlags {
+    u8 contact: 1; /**< This moves makes contact with the target. */
+    u8 protect: 1; /**< This move is affected by Protect. */
+    u8 magic_coat: 1; /**< This move is affected by Magic Coat. */
+    u8 snatch: 1; /**< This move is affected by Snatch.
+                     @note Mutually-exclusive with magic_coat */
+    u8 mirror_move: 1; /**< This move may be used with Mirror Move */
+    u8 kings_rock: 1; /**< This move is affected by the effects of Kings Rock. */
+};
 
-  struct MoveData {
+struct MoveData {
     u8 move_script_id;
     u8 power;
     u8 type;
@@ -409,40 +407,38 @@ extern "C" {
     u8 priority;
     struct MoveDataFlags flags;
     u8 padding[3];
-  };
+};
 
-  ASSERT_SIZEOF(struct MoveData, 0xC);
+ASSERT_SIZEOF(struct MoveData, 0xC);
 
-  /**
-   * Pokemon move data table.
-   *
-   * @address{BPRE,08250C04}
-   */
-  extern struct MoveData pokemon_moves[MOVE_MAX];
+/**
+ * Pokemon move data table.
+ *
+ * @address{BPRE,08250C04}
+ */
+extern struct MoveData pokemon_moves[MOVE_MAX];
 
-  /**
-   * Pokemon move names table.
-   *
-   * @address{BPRE,08247094}
-   */
-  extern pchar pokemon_move_names[MOVE_MAX][POKEAGB_MOVE_NAME_LENGTH];
+/**
+ * Pokemon move names table.
+ *
+ * @address{BPRE,08247094}
+ */
+extern pchar pokemon_move_names[MOVE_MAX][POKEAGB_MOVE_NAME_LENGTH];
 
-  struct LearnsetEntry {
+struct LearnsetEntry {
     enum Move move: 9;
     u8 level: 7;
-  };
+};
 
-  /**
-   * Table of moves a Pokemon can learn by levelling up.
-   *
-   * @address{BPRE,0825D7B4}
-   */
-  extern struct LearnsetEntry* pokemon_learnset[412];
+/**
+ * Table of moves a Pokemon can learn by levelling up.
+ *
+ * @address{BPRE,0825D7B4}
+ */
+extern struct LearnsetEntry* pokemon_learnset[412];
 
-  ASSERT_SIZEOF(struct LearnsetEntry, 2);
+ASSERT_SIZEOF(struct LearnsetEntry, 2);
 
-#ifdef __cplusplus
-}
-#endif
+POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEMON_MOVE_H_ */

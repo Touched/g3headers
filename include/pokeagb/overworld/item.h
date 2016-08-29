@@ -11,13 +11,11 @@
 #include <pokeagb/core/string.h>
 #include <pokeagb/core/task.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+POKEAGB_BEGIN_DECL
 
-  #define POKEAGB_ITEM_NAME_LENGTH 14
+#define POKEAGB_ITEM_NAME_LENGTH 14
 
-  enum Item {
+enum Item {
     ITEM_NONE = 0x0,
     ITEM_MASTERBALL = 0x1,
     ITEM_ULTRABALL = 0x2,
@@ -352,22 +350,22 @@ extern "C" {
     ITEM_OLDSEAMAP = 0x178,
 #endif
     ITEM_MAX
-  };
+};
 
-  ASSERT_SIZEOF(enum Item, 2);
+ASSERT_SIZEOF(enum Item, 2);
 
-  enum ItemPocket {
+enum ItemPocket {
     ITEM_POCKET_NONE,
     ITEM_POCKET_KEY_ITEMS,
     ITEM_POCKET_ITEMS,
     ITEM_POCKET_BALL,
     ITEM_POCKET_BERRIES,
     ITEM_POCKET_TMHM,
-  };
+};
 
-  ASSERT_SIZEOF(enum ItemPocket, 1);
+ASSERT_SIZEOF(enum ItemPocket, 1);
 
-  enum ItemGenericType {
+enum ItemGenericType {
     /**> Mail */
     ITEM_TYPE_GENERIC_MAIL,
 
@@ -382,11 +380,11 @@ extern "C" {
 
     /**> Items which cannot be used out-of-battle. */
     ITEM_TYPE_GENERIC_BATTLE,
-  };
+};
 
-  ASSERT_SIZEOF(enum ItemGenericType, 1);
+ASSERT_SIZEOF(enum ItemGenericType, 1);
 
-  enum ItemBallType {
+enum ItemBallType {
     ITEM_TYPE_BALL_MASTER,
     ITEM_TYPE_BALL_ULTRA,
     ITEM_TYPE_BALL_GREAT,
@@ -399,18 +397,18 @@ extern "C" {
     ITEM_TYPE_BALL_TIMER,
     ITEM_TYPE_BALL_LUXURY,
     ITEM_TYPE_BALL_PREMIER,
-  };
+};
 
-  ASSERT_SIZEOF(enum ItemBallType, 1);
+ASSERT_SIZEOF(enum ItemBallType, 1);
 
-  union ItemType {
+union ItemType {
     enum ItemGenericType item;
     enum ItemBallType ball;
-  };
+};
 
-  ASSERT_SIZEOF(union ItemType, 1);
+ASSERT_SIZEOF(union ItemType, 1);
 
-  struct ItemData {
+struct ItemData {
     pchar name[POKEAGB_ITEM_NAME_LENGTH];
     u16 index;
     u16 market_price;
@@ -427,18 +425,16 @@ extern "C" {
     u16 field_22;
     TaskCallback battle_routine;
     u32 field_28;
-  };
+};
 
-  ASSERT_SIZEOF(struct ItemData, 0x2C);
+ASSERT_SIZEOF(struct ItemData, 0x2C);
 
-  /**
-   * Table of item data
-   * @address{BPRE,083DB028}
-   */
-  extern struct ItemData items[ITEM_MAX];
+/**
+ * Table of item data
+ * @address{BPRE,083DB028}
+ */
+extern struct ItemData items[ITEM_MAX];
 
-#ifdef __cplusplus
-}
-#endif
+POKEAGB_END_DECL
 
 #endif /* POKEAGB_OVERWORLD_ITEM_H_ */

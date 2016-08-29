@@ -13,14 +13,12 @@
 #include <pokeagb/pokemon/ability.h>
 #include <pokeagb/overworld/item.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+POKEAGB_BEGIN_DECL
 
-  #define POKEAGB_POKEMON_SLOTS 412
-  #define POKEAGB_POKEMON_NAME_LENGTH 11
+#define POKEAGB_POKEMON_SLOTS 412
+#define POKEAGB_POKEMON_NAME_LENGTH 11
 
-  enum PokemonEggGroup {
+enum PokemonEggGroup {
     EGG_GROUP_MONSTER,
     EGG_GROUP_WATER1,
     EGG_GROUP_BUG,
@@ -36,22 +34,22 @@ extern "C" {
     EGG_GROUP_DITTO,
     EGG_GROUP_DRAGON,
     EGG_GROUP_UNDISCOVERED
-  };
+};
 
-  ASSERT_SIZEOF(enum PokemonEggGroup, 1);
+ASSERT_SIZEOF(enum PokemonEggGroup, 1);
 
-  enum PokemonExpGrowth {
+enum PokemonExpGrowth {
     EXP_MEDIUM_FAST,
     EXP_ERRATIC,
     EXP_FLUCTUATING,
     EXP_MEDIUM_SLOW,
     EXP_FAST,
     EXP_SLOW
-  };
+};
 
-  ASSERT_SIZEOF(enum PokemonExpGrowth, 1);
+ASSERT_SIZEOF(enum PokemonExpGrowth, 1);
 
-  enum PokemonColor {
+enum PokemonColor {
     POKEMON_COLOR_RED,
     POKEMON_COLOR_BLUE,
     POKEMON_COLOR_YELLOW,
@@ -62,11 +60,11 @@ extern "C" {
     POKEMON_COLOR_GRAY,
     POKEMON_COLOR_WHITE,
     POKEMON_COLOR_PINK
-  };
+};
 
-  ASSERT_SIZEOF(enum PokemonColor, 1);
+ASSERT_SIZEOF(enum PokemonColor, 1);
 
-  struct PokemonBaseStat {
+struct PokemonBaseStat {
     u8 hp;
     u8 atk;
     u8 def;
@@ -87,26 +85,24 @@ extern "C" {
     u8 safari_zone_flee_rate;
     enum PokemonColor color;
     u16 padding;
-  };
+};
 
-  ASSERT_SIZEOF(struct PokemonBaseStat, 0x1C);
+ASSERT_SIZEOF(struct PokemonBaseStat, 0x1C);
 
-  /**
-   * Pokemon base stats table.
-   *
-   * @address{BPRE,08254784}
-   */
-  extern struct PokemonBaseStat pokemon_base_stats[POKEAGB_POKEMON_SLOTS];
+/**
+ * Pokemon base stats table.
+ *
+ * @address{BPRE,08254784}
+ */
+extern struct PokemonBaseStat pokemon_base_stats[POKEAGB_POKEMON_SLOTS];
 
-  /**
-   * Pokemon names table.
-   *
-   * @address{BPRE,08245EE0}
-   */
-  extern pchar pokemon_names[POKEAGB_POKEMON_SLOTS][POKEAGB_POKEMON_NAME_LENGTH];
+/**
+ * Pokemon names table.
+ *
+ * @address{BPRE,08245EE0}
+ */
+extern pchar pokemon_names[POKEAGB_POKEMON_SLOTS][POKEAGB_POKEMON_NAME_LENGTH];
 
-#ifdef __cplusplus
-}
-#endif
+POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEMON_BASE_H_ */

@@ -2,7 +2,7 @@
 #define POKEAGB_CORE_CALLBACK_H_
 
 #include <pokeagb/types.h>
-#include <pokeagb/macros.h>
+#include <pokeagb/common.h>
 #include <pokeagb/graphics/sprites.h>
 
 #ifdef __cplusplus
@@ -44,14 +44,14 @@ extern "C" {
    *
    * @address{BPRE,080565E0}
    */
-  LONG_CALL void set_callback1(SuperCallback func);
+  POKEAGB_EXTERN(void) set_callback1(SuperCallback func);
 
   /**
    * Set a secondary per-frame callback.
    *
    * @address{BPRE,08000544}
    */
-  LONG_CALL void set_callback2(SuperCallback func);
+  POKEAGB_EXTERN(void) set_callback2(SuperCallback func);
 
   /**
    * Global game state.

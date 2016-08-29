@@ -2,7 +2,7 @@
 #define POKEAGB_POKEMON_BASE_H_
 
 #include <pokeagb/types.h>
-#include <pokeagb/macros.h>
+#include <pokeagb/common.h>
 #include <pokeagb/core/string.h>
 #include <pokeagb/pokemon/type.h>
 #include <pokeagb/pokemon/ability.h>

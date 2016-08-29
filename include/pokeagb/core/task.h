@@ -2,7 +2,7 @@
 #define POKEAGB_CORE_TASK_H_
 
 #include <pokeagb/types.h>
-#include <pokeagb/macros.h>
+#include <pokeagb/common.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -34,19 +34,19 @@ extern "C" {
    * @return Task ID
    * @address{BPRE,0807741C}
    */
-  LONG_CALL u8 task_add(TaskCallback func, u8 priority);
+  POKEAGB_EXTERN(u8) task_add(TaskCallback func, u8 priority);
 
   /**
    * Delete a task.
    * @address{BPRE,08077508}
    */
-  LONG_CALL void task_del(u8 id);
+  POKEAGB_EXTERN(void) task_del(u8 id);
 
   /**
    * Execute all active tasks once.
    * @address{BPRE,08077578}
    */
-  LONG_CALL void task_exec(void);
+  POKEAGB_EXTERN(void) task_exec(void);
 
   /**
    * All the tasks.

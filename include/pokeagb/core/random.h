@@ -2,7 +2,7 @@
 #define POKEAGB_CORE_RANDOM_H_
 
 #include <pokeagb/types.h>
-#include <pokeagb/macros.h>
+#include <pokeagb/common.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -15,14 +15,14 @@ extern "C" {
    *
    * @address{BPRE,08044EE8}
    */
-  LONG_CALL u16 rand();
+  POKEAGB_EXTERN(u16) rand();
 
   /**
    * Initialize the PRNG with seed.
    *
    * @address{BPRE,08044EC8}
    */
-  LONG_CALL void set_rand_seed(u16 seed);
+  POKEAGB_EXTERN(void) set_rand_seed(u16 seed);
 
 #ifdef __cplusplus
 }

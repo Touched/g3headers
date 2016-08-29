@@ -1,7 +1,7 @@
 #ifndef POKEAGB_OVERWORLD_ITEM_H_
 #define POKEAGB_OVERWORLD_ITEM_H_
 
-#include <pokeagb/macros.h>
+#include <pokeagb/common.h>
 #include <pokeagb/version.h>
 #include <pokeagb/core/string.h>
 #include <pokeagb/core/task.h>

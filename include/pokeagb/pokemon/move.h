@@ -1,7 +1,7 @@
 #ifndef POKEAGB_POKEMON_MOVE_H_
 #define POKEAGB_POKEMON_MOVE_H_
 
-#include <pokeagb/macros.h>
+#include <pokeagb/common.h>
 #include <pokeagb/core/string.h>
 
 #ifdef __cplusplus

@@ -108,56 +108,60 @@ extern "C" {
    *
    * @address{BPRE,08063D34}
    */
-  LONG_CALL u8 npc_half_reset_no_checks(struct NpcState*);
+  LONG_CALL u8 npc_half_reset_no_checks(struct NpcState* npc);
 
   /**
    * Reset NPC when state->bitfield & 0x40
    *
    * @address{BPRE,08063D1C}
    */
-  LONG_CALL void npc_half_reset(struct NpcState* state);
+  LONG_CALL void npc_half_reset(struct NpcState* npc);
 
   /**
    * Set the NPC to have the given state (applymovement values) and apply associated animation.
    *
    * @address{BPRE,08063CA4}
    */
-  LONG_CALL int npc_set_state_2(struct NpcState*, u8);
+  LONG_CALL int npc_set_state_2(struct NpcState* npc, u8 state);
 
   /**
    * Reset the NPC when state->bitfield & 0x80 (set by some tile behaviors)
    *
    * @address{BPRE,08063D7C}
    */
-  LONG_CALL u8 npc_half_reset_when_bit7_is_set(struct NpcState*);
+  LONG_CALL u8 npc_half_reset_when_bit7_is_set(struct NpcState* npc);
 
   /**
    * Find an NPC given their local ID on a given map and bank.
    *
    * @address{BPRE,0805FD5C}
    */
-  LONG_CALL struct RomNpc* rom_npc_by_local_id_and_map(u8, u8, u8);
+  LONG_CALL struct RomNpc* rom_npc_by_local_id_and_map(u8 local_id, u8 map, u8 bank);
 
   /**
    * Spawn a new NPC.
    *
    * @address{BPRE,0805E72C}
    */
-  LONG_CALL u8 npc_instanciation_something(struct RomNpc*, u8, u8, u16, u16);
+  LONG_CALL u8 npc_instanciation_something(struct RomNpc* template,
+                                           u8 map,
+                                           u8 bank,
+                                           s16 x_shift,
+                                           s16 y_shift);
 
   /**
    * Change the NPC's sprite.
    *
    * @address{BPRE,0805F060}
    */
-  LONG_CALL void npc_change_sprite(struct NpcState*, u8);
+  LONG_CALL void npc_change_sprite(struct NpcState* npc, u8 sprite);
 
   /**
    * Make the NPC face a given direction.
    *
    * @address{BPRE,0805F218}
    */
-  LONG_CALL void npc_turn(struct NpcState*, u8);
+  LONG_CALL void npc_turn(struct NpcState* npc, u8 direction);
 
 
 #ifdef __cplusplus

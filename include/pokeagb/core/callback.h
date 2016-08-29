@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Game engine callbacks.
+ */
+
 #ifndef POKEAGB_CORE_CALLBACK_H_
 #define POKEAGB_CORE_CALLBACK_H_
 
@@ -44,14 +49,14 @@ extern "C" {
    *
    * @address{BPRE,080565E0}
    */
-  POKEAGB_EXTERN(void) set_callback1(SuperCallback func);
+  POKEAGB_EXTERN void set_callback1(SuperCallback func);
 
   /**
    * Set a secondary per-frame callback.
    *
    * @address{BPRE,08000544}
    */
-  POKEAGB_EXTERN(void) set_callback2(SuperCallback func);
+  POKEAGB_EXTERN void set_callback2(SuperCallback func);
 
   /**
    * Global game state.

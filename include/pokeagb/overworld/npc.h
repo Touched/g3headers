@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Overworld characters.
+ */
+
 #ifndef POKEAGB_OVERWORLD_NPC_H_
 #define POKEAGB_OVERWORLD_NPC_H_
 
@@ -108,42 +113,42 @@ extern "C" {
    *
    * @address{BPRE,08063D34}
    */
-  POKEAGB_EXTERN(u8) npc_half_reset_no_checks(struct NpcState* npc);
+  POKEAGB_EXTERN u8 npc_half_reset_no_checks(struct NpcState* npc);
 
   /**
    * Reset NPC when state->bitfield & 0x40
    *
    * @address{BPRE,08063D1C}
    */
-  POKEAGB_EXTERN(void) npc_half_reset(struct NpcState* npc);
+  POKEAGB_EXTERN void npc_half_reset(struct NpcState* npc);
 
   /**
    * Set the NPC to have the given state (applymovement values) and apply associated animation.
    *
    * @address{BPRE,08063CA4}
    */
-  POKEAGB_EXTERN(int) npc_set_state_2(struct NpcState* npc, u8 state);
+  POKEAGB_EXTERN int npc_set_state_2(struct NpcState* npc, u8 state);
 
   /**
    * Reset the NPC when state->bitfield & 0x80 (set by some tile behaviors)
    *
    * @address{BPRE,08063D7C}
    */
-  POKEAGB_EXTERN(u8) npc_half_reset_when_bit7_is_set(struct NpcState* npc);
+  POKEAGB_EXTERN u8 npc_half_reset_when_bit7_is_set(struct NpcState* npc);
 
   /**
    * Find an NPC given their local ID on a given map and bank.
    *
    * @address{BPRE,0805FD5C}
    */
-  POKEAGB_EXTERN(struct RomNpc*) rom_npc_by_local_id_and_map(u8 local_id, u8 map, u8 bank);
+  POKEAGB_EXTERN struct RomNpc* rom_npc_by_local_id_and_map(u8 local_id, u8 map, u8 bank);
 
   /**
    * Spawn a new NPC.
    *
    * @address{BPRE,0805E72C}
    */
-  POKEAGB_EXTERN(u8) npc_instanciation_something(struct RomNpc* template,
+  POKEAGB_EXTERN u8 npc_instanciation_something(struct RomNpc* template,
                                            u8 map,
                                            u8 bank,
                                            s16 x_shift,
@@ -154,14 +159,14 @@ extern "C" {
    *
    * @address{BPRE,0805F060}
    */
-  POKEAGB_EXTERN(void) npc_change_sprite(struct NpcState* npc, u8 sprite);
+  POKEAGB_EXTERN void npc_change_sprite(struct NpcState* npc, u8 sprite);
 
   /**
    * Make the NPC face a given direction.
    *
    * @address{BPRE,0805F218}
    */
-  POKEAGB_EXTERN(void) npc_turn(struct NpcState* npc, u8 direction);
+  POKEAGB_EXTERN void npc_turn(struct NpcState* npc, u8 direction);
 
 
 #ifdef __cplusplus

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Game engine tasks.
+ */
+
 #ifndef POKEAGB_CORE_TASK_H_
 #define POKEAGB_CORE_TASK_H_
 
@@ -34,19 +39,19 @@ extern "C" {
    * @return Task ID
    * @address{BPRE,0807741C}
    */
-  POKEAGB_EXTERN(u8) task_add(TaskCallback func, u8 priority);
+  POKEAGB_EXTERN u8 task_add(TaskCallback func, u8 priority);
 
   /**
    * Delete a task.
    * @address{BPRE,08077508}
    */
-  POKEAGB_EXTERN(void) task_del(u8 id);
+  POKEAGB_EXTERN void task_del(u8 id);
 
   /**
    * Execute all active tasks once.
    * @address{BPRE,08077578}
    */
-  POKEAGB_EXTERN(void) task_exec(void);
+  POKEAGB_EXTERN void task_exec(void);
 
   /**
    * All the tasks.

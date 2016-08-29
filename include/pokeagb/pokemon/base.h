@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Pokemon base stats.
+ */
+
 #ifndef POKEAGB_POKEMON_BASE_H_
 #define POKEAGB_POKEMON_BASE_H_
 

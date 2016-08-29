@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Pokemon attacks/moves.
+ */
+
 #ifndef POKEAGB_POKEMON_MOVE_H_
 #define POKEAGB_POKEMON_MOVE_H_
 

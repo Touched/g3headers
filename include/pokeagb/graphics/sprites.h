@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Game engine sprites.
+ */
+
 #ifndef POKEAGB_GRAPHICS_SPRITES_H_
 #define POKEAGB_GRAPHICS_SPRITES_H_
 

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Items.
+ */
+
 #ifndef POKEAGB_OVERWORLD_ITEM_H_
 #define POKEAGB_OVERWORLD_ITEM_H_
 

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Pokemon abilities.
+ */
+
 #ifndef POKEAGB_POKEMON_ABILITY_H_
 #define POKEAGB_POKEMON_ABILITY_H_
 

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief PRNG.
+ */
+
 #ifndef POKEAGB_CORE_RANDOM_H_
 #define POKEAGB_CORE_RANDOM_H_
 
@@ -15,14 +20,14 @@ extern "C" {
    *
    * @address{BPRE,08044EE8}
    */
-  POKEAGB_EXTERN(u16) rand();
+  POKEAGB_EXTERN u16 rand();
 
   /**
    * Initialize the PRNG with seed.
    *
    * @address{BPRE,08044EC8}
    */
-  POKEAGB_EXTERN(void) set_rand_seed(u16 seed);
+  POKEAGB_EXTERN void set_rand_seed(u16 seed);
 
 #ifdef __cplusplus
 }

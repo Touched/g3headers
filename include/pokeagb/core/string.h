@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief GameFreak strings.
+ */
+
 #ifndef POKEAGB_CORE_STRING_H_
 #define POKEAGB_CORE_STRING_H_
 

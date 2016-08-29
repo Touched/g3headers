@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Pokemon types.
+ */
+
 #ifndef POKEAGB_POKEMON_TYPE_H_
 #define POKEAGB_POKEMON_TYPE_H_
 

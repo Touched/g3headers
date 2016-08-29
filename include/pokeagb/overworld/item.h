@@ -426,6 +426,10 @@ extern "C" {
 
   ASSERT_SIZEOF(struct ItemData, 0x2C);
 
+  /**
+   * Table of item data
+   * @address{BPRE,083DB028}
+   */
   extern struct ItemData items[ITEM_MAX];
 
 #ifdef __cplusplus

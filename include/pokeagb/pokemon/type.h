@@ -34,6 +34,11 @@ extern "C" {
 
   ASSERT_SIZEOF(enum PokemonType, 1);
 
+  /**
+   * Pokemon type names table.
+   *
+   * @address{BPRE,0824F1A0}
+   */
   extern pchar pokemon_type_names[TYPE_MAX][POKEAGB_TYPE_NAME_LENGTH];
 
 #ifdef __cplusplus

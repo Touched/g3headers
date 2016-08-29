@@ -39,9 +39,25 @@ extern "C" {
     u8 gpu_sprites_upload_skip;
   };
 
+  /**
+   * Set a primary per-frame callback.
+   *
+   * @address{BPRE,080565E0}
+   */
   LONG_CALL void set_callback1(SuperCallback func);
+
+  /**
+   * Set a secondary per-frame callback.
+   *
+   * @address{BPRE,08000544}
+   */
   LONG_CALL void set_callback2(SuperCallback func);
 
+  /**
+   * Global game state.
+   *
+   * @address{BPRE,030030F0}
+   */
   extern struct Superstate super;
 
 #ifdef __cplusplus

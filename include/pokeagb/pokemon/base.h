@@ -86,7 +86,18 @@ extern "C" {
 
   ASSERT_SIZEOF(struct PokemonBaseStat, 0x1C);
 
+  /**
+   * Pokemon base stats table.
+   *
+   * @address{BPRE,08254784}
+   */
   extern struct PokemonBaseStat pokemon_base_stats[POKEAGB_POKEMON_SLOTS];
+
+  /**
+   * Pokemon names table.
+   *
+   * @address{BPRE,08245EE0}
+   */
   extern pchar pokemon_names[POKEAGB_POKEMON_SLOTS][POKEAGB_POKEMON_NAME_LENGTH];
 
 #ifdef __cplusplus

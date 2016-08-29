@@ -9,33 +9,38 @@ extern "C" {
 
   struct Object;
 
-  /** Sprite object callback
+  /**
+   * Sprite object callback.
    * @param o The object the callback belongs to
    */
   typedef void (*ObjectCallback)(struct Object* o);
 
-  /** 8 bit coordinates
+  /**
+   * 8 bit coordinates
    */
   struct Coords8 {
     u8 x;
     u8 y;
   };
 
-  /** 16 bit coordinates;
+  /**
+   * 16 bit coordinates;
    */
   struct Coords16 {
     u16 x;
     u16 y;
   };
 
-  /** Tile animation frame
+  /**
+   * Tile animation frame
    */
   struct Frame {
     u16 data;
     u16 duration;
   };
 
-  /** Rotation/Scaling frame
+  /**
+   * Rotation/Scaling frame
    */
   struct RotscaleFrame {
     u16 scale_delta_x;
@@ -45,7 +50,8 @@ extern "C" {
     u16 field_6;
   };
 
-  /** OAM Structure
+  /**
+   * OAM Structure
    */
   struct Sprite {
     u16 attr0;
@@ -54,14 +60,16 @@ extern "C" {
     u16 rotscale;
   };
 
-  /** Tileset Data
+  /**
+   * Tileset Data
    */
   struct Graphics {
     u8* address;
     u32 size;
   };
 
-  /** A template for a sprite object
+  /**
+   * A template for a sprite object
    */
   struct Template {
     u16 tiles_tag;
@@ -73,7 +81,8 @@ extern "C" {
     ObjectCallback callback;
   };
 
-  /** Sprite object
+  /**
+   * Sprite object
    */
   struct Object {
     struct Sprite final_oam;
@@ -98,7 +107,9 @@ extern "C" {
     u8 y_height_related;
   };
 
-  /** All the objects
+  /**
+   * All the objects
+   * @address{BPRE,0202063C}
    */
   extern struct Object objects[64];
 

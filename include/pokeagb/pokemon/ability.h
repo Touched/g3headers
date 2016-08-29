@@ -94,6 +94,11 @@ extern "C" {
 
   ASSERT_SIZEOF(enum PokemonAbility, 1);
 
+  /**
+   * Pokemon ability names table.
+   *
+   * @address{BPRE,0824FC40}
+   */
   extern pchar pokemon_ability_names[ABILITY_MAX];
 
 #ifdef __cplusplus

@@ -408,8 +408,18 @@ extern "C" {
 
   ASSERT_SIZEOF(struct MoveData, 0xC);
 
+  /**
+   * Pokemon move data table.
+   *
+   * @address{BPRE,08250C04}
+   */
   extern struct MoveData pokemon_moves[MOVE_MAX];
 
+  /**
+   * Pokemon move names table.
+   *
+   * @address{BPRE,08247094}
+   */
   extern pchar pokemon_move_names[MOVE_MAX][POKEAGB_MOVE_NAME_LENGTH];
 
   struct LearnsetEntry {
@@ -417,7 +427,12 @@ extern "C" {
     u8 level: 7;
   };
 
-  extern struct LearnsetEntry* pokemon_learnset[10];
+  /**
+   * Table of moves a Pokemon can learn by levelling up.
+   *
+   * @address{BPRE,0825D7B4}
+   */
+  extern struct LearnsetEntry* pokemon_learnset[412];
 
   ASSERT_SIZEOF(struct LearnsetEntry, 2);
 

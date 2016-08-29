@@ -9,7 +9,8 @@
 extern "C" {
 #endif
 
-  /** An NPC in the overworld
+  /**
+   * An NPC in the overworld
    */
   struct NpcState {
     u8 bitfield;
@@ -41,7 +42,8 @@ extern "C" {
     u8 field23;
   };
 
-  /** The player's movement state
+  /**
+   * The player's movement state
    */
   struct Walkrun {
     u8 bitfield;
@@ -65,7 +67,8 @@ extern "C" {
     u16 most_recent_override_tile;
   };
 
-  /** An NPC in the ROM
+  /**
+   * An NPC in the ROM
    */
   struct RomNpc {
     u8 nr;
@@ -86,22 +89,76 @@ extern "C" {
     u16 field16;
   };
 
-  /** The player's movement state
+  /**
+   * The player's movement state.
+   *
+   * @address{BPRE,02037078}
    */
   extern struct Walkrun walkrun_state;
 
-  /** Currently loaded NPCs
+  /**
+   * Currently loaded NPCs.
+   *
+   * @address{BPRE,02036E38}
    */
   extern struct NpcState npc_states[16];
 
+  /**
+   * Reset NPC state with no checks.
+   *
+   * @address{BPRE,08063D34}
+   */
   LONG_CALL u8 npc_half_reset_no_checks(struct NpcState*);
-  LONG_CALL void npc_half_reset(struct NpcState*);
+
+  /**
+   * Reset NPC when state->bitfield & 0x40
+   *
+   * @address{BPRE,08063D1C}
+   */
+  LONG_CALL void npc_half_reset(struct NpcState* state);
+
+  /**
+   * Set the NPC to have the given state (applymovement values) and apply associated animation.
+   *
+   * @address{BPRE,08063CA4}
+   */
   LONG_CALL int npc_set_state_2(struct NpcState*, u8);
+
+  /**
+   * Reset the NPC when state->bitfield & 0x80 (set by some tile behaviors)
+   *
+   * @address{BPRE,08063D7C}
+   */
   LONG_CALL u8 npc_half_reset_when_bit7_is_set(struct NpcState*);
+
+  /**
+   * Find an NPC given their local ID on a given map and bank.
+   *
+   * @address{BPRE,0805FD5C}
+   */
   LONG_CALL struct RomNpc* rom_npc_by_local_id_and_map(u8, u8, u8);
+
+  /**
+   * Spawn a new NPC.
+   *
+   * @address{BPRE,0805E72C}
+   */
   LONG_CALL u8 npc_instanciation_something(struct RomNpc*, u8, u8, u16, u16);
+
+  /**
+   * Change the NPC's sprite.
+   *
+   * @address{BPRE,0805F060}
+   */
   LONG_CALL void npc_change_sprite(struct NpcState*, u8);
+
+  /**
+   * Make the NPC face a given direction.
+   *
+   * @address{BPRE,0805F218}
+   */
   LONG_CALL void npc_turn(struct NpcState*, u8);
+
 
 #ifdef __cplusplus
 }

@@ -408,6 +408,19 @@ struct MapHeader {
 
 ASSERT_SIZEOF(struct MapHeader, 0x1C);
 
+/**
+ * Fetch the map header for the given map.
+ * @address{BPRE,08055238}
+ */
+POKEAGB_EXTERN struct MapHeader* mapheader_by_mapnumbers(u8 bank, u8 map);
+
+/**
+ * Fetch the block index at the given position for the current map.
+ * Uses virtual map coordinates.
+ * @address{BPRE,08058E48}
+ */
+POKEAGB_EXTERN u16 cur_mapdata_get_blockid_at(u16 x, u16 y);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_OVERWORLD_MAP_H_ */

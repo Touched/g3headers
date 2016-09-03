@@ -132,6 +132,36 @@ extern ScriptCommand* script_cmds;
  */
 extern ScriptCommand* script_cmds_max;
 
+/**
+ * Script temporary variable 0x8000
+ * @address{BPRE,020375D8}
+ */
+extern u16 var_8000;
+
+/**
+ * Script temporary variable 0x8001
+ * @address{BPRE,020375DA}
+ */
+extern u16 var_8001;
+
+/**
+ * Script temporary variable 0x8002
+ * @address{BPRE,020375DC}
+ */
+extern u16 var_8002;
+
+/**
+ * Script temporary variable 0x8003
+ * @address{BPRE,020375DE}
+ */
+extern u16 var_8003;
+
+/**
+ * Script temporary variable 0x800D
+ * @address{BPRE,020375F0}
+ */
+extern u16 var_800D;
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_OVERWORLD_SCRIPT_H_ */

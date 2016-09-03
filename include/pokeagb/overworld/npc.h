@@ -13,7 +13,17 @@
 POKEAGB_BEGIN_DECL
 
 /**
- * An NPC in the overworld
+ * The player's NPC local ID.
+ */
+#define NPC_LOCAL_ID_PLAYER 0xFF
+
+/**
+ * Invalid NPC state ID.
+ */
+#define NPC_STATE_ID_MAX 0x10
+
+/**
+ * An NPC in the overworld.
  */
 struct NpcState {
     u8 bitfield;
@@ -46,7 +56,7 @@ struct NpcState {
 };
 
 /**
- * The player's movement state
+ * The player's movement state.
  */
 struct Walkrun {
     u8 bitfield;
@@ -71,7 +81,7 @@ struct Walkrun {
 };
 
 /**
- * An NPC in the ROM
+ * An NPC in the ROM.
  */
 struct RomNpc {
     u8 nr;
@@ -165,6 +175,33 @@ POKEAGB_EXTERN void npc_change_sprite(struct NpcState* npc, u8 sprite);
  * @address{BPRE,0805F218}
  */
 POKEAGB_EXTERN void npc_turn(struct NpcState* npc, u8 direction);
+
+/**
+ * Translate a local ID to an NPC state ID.
+ * Map and bank are ignored if local_id != NPC_LOCAL_ID_PLAYER.
+ *
+ * @param local_id A local ID (e.g. from applymovement).
+ * @param map From this map number.
+ * @param bank From this map bank number.
+ * @return The NPC state id or NPC_STATE_ID_MAX on failure.
+ *
+ * @address{BPRE,0805DF60}
+ */
+POKEAGB_EXTERN u8 npc_id_by_local_id(u8 local_id, u8 map, u8 bank);
+
+/**
+ * Translate a local ID to an NPC state ID.
+ * Map and bank are ignored if local_id != NPC_LOCAL_ID_PLAYER.
+ *
+ * @param local_id A local ID (e.g. from applymovement).
+ * @param map From this map number.
+ * @param bank From this map bank number.
+ * @param id Pointer to store the result at.
+ * @return true if the lookup failed.
+ *
+ * @address{BPRE,0805DF84}
+ */
+POKEAGB_EXTERN bool npc_id_by_local_id_and_map_ret_success(u8 local_id, u8 map, u8 bank, u8* id);
 
 POKEAGB_END_DECL
 

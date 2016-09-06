@@ -7,7 +7,7 @@ import functools
 import itertools
 
 ROOT = 'doc/xml/'
-OUTPUT_ROOT = 'linker/'
+OUTPUT_ROOT = 'build/linker/'
 
 @functools.lru_cache(maxsize=None)
 def load_xml_file(path):
@@ -71,7 +71,7 @@ def load_addresses(filename):
         len(entries)
     ))
 
-    with open(output_path, 'w') as output:
+    with open(output_path, 'a') as output:
         keyfn = lambda x: x['file']
         for filename, group in itertools.groupby(sorted(entries, key=keyfn), keyfn):
             print('/*\n * {}\n */\n'.format(filename), file=output)

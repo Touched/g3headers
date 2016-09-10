@@ -37,6 +37,34 @@ struct VirtualMapHeader {
     struct MapTile* data;
 };
 
+/**
+ * Fetch the block index at the given position for the current map.
+ * Uses virtual map coordinates.
+ * @address{BPRE,08058E48}
+ */
+POKEAGB_EXTERN u16 cur_mapdata_get_blockid_at(u16 x, u16 y);
+
+/**
+ * Set the block index and permissions at the given position for the
+ * current map.  Uses virtual map coordinates.
+ * @address{BPRE,08058FEC}
+ * @see MapTile
+ */
+POKEAGB_EXTERN void setmaptile_four_nibbles(u16 x, u16 y, u16 tile);
+
+/**
+ * Redraw the tile at the given position.
+ * Uses virtual map coordinates.
+ * @address{BPRE,0805A8E8}
+ */
+POKEAGB_EXTERN void cur_mapdata_draw_block_at(u16 x, u16 y);
+
+/**
+ * Redraw the tiles visible from the camera's current position.
+ * @address{BPRE,0805A684}
+ */
+POKEAGB_EXTERN void cur_mapdata_full_redraw(void);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_OVERWORLD_VIRTUAL_MAP_H_ */

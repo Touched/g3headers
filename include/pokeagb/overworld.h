@@ -1,6 +1,11 @@
-#include <pokeagb/overworld/item.h>
-#include <pokeagb/overworld/npc.h>
-#include <pokeagb/overworld/script.h>
-#include <pokeagb/overworld/map.h>
-#include <pokeagb/overworld/virtual_map.h>
-#include <pokeagb/overworld/loading.h>
+#ifndef POKEAGB_OVERWORLD_H_
+#define POKEAGB_OVERWORLD_H_
+
+#include "overworld/item.h"
+#include "overworld/npc.h"
+#include "overworld/script.h"
+#include "overworld/map.h"
+#include "overworld/virtual_map.h"
+#include "overworld/loading.h"
+
+#endif /* POKEAGB_OVERWORLD_H_ */

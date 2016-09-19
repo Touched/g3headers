@@ -37,7 +37,7 @@ struct Superstate {
     } buttons;
 
     u32 unused_apparently;
-    struct Sprite sprites[128];
+    struct OamData sprites[128];
     u8 multi_purpose_state_tracker;
     u8 gpu_sprites_upload_skip;
 };
@@ -62,6 +62,11 @@ POKEAGB_EXTERN void set_callback2(SuperCallback func);
  * @address{BPRE,030030F0}
  */
 extern struct Superstate super;
+
+/**
+ * @address{BPRE,080006F4}
+ */
+POKEAGB_EXTERN void vblank_hander_set(void (*)(void));
 
 POKEAGB_END_DECL
 

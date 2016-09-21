@@ -6,6 +6,9 @@
 #ifndef POKEAGB_OVERWORLD_LOADING_H_
 #define POKEAGB_OVERWORLD_LOADING_H_
 
+#include "../common.h"
+#include "../types.h"
+
 typedef void (*MapHook)(void);
 
 /**

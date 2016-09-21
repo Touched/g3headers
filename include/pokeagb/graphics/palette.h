@@ -6,6 +6,8 @@
 #ifndef POKEAGB_GRAPHICS_PALETTE_H_
 #define POKEAGB_GRAPHICS_PALETTE_H_
 
+#include "../types.h"
+
 struct FadeControl {
     u16 bg_pal_bitfield;
     u16 obj_pal_bitfield;

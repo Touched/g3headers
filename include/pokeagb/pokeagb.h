@@ -8,5 +8,6 @@
 #include "overworld.h"
 #include "pokemon.h"
 #include "save.h"
+#include "battle.h"
 
 #endif /* POKEAGB_H_ */

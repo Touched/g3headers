@@ -6,6 +6,8 @@
 #ifndef POKEAGB_COMPRESSION_H_
 #define POKEAGB_COMPRESSION_H_
 
+#include "../types.h"
+
 /**
  * @address{BPRE,081E3B70}
  */

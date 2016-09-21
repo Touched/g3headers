@@ -6,6 +6,8 @@
 #ifndef POKEAGB_GRAPHICS_BACKGROUND_H_
 #define POKEAGB_GRAPHICS_BACKGROUND_H_
 
+#include "../types.h"
+
 struct BgConfig {
     u8 active : 1;
     u8 padding : 1;

@@ -374,16 +374,15 @@ enum Move {
 
 ASSERT_SIZEOF(enum Move, 2);
 
-struct MoveDataTarget {
-    u8 select: 1; /**< Selected target */
-    u8 variable: 1; /**< Depends on the attack */
-    u8 unused: 1; /**< Unused
-                     @note LIES! More investigation required. Possible effects on trainer ai. */
-    u8 random: 1; /**< Random target */
-    u8 both: 1; /**< Both foes */
-    u8 self: 1; /**< User */
-    u8 others: 1; /**< Both foes and partner */
-    u8 opponents: 1; /**< Opponent field */
+enum MoveTarget {
+    MOVE_TARGET_SELECT, /**< Selected target */
+    MOVE_TARGET_VARIABLE, /**< Depends on the attack */
+    MOVE_TARGET_EVERYONE, /**< Can be everyone? */
+    MOVE_TARGET_RANDOM, /**< Random target */
+    MOVE_TARGET_BOTH, /**< Both foes */
+    MOVE_TARGET_USER, /**< User */
+    MOVE_TARGET_OTHERS, /**< Both foes and partner */
+    MOVE_TARGET_OPPONENTS, /**< Opponent field */
 };
 
 struct MoveDataFlags {
@@ -403,7 +402,7 @@ struct MoveData {
     u8 accuracy;
     u8 pp;
     u8 effect_accuracy;
-    struct MoveDataTarget target;
+    enum MoveTarget target;
     u8 priority;
     struct MoveDataFlags flags;
     u8 padding[3];

@@ -6,6 +6,9 @@
 #ifndef POKEAGB_CORE_IO_H_
 #define POKEAGB_CORE_IO_H_
 
+#include "../common.h"
+#include "../types.h"
+
 /**
  * @address{BPRE,08000A38}
  */

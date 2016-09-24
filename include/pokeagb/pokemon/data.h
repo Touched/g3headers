@@ -15,6 +15,8 @@
 
 POKEAGB_BEGIN_DECL
 
+#define POKEMON_PARTY_SIZE 6
+
 /**
  * Pokemon Language.
  */
@@ -649,6 +651,16 @@ POKEAGB_EXTERN void pokemon_setattr(struct PokemonBase* pokemon,
  * @adddress{BPRE,0803E7C4}
  */
 POKEAGB_EXTERN int level_by_exp(struct PokemonBase* pokemon);
+
+/**
+ * @address{BPRE,02024284}
+ */
+extern struct Pokemon party_player[POKEMON_PARTY_SIZE];
+
+/**
+ * @address{BPRE,0202402C}
+ */
+extern struct Pokemon party_opponent[POKEMON_PARTY_SIZE];
 
 POKEAGB_END_DECL
 

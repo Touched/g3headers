@@ -162,6 +162,42 @@ extern u16 var_8003;
  */
 extern u16 var_800D;
 
+/**
+ * Local ID of the NPC last spoken to.
+ * @address{BPRE,020370D2}
+ */
+extern u16 var_800F;
+
+/**
+ * Read the value in a script variable
+ * @address{BPRE,0806E568}
+ */
+POKEAGB_EXTERN u16 var_load(u16 variable);
+
+/**
+ * Read the value in a script variable
+ * @address{BPRE,0806E454}
+ */
+POKEAGB_EXTERN u16* var_access(u16 variable);
+
+/**
+ * NPC state id of the NPC running the script
+ * @address{BPRE,03005074}
+ */
+extern u8 scripting_npc;
+
+/**
+ * Initialise the script state with the given instruction pointer.
+ * @address{BPRE,08069AE4}
+ */
+POKEAGB_EXTERN void script_env_init_script(void* script);
+
+/**
+ * Initialise the script state with the given instruction pointer.
+ * @address{BPRE,08069940}
+ */
+POKEAGB_EXTERN void script_env_enable(void);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_OVERWORLD_SCRIPT_H_ */

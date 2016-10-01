@@ -198,6 +198,12 @@ POKEAGB_EXTERN void script_env_init_script(void* script);
  */
 POKEAGB_EXTERN void script_env_enable(void);
 
+/**
+ * Set a flag
+ * @address{BPRE,0806E680}
+ */
+POKEAGB_EXTERN void flag_set(u16 flag);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_OVERWORLD_SCRIPT_H_ */

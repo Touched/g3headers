@@ -1,0 +1,44 @@
+prefix: bs_
+commands:
+  - message:
+      index: 0x10
+      arguments:
+        - index:
+            type: short
+  - goto:
+      index: 0x28
+      arguments:
+        - loc:
+            type: long
+  - cmp_word:
+      index: 0x2b
+      arguments:
+        - op:
+            type: enum
+            values:
+              - flags_set: 4
+              - flags_clear: 5
+        - address:
+            type: long
+        - value:
+            type: long
+        - loc:
+            type: long
+  - waitstate:
+      index: 0x3a
+  - finish:
+      index: 0x3e
+  - trainer_slide_in:
+      index: 0x53
+      arguments:
+        - bank:
+            type: byte
+  - calculate_money:
+      index: 0x5d
+      arguments:
+        - loc:
+            type: long
+  - givemoney:
+      index: 0x91
+  - pickup:
+      index: 0xe5

@@ -96,12 +96,17 @@ struct SaveBlock1 {
 
 ASSERT_SIZEOF(struct SaveBlock1, 0x3DE8);
 
+enum Gender {
+    GENDER_MALE,
+    GENDER_FEMALE,
+};
+
 /**
  * Trainer and miscellaneous save data.
  */
 struct SaveBlock2 {
     u8 name[8];
-    u8 gender;
+    enum Gender gender;
     u8 field_9;
     u16 trainerid;
     u16 secretid;

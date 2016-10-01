@@ -14,8 +14,43 @@
 #define TRAINER_COUNT 743
 #define TRAINER_CLASS_COUNT 107
 
+struct TrainerMoneyRate {
+    u8 class;
+    u8 money;
+    u16 field2;
+};
+
+struct TrainerPokemonBase {
+    u8 iv;
+    u8 field1;
+    u8 level;
+    u8 field3;
+    enum PokemonSpecies species;
+
+    /**
+     * Can be non-zero if TRAINER_PARTY_HELD_ITEM is set.
+     */
+    enum Item Item;
+};
+
+struct TrainerPokemonMoves {
+    struct TrainerPokemonBase base;
+    enum Move moves[4];
+};
+
+/**
+ * The structure that describes the trainer's party.
+ */
+enum TrainerPartyFlag {
+    TRAINER_PARTY_HELD_ITEM = 1,
+    TRAINER_PARTY_MOVESET = 2,
+};
+
+/**
+ * Pokemon trainer data.
+ */
 struct Trainer {
-    u8 flags;
+    enum TrainerPartyFlag flags;
     u8 class;
     u8 music;
     u8 sprite;
@@ -24,11 +59,22 @@ struct Trainer {
     enum Item items[4];
     u32 field_18;
     u32 ai;
-    u32 pokemon_number;
+    u32 party_size;
+
+    /**
+     * Type is either TrainerPokemonBase or TrainerPokemonMoves. Type
+     * is TrainerPokemonMoves only if TRAINER_PARTY_MOVESET flag is
+     * set.
+     */
     void* party;
 };
 
 ASSERT_SIZEOF(struct Trainer, 0x28);
+
+/**
+ * @address{BPRE,0824F220}
+ */
+extern struct TrainerMoneyRate trainer_class_money_rate[TRAINER_CLASS_COUNT];
 
 /**
  * @address{BPRE,0823EAC8}

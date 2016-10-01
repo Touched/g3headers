@@ -662,6 +662,56 @@ extern struct Pokemon party_player[POKEMON_PARTY_SIZE];
  */
 extern struct Pokemon party_opponent[POKEMON_PARTY_SIZE];
 
+/**
+ * Clear and create a new Pokemon structure.
+ *
+ * @param dst The destination Pokemon slot to create the Pokemon in.
+ * @param species The species of the generated Pokemon.
+ * @param level The Pokemon's level
+ * @param iv Anything below 0x20 to set all IVs to that value,
+ * otherwise randomly generate IV values.
+ * @param use_pid true if PID should be used, otherwise randomly generate one.
+ * @param pid The provided PID (use_pid must be true)
+ * @param use_tid How to get the trainer ID. 2 to randomly generate
+ * one, 1 to use the provided tid, anything else to use the player's
+ * TID.
+ * @param tid The provided TID (use_tid must be 1)
+ * @address{BPRE,0803DAC4}
+ */
+POKEAGB_EXTERN void pokemon_make(struct PokemonBase* dst,
+                                 enum PokemonSpecies species,
+                                 u8 level,
+                                 u8 iv,
+                                 bool use_pid,
+                                 u32 pid,
+                                 u8 use_tid,
+                                 u32 tid);
+/**
+ * Same as pokemon_make, but using a full 100 byte Pokemon structure
+ * as the destination.
+ * @address{BPRE,0803DA54}
+ */
+POKEAGB_EXTERN void pokemon_make_full(struct Pokemon* dst,
+                                      enum PokemonSpecies species,
+                                      u8 level,
+                                      u8 iv,
+                                      bool use_pid,
+                                      u32 pid,
+                                      u8 use_tid,
+                                      u32 tid);
+
+/**
+ * Clear a PokemonBase slot.
+ * @address{BPRE,0803D97C}
+ */
+POKEAGB_EXTERN void pokemon_slot_purge(struct PokemonBase* dst);
+
+/**
+ * Clear a 100 byte Pokemon slot.
+ * @address{BPRE,0803D994}
+ */
+POKEAGB_EXTERN void pokemon_slot_purge_full(struct Pokemon* dst);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEMON_DATA_H_ */

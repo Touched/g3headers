@@ -12,6 +12,18 @@
 #define BATTLE_SIDES 4
 #define BATTLE_COMMAND_BUFFER_SIZE 0x200
 
+enum BattleSide {
+    SIDE_PLAYER,
+    SIDE_OPPONENT,
+};
+
+enum BattleBank {
+    BANK_PLAYER,
+    BANK_OPPONENT,
+    BANK_PLAYER_ALLY,
+    BANK_OPPONENT_ALLY,
+};
+
 /**
  * @address{BPRE,03004FE0}
  */
@@ -63,6 +75,11 @@ extern u8 b_buffer_A[BATTLE_SIDES][BATTLE_COMMAND_BUFFER_SIZE];
 extern u8 b_buffer_B[BATTLE_SIDES][BATTLE_COMMAND_BUFFER_SIZE];
 
 /**
+ * @address{BPRE,080751C4}
+ */
+POKEAGB_EXTERN enum BattleSide battle_side_get_owner(enum BattleBank side);
+
+/**
  * Prepare the AI for the current Pokemon.
  *
  * @address{BPRE,080C6DA0}
@@ -108,6 +125,13 @@ POKEAGB_EXTERN u8 dp01_build_cmdbuf_x21_a_bb(u8 buffer, u8, u16* moves);
  * @address{BPRE,0800E0D4}
  */
 POKEAGB_EXTERN u8 dp01_build_cmdbuf_x07(u8 buffer);
+
+/**
+ * Slide out OAM on the bank.
+ *
+ * @address{BPRE,0800E114}
+ */
+POKEAGB_EXTERN u8 dp01_build_cmdbuf_x09(u8 buffer);
 
 /**
  * The Pokemon party index by bank number.

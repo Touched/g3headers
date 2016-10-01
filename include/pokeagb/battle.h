@@ -4,5 +4,6 @@
 #include "battle/command.h"
 #include "battle/flags.h"
 #include "battle/trainer.h"
+#include "battle/script.h"
 
 #endif /* POKEAGB_BATTLE_H_ */

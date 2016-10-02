@@ -16,14 +16,14 @@ POKEAGB_BEGIN_DECL
 /**
  * Generate a pseudo-random integer between 0 and RAND_MAX.
  *
- * @address{BPRE,08044EE8}
+ * @address{BPRE,08044EC8}
  */
 POKEAGB_EXTERN u16 rand();
 
 /**
  * Initialize the PRNG with seed.
  *
- * @address{BPRE,08044EC8}
+ * @address{BPRE,08044EE8}
  */
 POKEAGB_EXTERN void set_rand_seed(u16 seed);
 

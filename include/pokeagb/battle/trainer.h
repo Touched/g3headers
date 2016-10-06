@@ -129,7 +129,22 @@ POKEAGB_EXTERN void battle_configure_by_script(void* script_arguments);
  *
  * @address{BPRE,08081E68}
  */
-void add_task_trainer_walk(struct NpcState* npc, u8 distance);
+POKEAGB_EXTERN void add_task_trainer_walk(struct NpcState* npc, u8 distance);
+
+/**
+ * @address{BPRE,0808043C}
+ */
+POKEAGB_EXTERN void trainer_flag_set(u16 trainer_id);
+
+/**
+ * @address{BPRE,08080450}
+ */
+POKEAGB_EXTERN void trainer_flag_clear(u16 trainer_id);
+
+/**
+ * @address{BPRE,08080424}
+ */
+POKEAGB_EXTERN bool trainer_flag_check(u16 trainer_id);
 
 /**
  * @address{BPRE,020386AE}

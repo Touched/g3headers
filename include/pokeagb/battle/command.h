@@ -120,6 +120,13 @@ POKEAGB_EXTERN void dp01_battle_side_mark_buffer_for_execution(u8 buffer);
 POKEAGB_EXTERN u8 dp01_build_cmdbuf_x21_a_bb(u8 buffer, u8, u16* moves);
 
 /**
+ * Perform a switch in.
+ *
+ * @address{BPRE,0800E874}
+ */
+POKEAGB_EXTERN u8 dp01_build_cmdbuf_x22(u8 buffer, u8 index, u8);
+
+/**
  * Select a move to attack with.
  *
  * @address{BPRE,0800E0D4}

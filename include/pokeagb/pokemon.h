@@ -8,5 +8,6 @@
 #include "pokemon/species.h"
 #include "pokemon/sprites.h"
 #include "pokemon/type.h"
+#include "pokemon/evolution.h"
 
 #endif /* POKEAGB_POKEMON_H_ */

@@ -20,8 +20,6 @@ typedef volatile s8 vs8;
 typedef volatile s16 vs16;
 typedef volatile s32 vs32;
 
-#define NULL 0
-
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_TYPES_H_ */

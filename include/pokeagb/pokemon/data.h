@@ -15,6 +15,7 @@
 
 POKEAGB_BEGIN_DECL
 
+#define POKEMON_MOVE_SLOTS 4
 #define POKEMON_PARTY_SIZE 6
 
 /**
@@ -82,7 +83,7 @@ ASSERT_SIZEOF(struct PokemonSubstructureGrowth, 12);
  * Substructure containing attack related data.
  */
 struct PokemonSubstructureAttacks {
-    enum Move attacks[4];
+    enum Move attacks[POKEMON_MOVE_SLOTS];
     u8 pp[4];
 };
 

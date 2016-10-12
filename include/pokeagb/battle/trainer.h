@@ -10,6 +10,7 @@
 #include "../common.h"
 #include "../pokemon.h"
 #include "../overworld/item.h"
+#include "../overworld/npc.h"
 
 #define TRAINER_COUNT 743
 #define TRAINER_CLASS_COUNT 107

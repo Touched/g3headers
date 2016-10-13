@@ -14,6 +14,7 @@
 
 #define TRAINER_COUNT 743
 #define TRAINER_CLASS_COUNT 107
+#define TRAINER_ITEM_COUNT 4
 
 struct TrainerMoneyRate {
     u8 class;
@@ -36,7 +37,7 @@ struct TrainerPokemonBase {
 
 struct TrainerPokemonMoves {
     struct TrainerPokemonBase base;
-    enum Move moves[4];
+    enum Move moves[POKEMON_MOVE_SLOTS];
 };
 
 /**
@@ -57,7 +58,7 @@ struct Trainer {
     u8 sprite;
     pchar name[10];
     u16 field_E;
-    enum Item items[4];
+    enum Item items[TRAINER_ITEM_COUNT];
     u32 field_18;
     u32 ai;
     u32 party_size;

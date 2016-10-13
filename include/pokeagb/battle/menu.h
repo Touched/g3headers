@@ -33,7 +33,7 @@ extern u16 move_index_per_chosen_side[BATTLE_SIDES];
  * 9 - Numbers for the move PP box
  * 11 - Whole PP box
  *
- * @address{BPRE,0x080D87BC}
+ * @address{BPRE,080D87BC}
  */
 POKEAGB_EXTERN void battle_draw_rbox(pchar* str, u8 rbox_id);
 

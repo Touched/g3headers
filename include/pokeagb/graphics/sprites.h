@@ -58,34 +58,66 @@ struct RotscaleFrame {
  */
 
 struct OamData {
-    u32 y:8;
-    u32 affineMode:2;
-    u32 objMode:2;
-    u32 mosaic:1;
-    u32 bpp:1;
-    u32 shape:2;
+    u32 y : 8;
 
-    u32 x:9;
-    u32 matrixNum:5; // bits 3/4 are h-flip/v-flip if not in affine mode
-    u32 size:2;
+    /**
+     * 0=Normal, 1=Hidden, 2=Rotscale, 3=Double Size & Rotscale
+     */
+    u32 affine_mode : 2;
 
-    u16 tileNum:10;
-    u16 priority:2;
-    u16 paletteNum:4;
-    u16 affineParam;
+    /**
+     * 0=Normal, 1=Semi-Transparent, 2=OBJ Window, 3=Prohibited
+     */
+    u32 obj_mode : 2;
+
+    /**
+     * Enable mosaic
+     */
+    u32 mosaic : 1;
+
+    /**
+     * 1=256 colours
+     */
+    u32 bpp : 1;
+
+    /**
+     * 0=Square,1=Horizontal,2=Vertical,3=Prohibited
+     */
+    u32 shape : 2;
+
+    u32 x : 9;
+    u32 matrix_num : 5; // bits 3/4 are h-flip/v-flip if not in affine mode
+
+    /**
+     * Size  Square   Horizontal  Vertical
+     * 0     8x8      16x8        8x16
+     * 1     16x16    32x8        8x32
+     * 2     32x32    32x16       16x32
+     * 3     64x64    64x32       32x64
+     */
+    u32 size : 2;
+
+    u16 tile_num : 10;
+
+    /**
+     * 0-3; 0=Highest
+     */
+    u16 priority : 2;
+    u16 palette_num : 4;
+    u16 affine_param;
 };
 
 /**
  * Tileset Data
  */
 struct SpriteTiles {
-    u8* data;
+    const u8* data;
     u16 size;
     u16 tag;
 };
 
 struct SpritePalette {
-    u8* data;
+    const u8* data;
     u16 tag;
 };
 
@@ -95,7 +127,7 @@ struct SpritePalette {
 struct Template {
     u16 tiles_tag;
     u16 pal_tag;
-    struct Sprite* oam;
+    struct OamData* oam;
     struct Frame** animation;
     struct SpriteTiles* graphics;
     struct RotscaleFrame** rotscale;
@@ -142,7 +174,10 @@ extern struct RotscaleFrame* rotscale_empty;
 /**
  * @address{BPRE,08231CF0}
  */
-extern struct Frame* anim_image_table_empty;
+extern struct Frame* anim_image_empty;
+
+#define SPRITE_NO_ANIMATION (&anim_image_empty)
+#define SPRITE_NO_ROTSCALE (&rotscale_empty)
 
 /**
  * @address{BPRE,0800760C}
@@ -178,7 +213,7 @@ POKEAGB_EXTERN void gpu_pal_decompress_alloc_tag_and_upload(struct SpritePalette
 POKEAGB_EXTERN void gpu_pal_obj_alloc_tag_and_apply(struct SpritePalette* pal);
 
 /**
- * @address{BPRE,0800EBCC}
+ * @address{BPRE,0800F034}
  */
 POKEAGB_EXTERN void gpu_tile_obj_decompress_alloc_tag_and_upload(struct SpriteTiles* pal);
 

@@ -164,7 +164,7 @@ POKEAGB_EXTERN void obj_sync_something(void);
  */
 POKEAGB_EXTERN u8 template_instanciate_forward_search(struct Template* template,
                                                       u8 x,
-                                                      u8 u,
+                                                      u8 y,
                                                       u8 priority);
 
 /**

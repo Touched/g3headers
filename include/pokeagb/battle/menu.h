@@ -67,6 +67,11 @@ POKEAGB_EXTERN void battle_menu_draw_move_type(void);
  */
 POKEAGB_EXTERN void battle_menu_fight_draw(void);
 
+/**
+ * @address{BPRE,08030A14}
+ */
+POKEAGB_EXTERN void battle_menu_erase_cursor(u8 move_index);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_BATTLE_MENU_H_ */

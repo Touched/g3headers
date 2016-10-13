@@ -51,6 +51,75 @@ POKEAGB_EXTERN void rboxid_clear_pixels(u8 id, u8 offset);
  */
 POKEAGB_EXTERN void rboxid_update(u8 id, u8 mode);
 
+
+struct ScrollArrows {
+    struct Arrow {
+        /* TODO: Enum direction */
+        u8 orientation;
+        u8 x;
+        u8 y;
+    } positions[2];
+
+    /**
+     * Arrow IDs. A pointer to the arrow ID function can be passed in
+     * to the spawning function. If the value at that pointer is equal
+     * to the ID in this array, then the arrow is visible. There are
+     * two slots for the two arrows.
+     */
+    u16 ids[2];
+
+    /**
+     * The tiles tag or 0xFFFF.
+     */
+    u16 tiles_tag;
+
+    /**
+     * The palette tag or 0xFFFF.
+     */
+    u16 palette_tag;
+
+    /**
+     * The palette slot index to start copying the arrow palette to.
+     */
+    u8 palette_index;
+};
+
+ASSERT_SIZEOF(struct ScrollArrows, 16);
+ASSERT_OFFSETOF(struct ScrollArrows, positions, 0);
+ASSERT_OFFSETOF(struct ScrollArrows, ids, 6);
+ASSERT_OFFSETOF(struct ScrollArrows, tiles_tag, 10);
+ASSERT_OFFSETOF(struct ScrollArrows, palette_tag, 12);
+ASSERT_OFFSETOF(struct ScrollArrows, palette_index, 14);
+
+struct ScrollArrowTaskState {
+    u8 starts_zero;
+    u16* current_arrow_id;
+    u16 arrow_ids[2];
+    u16 unknown;
+    u16 tiles_tag;
+    u16 palette_tag;
+};
+
+/**
+ * Draw a pair of red arrows to indicate scrolling. This creates a
+ * task with the private state layout seen in ScrollArrowTaskState
+ *
+ * @param data The box that the arrows must be drawn around.
+ * @param arrows Pointer to a byte which controls which arrows ID to activate.
+ * @returns Task ID
+ * @address{BPRE,08133A20}
+ */
+POKEAGB_EXTERN u8 textbox_spawn_scroll_arrows(const struct ScrollArrows* data, u16* arrows);
+
+/**
+ * Clean up the scroll arrows and delete the task. Set the task
+ * function for the task returned from textbox_spawn_scroll_arrows to
+ * this to clean up.
+ *
+ * @address{BPRE,08133C30}
+ */
+POKEAGB_EXTERN void textbox_task_delete_scroll_arrows(u8 task_id);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_CORE_STRING_H_ */

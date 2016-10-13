@@ -75,6 +75,11 @@ ASSERT_SIZEOF(struct BattlePokemon, 0x58);
 extern u8 b_active_side;
 
 /**
+ * @address{BPRE,02023BCC}
+ */
+extern u8 b_num_active_sides;
+
+/**
  * @address{BPRE,02023D6B}
  */
 extern u8 b_attacker;

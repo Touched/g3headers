@@ -72,6 +72,12 @@ POKEAGB_EXTERN void battle_menu_fight_draw(void);
  */
 POKEAGB_EXTERN void battle_menu_erase_cursor(u8 move_index);
 
+/**
+ * A battle callback that handles the fight menu.
+ * @address{BPRE,0802EA10}
+ */
+POKEAGB_EXTERN void battle_fight_menu(void);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_BATTLE_MENU_H_ */

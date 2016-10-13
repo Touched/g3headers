@@ -435,6 +435,20 @@ ASSERT_SIZEOF(struct ItemData, 0x2C);
  */
 extern struct ItemData items[ITEM_MAX];
 
+/**
+ * Returns the quantity of the given item in the player's bag. Returns
+ * 0 if > 999.
+ * @address{BPRE,0809A000}
+ */
+POKEAGB_EXTERN u16 get_item_quantity(enum Item item);
+
+/**
+ * Returns true if the quantity of the item in the player's bag is at
+ * least the specified amount.
+ * @address{BPRE,08099F40}
+ */
+POKEAGB_EXTERN bool check_item(enum Item item, u8 quantity);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_OVERWORLD_ITEM_H_ */

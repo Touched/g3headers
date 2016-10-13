@@ -3,7 +3,8 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include <pokeagb/common.h>
+#include "common.h"
+#include "constants.h"
 
 POKEAGB_BEGIN_DECL
 

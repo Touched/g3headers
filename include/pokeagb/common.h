@@ -7,7 +7,6 @@
 #define VALUE(x) VALUE_TO_STRING(x)
 #define VAR_NAME_VALUE(var) #var "=" VALUE(var)
 
-
 #define POKEAGB_EXTERN extern __attribute__((long_call))
 
 #ifdef __cplusplus

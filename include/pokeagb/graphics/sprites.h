@@ -78,7 +78,7 @@ struct OamData {
 /**
  * Tileset Data
  */
-struct Graphics {
+struct SpriteTiles {
     u8* data;
     u16 size;
     u16 tag;
@@ -97,7 +97,7 @@ struct Template {
     u16 pal_tag;
     struct Sprite* oam;
     struct Frame** animation;
-    struct Graphics* graphics;
+    struct SpriteTiles* graphics;
     struct RotscaleFrame** rotscale;
     ObjectCallback callback;
 };
@@ -108,7 +108,7 @@ struct Template {
 struct Object {
     struct OamData final_oam;
     struct Frame** animation_table;
-    struct Graphics* gfx_table;
+    struct SpriteTiles* gfx_table;
     struct RotscaleFrame** rotscale_table;
     struct Template* template;
     u32 field18;
@@ -180,12 +180,12 @@ POKEAGB_EXTERN void gpu_pal_obj_alloc_tag_and_apply(struct SpritePalette* pal);
 /**
  * @address{BPRE,0800EBCC}
  */
-POKEAGB_EXTERN void gpu_tile_obj_decompress_alloc_tag_and_upload(struct Graphics* pal);
+POKEAGB_EXTERN void gpu_tile_obj_decompress_alloc_tag_and_upload(struct SpriteTiles* pal);
 
 /**
  * @address{BPRE,080086DC}
  */
-POKEAGB_EXTERN void gpu_tile_obj_alloc_tag_and_upload(struct Graphics* pal);
+POKEAGB_EXTERN void gpu_tile_obj_alloc_tag_and_upload(struct SpriteTiles* pal);
 
 POKEAGB_END_DECL
 

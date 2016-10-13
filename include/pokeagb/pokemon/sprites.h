@@ -12,12 +12,12 @@
 /**
  * @address{BPRE,082350AC}
  */
-struct Graphics pokemon_graphics_front[POKEAGB_POKEMON_SLOTS];
+struct SpriteTiles pokemon_graphics_front[POKEAGB_POKEMON_SLOTS];
 
 /**
  * @address{BPRE,0823654C}
  */
-struct Graphics pokemon_graphics_back[POKEAGB_POKEMON_SLOTS];
+struct SpriteTiles pokemon_graphics_back[POKEAGB_POKEMON_SLOTS];
 
 /**
  * @address{BPRE,0823730C}

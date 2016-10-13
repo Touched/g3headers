@@ -6,5 +6,6 @@
 #include "battle/trainer.h"
 #include "battle/script.h"
 #include "battle/data.h"
+#include "battle/menu.h"
 
 #endif /* POKEAGB_BATTLE_H_ */

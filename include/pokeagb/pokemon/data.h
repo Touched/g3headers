@@ -713,6 +713,15 @@ POKEAGB_EXTERN void pokemon_slot_purge(struct PokemonBase* dst);
  */
 POKEAGB_EXTERN void pokemon_slot_purge_full(struct Pokemon* dst);
 
+/**
+ * Calculate the stats for the Pokemon. Can be used to expand a
+ * PokemonBase struct into a full Pokemon struct.
+ *
+ * @address{BPRE,0803E47C}
+ */
+POKEAGB_EXTERN void recalculate_stats(struct Pokemon* pokemon);
+
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEMON_DATA_H_ */

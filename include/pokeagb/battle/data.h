@@ -133,6 +133,13 @@ POKEAGB_EXTERN u8 battle_get_per_side_status(u8 bank);
  */
 extern u16 b_pokemon_team_id_by_side[BATTLE_SIDES];
 
+/**
+ * Pokemon banks sorted by turn order.
+ *
+ * @address{BPRE,02023BDE}
+ */
+extern u8 b_attackers_in_order[BATTLE_SIDES];
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_BATTLE_DATA_H_ */

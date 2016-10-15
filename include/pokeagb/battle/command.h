@@ -33,6 +33,12 @@ extern u8 b_buffer_A[BATTLE_SIDES][BATTLE_COMMAND_BUFFER_SIZE];
 extern u8 b_buffer_B[BATTLE_SIDES][BATTLE_COMMAND_BUFFER_SIZE];
 
 /**
+ * Used to create commands before copying to b_buffer_A or b_buffer_B
+ * @address{BPRE,020233C4}
+ */
+extern u8 dp01_scratchpad[BATTLE_COMMAND_BUFFER_SIZE];
+
+/**
  * Prepare the AI for the current Pokemon.
  *
  * @address{BPRE,080C6DA0}
@@ -58,7 +64,7 @@ POKEAGB_EXTERN void dp01_battle_side_mark_buffer_for_execution(u8 buffer);
  *
  * @address{BPRE,0800E848}
  */
-POKEAGB_EXTERN u8 dp01_build_cmdbuf_x21_a_bb(u8 buffer, u8, u16* moves);
+POKEAGB_EXTERN u8 dp01_build_cmdbuf_x21_a_bb(u8 buffer, u8, u16 data);
 
 /**
  * Perform a switch in.
@@ -80,5 +86,24 @@ POKEAGB_EXTERN u8 dp01_build_cmdbuf_x07(u8 buffer);
  * @address{BPRE,0800E114}
  */
 POKEAGB_EXTERN u8 dp01_build_cmdbuf_x09(u8 buffer);
+
+/**
+ * Copy a command to a buffer.
+ *
+ * @address{BPRE,0800D8B0}
+ */
+POKEAGB_EXTERN void dp01_prepare_buffer(u8 buffer, u8* data, u16 length);
+
+/**
+ * @address{BPRE,080155C8}
+ */
+POKEAGB_EXTERN void bc_bs_exec(void);
+
+/**
+ * Starts the attack.
+ *
+ * @address{BPRE,08015CA0}
+ */
+POKEAGB_EXTERN void bs0_start_attack(void);
 
 #endif /* POKEAGB_BATTLE_COMMAND_H_ */

@@ -144,19 +144,19 @@ extern pchar fcode_buffer4[FCODE_BUFFER_SIZE];
  * Copies the 0xFF terminated string from source to desination.
  * @address{BPRE,08008D84}
  */
-POKEAGB_EXTEN pchar* pstrcpy(pchar* dst, const pchar* src);
+POKEAGB_EXTERN pchar* pstrcpy(pchar* dst, const pchar* src);
 
 /**
  * Appends a copy of the source to the end of the 0xFF terminated string at destination.
  * @address{BPRE,08008DA4}
  */
-POKEAGB_EXTEN pchar* pstrcat(pchar* dst, const pchar* src);
+POKEAGB_EXTERN pchar* pstrcat(pchar* dst, const pchar* src);
 
 /**
  * Returns the length of the 0xFF terminated string.
  * @address{BPRE,08008E08}
  */
-POKEAGB_EXTEN pchar* pstrlen(pchar* s);
+POKEAGB_EXTERN pchar* pstrlen(pchar* s);
 
 POKEAGB_END_DECL
 

@@ -12,10 +12,22 @@
 
 #define BATTLE_COMMAND_BUFFER_SIZE 0x200
 
+enum BattleBuffer {
+    BUFFER_A,
+    BUFFER_B,
+};
+
 /**
  * @address{BPRE,03004FE0}
  */
 extern void (*b_x[BATTLE_SIDES])(void);
+
+/**
+ * Main battle callback.
+ *
+ * @address{BPRE,03004F84}
+ */
+extern void (*b_c)(void);
 
 /**
  * @address{BPRE,02023BC8}
@@ -57,42 +69,56 @@ POKEAGB_EXTERN u8 tai_pick_move(void);
  *
  * @address{BPRE,08017248}
  */
-POKEAGB_EXTERN void dp01_battle_side_mark_buffer_for_execution(u8 buffer);
+POKEAGB_EXTERN void dp01_battle_side_mark_buffer_for_execution(u8 bank);
 
 /**
  * Select a move to attack with.
  *
  * @address{BPRE,0800E848}
  */
-POKEAGB_EXTERN u8 dp01_build_cmdbuf_x21_a_bb(u8 buffer, u8, u16 data);
+POKEAGB_EXTERN u8 dp01_build_cmdbuf_x21_a_bb(enum BattleBuffer buffer, u8, u16 data);
 
 /**
  * Perform a switch in.
  *
  * @address{BPRE,0800E874}
  */
-POKEAGB_EXTERN u8 dp01_build_cmdbuf_x22(u8 buffer, u8 index, u8);
+POKEAGB_EXTERN u8 dp01_build_cmdbuf_x22(enum BattleBuffer buffer, u8 index, u8);
+
+/**
+ * Play a special animation, like the castform switch.
+ *
+ * @address{BPRE,0800EB28}
+ */
+POKEAGB_EXTERN u8 dp01_build_cmdbuf_x34(enum BattleBuffer buffer, u8, u8*);
 
 /**
  * Select a move to attack with.
  *
  * @address{BPRE,0800E0D4}
  */
-POKEAGB_EXTERN u8 dp01_build_cmdbuf_x07(u8 buffer);
+POKEAGB_EXTERN u8 dp01_build_cmdbuf_x07(enum BattleBuffer buffer);
 
 /**
  * Slide out OAM on the bank.
  *
  * @address{BPRE,0800E114}
  */
-POKEAGB_EXTERN u8 dp01_build_cmdbuf_x09(u8 buffer);
+POKEAGB_EXTERN u8 dp01_build_cmdbuf_x09(enum BattleBuffer buffer);
+
+/**
+ * Display message from the battle message table.
+ *
+ * @address{BPRE,0800E2D4}
+ */
+POKEAGB_EXTERN u8 dp01_build_cmdbuf_x10(enum BattleBuffer buffer, u16 message);
 
 /**
  * Copy a command to a buffer.
  *
  * @address{BPRE,0800D8B0}
  */
-POKEAGB_EXTERN void dp01_prepare_buffer(u8 buffer, u8* data, u16 length);
+POKEAGB_EXTERN void dp01_prepare_buffer(enum BattleBuffer buffer, u8* data, u16 length);
 
 /**
  * @address{BPRE,080155C8}

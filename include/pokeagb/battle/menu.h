@@ -16,10 +16,9 @@ POKEAGB_BEGIN_DECL
 /**
  * The currently selected move index.
  *
- * @address{BPRE,0x02023FFC}
+ * @address{BPRE,02023FFC}
  */
 extern u8 move_index_chosen_per_side[BATTLE_SIDES];
-
 /**
  * The currently selected target.
  * @address{BPRE,03004FF4}

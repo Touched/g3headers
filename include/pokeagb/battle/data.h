@@ -140,6 +140,11 @@ extern u16 b_pokemon_team_id_by_side[BATTLE_SIDES];
  */
 extern u8 b_attackers_in_order[BATTLE_SIDES];
 
+/**
+ * @address{BPRE,02023BE2}
+ */
+extern u8 bs_mode_pbs_index;
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_BATTLE_DATA_H_ */

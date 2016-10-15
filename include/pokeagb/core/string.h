@@ -120,6 +120,44 @@ POKEAGB_EXTERN u8 textbox_spawn_scroll_arrows(const struct ScrollArrows* data, u
  */
 POKEAGB_EXTERN void textbox_task_delete_scroll_arrows(u8 task_id);
 
+#define FCODE_BUFFER_SIZE 20
+
+/**
+ * Generic buffer for strings.
+ * @address{BPRE,02021CD0}
+ */
+extern pchar fcode_buffer2[FCODE_BUFFER_SIZE];
+
+/**
+ * Generic buffer for strings.
+ * @address{BPRE,02021CF0}
+ */
+extern pchar fcode_buffer3[FCODE_BUFFER_SIZE];
+
+/**
+ * Generic buffer for strings.
+ * @address{BPRE,02021D04}
+ */
+extern pchar fcode_buffer4[FCODE_BUFFER_SIZE];
+
+/**
+ * Copies the 0xFF terminated string from source to desination.
+ * @address{BPRE,08008D84}
+ */
+POKEAGB_EXTEN pchar* pstrcpy(pchar* dst, const pchar* src);
+
+/**
+ * Appends a copy of the source to the end of the 0xFF terminated string at destination.
+ * @address{BPRE,08008DA4}
+ */
+POKEAGB_EXTEN pchar* pstrcat(pchar* dst, const pchar* src);
+
+/**
+ * Returns the length of the 0xFF terminated string.
+ * @address{BPRE,08008E08}
+ */
+POKEAGB_EXTEN pchar* pstrlen(pchar* s);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_CORE_STRING_H_ */

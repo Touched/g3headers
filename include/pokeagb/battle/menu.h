@@ -18,7 +18,7 @@ POKEAGB_BEGIN_DECL
  *
  * @address{BPRE,0x02023FFC}
  */
-extern u16 move_index_per_chosen_side[BATTLE_SIDES];
+extern u16 move_index_chosen_per_side[BATTLE_SIDES];
 
 /**
  * Draw text on one of the battle text boxes.

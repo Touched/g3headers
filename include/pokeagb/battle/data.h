@@ -145,6 +145,12 @@ extern u8 b_attackers_in_order[BATTLE_SIDES];
  */
 extern u8 bs_mode_pbs_index;
 
+/**
+ * The item index to be displayed in messages about held item effects.
+ * @address{BPRE,02023D68}
+ */
+extern enum Item b_message_held_item;
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_BATTLE_DATA_H_ */

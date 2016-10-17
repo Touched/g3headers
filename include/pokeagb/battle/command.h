@@ -132,4 +132,10 @@ POKEAGB_EXTERN void bc_bs_exec(void);
  */
 POKEAGB_EXTERN void bs0_start_attack(void);
 
+/**
+ * More like ability_everything.
+ * @address{BPRE,08019F18}
+ */
+POKEAGB_EXTERN bool ability_something(u8 mode, u8 bank, u8 c, u16 ability_override, u16 move);
+
 #endif /* POKEAGB_BATTLE_COMMAND_H_ */

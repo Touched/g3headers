@@ -3,8 +3,8 @@
 * @brief HP bar related attributes
 */
 
-#ifndef POKEAGB_BATTLEE_UI_H_
-#define POKEAGB_BATTLEE_UI_H_
+#ifndef POKEAGB_BATTLE_UI_H_
+#define POKEAGB_BATTLE_UI_H_
 
 #include "../types.h"
 #include "../common.h"
@@ -22,12 +22,27 @@ POKEAGB_BEGIN_DECL
 #define AILMENT_TILE_DOUBLE_PLAYER 17
 #define AILMENT_TILE_OPPONENT 16
 
+/**
+ * uncompresses and loads green hpbar and other gfx
+ *
+ * @address{BPRE,08034964}
+ */
 POKEAGB_EXTERN void load_gfxc_health_bar(void);
+
+/**
+ * Sets some data into dp11 struct?
+ *
+ * @address{BPRE,08048150}
+ */
 POKEAGB_EXTERN void hpbox_data_set(u8, u8, u32, u32, u8);
+
+/**
+ * Syncs dp11 struct data into vram maybe
+ *
+ * @address{BPRE,08049FD8}
+ */
 POKEAGB_EXTERN void sync_hpbox_vram(u8, u8, u8);
 
 POKEAGB_END_DECL
 
-#endif /* POKEAGB_BATTLEE_UI_H_ */
-
-
+#endif /* POKEAGB_BATTLE_UI_H_ */

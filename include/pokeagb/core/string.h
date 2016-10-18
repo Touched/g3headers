@@ -143,9 +143,9 @@ extern pchar fcode_buffer4[FCODE_BUFFER_SIZE];
 
 /**
  * Generic buffer also used for strings 
- *@address{BPRE,02021D18}
+ * @address{BPRE,02021D18}
  */
- extern pchar string_buffer[FCODE_MAIN_BUFFER_SIZE];
+extern pchar string_buffer[FCODE_MAIN_BUFFER_SIZE];
 
 /**
  * Copies the 0xFF terminated string from source to desination.

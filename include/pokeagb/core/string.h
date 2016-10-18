@@ -121,6 +121,7 @@ POKEAGB_EXTERN u8 textbox_spawn_scroll_arrows(const struct ScrollArrows* data, u
 POKEAGB_EXTERN void textbox_task_delete_scroll_arrows(u8 task_id);
 
 #define FCODE_BUFFER_SIZE 20
+#define STRING_BUFFER_SIZE 1000
 
 /**
  * Generic buffer for strings.
@@ -141,6 +142,12 @@ extern pchar fcode_buffer3[FCODE_BUFFER_SIZE];
 extern pchar fcode_buffer4[FCODE_BUFFER_SIZE];
 
 /**
+ * Generic buffer also used for strings 
+ *@address{BPRE,02021D18}
+ */
+ extern pchar string_buffer[FCODE_MAIN_BUFFER_SIZE];
+
+/**
  * Copies the 0xFF terminated string from source to desination.
  * @address{BPRE,08008D84}
  */
@@ -157,6 +164,12 @@ POKEAGB_EXTERN pchar* pstrcat(pchar* dst, const pchar* src);
  * @address{BPRE,08008E08}
  */
 POKEAGB_EXTERN pchar* pstrlen(pchar* s);
+
+/**
+* Converts int to pstring. Maybe more.
+* @address{BPRE,08008E78}
+*/
+POKEAGB_EXTERN pchar* fmt_int_10(char* dst, u32 num, u8, u8);
 
 POKEAGB_END_DECL
 

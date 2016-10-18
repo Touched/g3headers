@@ -25,4 +25,11 @@ enum BattleFlag {
  */
 extern enum BattleFlag battle_type_flags;
 
+/**
+ * Checks the double battle bit
+ * @address{BPRE,08075290}
+ */
+ 
+POKEAGB_EXTERN u8 battle_type_is_double(void);
+
 #endif /* POKEAGB_BATTLE_FLAGS_H_ */

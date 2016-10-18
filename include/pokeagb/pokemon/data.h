@@ -552,7 +552,7 @@ enum PokemonDataRequest {
      * @invariant Needs an extended Pokemon struct instead of PokemonBase.
      * @see Pokemon
      */
-    REQUEST_X3A = 0x3A,
+    REQUEST_TOTL_HP = 0x3A,
 
     /**
      * The Pokemon's current attack stat.
@@ -721,6 +721,13 @@ POKEAGB_EXTERN void pokemon_slot_purge_full(struct Pokemon* dst);
  */
 POKEAGB_EXTERN void recalculate_stats(struct Pokemon* pokemon);
 
+enum PokemonGender {
+    PKMN_GENDER_BOY = 0;
+    PKMN_GENDER_GIRL = 0xFE;
+    PKMN_GENDER_NONE = 0xFF;
+};
+
+POKEAGB_BEGIN_DECL u8 pokemon_get_gender(struct Pokemon* pokemon);
 
 POKEAGB_END_DECL
 

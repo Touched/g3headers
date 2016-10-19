@@ -205,12 +205,22 @@ struct PokemonBase {
 
 ASSERT_SIZEOF(struct PokemonBase, 80);
 
+enum PokemonAilment {
+    AILMENTBITS_NONE = 0x0,
+    AILMENTBITS_SLEEP = 0x7,
+    AILMENTBITS_POISON = 0x8,
+    AILMENTBITS_BURN = 0x10,
+    AILMENTBITS_FREEZE = 0x20,
+    AILMENTBITS_PARALYZE = 0x40,
+    AILMENTBITS_TOXIC = 0x80,
+};
+
 /**
  * Extended Pokemon data.
  */
 struct Pokemon {
     struct PokemonBase base;
-    u32 status;
+    enum PokemonAilment __attribute__((aligned(4))) status;
     u8 level;
     u8 pokerus;
     u16 current_hp;
@@ -634,7 +644,8 @@ enum PokemonDataRequest {
 POKEAGB_EXTERN u32 pokemon_getattr(struct PokemonBase* pokemon,
                                    enum PokemonDataRequest attribute,
                                    pchar* output);
-
+                                                                      
+                                   
 /**
  * Set a Pokemon attribute.
  *
@@ -722,11 +733,16 @@ POKEAGB_EXTERN void pokemon_slot_purge_full(struct Pokemon* dst);
 POKEAGB_EXTERN void recalculate_stats(struct Pokemon* pokemon);
 
 enum PokemonGender {
-    PKMN_GENDER_BOY = 0;
-    PKMN_GENDER_GIRL = 0xFE;
-    PKMN_GENDER_NONE = 0xFF;
+    PKMN_GENDER_BOY = 0,
+    PKMN_GENDER_GIRL = 0xFE,
+    PKMN_GENDER_NONE = 0xFF,
 };
 
+/**
+ * Retrieve gender using PID and base stats table
+ *
+ * @address{BPRE,0803F720}
+ */
 POKEAGB_BEGIN_DECL u8 pokemon_get_gender(struct Pokemon* pokemon);
 
 POKEAGB_END_DECL

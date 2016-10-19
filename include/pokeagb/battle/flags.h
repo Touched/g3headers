@@ -6,6 +6,11 @@
 #ifndef POKEAGB_BATTLE_FLAGS_H_
 #define POKEAGB_BATTLE_FLAGS_H_
 
+#include "../types.h"
+
+POKEAGB_BEGIN_DECL
+
+
 enum BattleFlag {
     BATTLE_FLAG_DOUBLE = 1,
     BATTLE_FLAG_LINK = 2,
@@ -26,10 +31,10 @@ enum BattleFlag {
 extern enum BattleFlag battle_type_flags;
 
 /**
- * Checks the double battle bit
  * @address{BPRE,08075290}
  */
- 
 POKEAGB_EXTERN u8 battle_type_is_double(void);
+
+POKEAGB_END_DECL
 
 #endif /* POKEAGB_BATTLE_FLAGS_H_ */

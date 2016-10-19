@@ -145,7 +145,7 @@ extern pchar fcode_buffer4[FCODE_BUFFER_SIZE];
  * Generic buffer also used for strings 
  * @address{BPRE,02021D18}
  */
-extern pchar string_buffer[FCODE_MAIN_BUFFER_SIZE];
+extern pchar string_buffer[STRING_BUFFER_SIZE];
 
 /**
  * Copies the 0xFF terminated string from source to desination.
@@ -163,13 +163,13 @@ POKEAGB_EXTERN pchar* pstrcat(pchar* dst, const pchar* src);
  * Returns the length of the 0xFF terminated string.
  * @address{BPRE,08008E08}
  */
-POKEAGB_EXTERN pchar* pstrlen(pchar* s);
+POKEAGB_EXTERN u16 pstrlen(pchar* s);
 
 /**
 * Converts int to pstring. Maybe more.
 * @address{BPRE,08008E78}
 */
-POKEAGB_EXTERN pchar* fmt_int_10(char* dst, u32 num, u8, u8);
+POKEAGB_EXTERN pchar* fmt_int_10(pchar* dst, u32 num, u8, u8);
 
 POKEAGB_END_DECL
 

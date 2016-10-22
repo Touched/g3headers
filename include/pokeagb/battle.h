@@ -7,5 +7,6 @@
 #include "battle/script.h"
 #include "battle/data.h"
 #include "battle/menu.h"
+#include "battle/ui.h"
 
 #endif /* POKEAGB_BATTLE_H_ */

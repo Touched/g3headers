@@ -10,6 +10,8 @@
 
 POKEAGB_BEGIN_DECL
 
+#define SPRITE_RAM 0x6010000
+
 struct Object;
 
 /**

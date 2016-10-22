@@ -28,6 +28,11 @@ POKEAGB_BEGIN_DECL
 #define VIRTUAL_MAP_BORDER_SIZE 7
 
 /**
+ * The maximum amount of map blocks that can fit in a map
+ */
+#define VIRTUAL_MAP_MAX_BLOCKS 0x1400
+
+/**
  * The map loaded in memory. It includes the blocks from adjacent,
  * connected maps in the padding area.
  */
@@ -64,6 +69,27 @@ POKEAGB_EXTERN void cur_mapdata_draw_block_at(u16 x, u16 y);
  * @address{BPRE,0805A684}
  */
 POKEAGB_EXTERN void cur_mapdata_full_redraw(void);
+
+/**
+ * The currently loaded map's header.
+ *
+ * @address{BPRE,03005040}
+ */
+extern struct VirtualMapHeader virtual_map_header;
+
+/**
+ * The currently loaded map's data. This includes the padding: data
+ * from connected maps and the map border tiles.
+ *
+ * @address{BPRE,02031DFC}
+ */
+extern struct MapTile virtual_map_data[VIRTUAL_MAP_MAX_BLOCKS];
+
+/**
+ * The currently loaded map header.
+ * @address{BPRE,02036DFC}
+ */
+extern struct MapHeader current_map_header;
 
 POKEAGB_END_DECL
 

@@ -9,5 +9,6 @@
 #include "core/random.h"
 #include "core/string.h"
 #include "core/task.h"
+#include "core/bios.h"
 
 #endif /* POKEAGB_CORE_H_ */

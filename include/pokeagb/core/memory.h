@@ -9,6 +9,8 @@
 #include <pokeagb/types.h>
 #include <pokeagb/common.h>
 
+#define ADDR_VRAM 0x06000000
+
 POKEAGB_BEGIN_DECL
 
 /**

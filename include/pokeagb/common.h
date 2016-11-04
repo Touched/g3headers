@@ -8,6 +8,7 @@
 #define VAR_NAME_VALUE(var) #var "=" VALUE(var)
 
 #define POKEAGB_EXTERN extern __attribute__((long_call))
+#define DEPRECATED __attribute__((deprecated))
 
 #ifdef __cplusplus
 #define STATIC_ASSERT(expr, message) static_assert(expr, message);

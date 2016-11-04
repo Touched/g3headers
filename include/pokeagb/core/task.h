@@ -64,6 +64,11 @@ extern struct Task tasks[16];
  */
 POKEAGB_EXTERN bool task_is_running(TaskCallback func);
 
+/**
+ * @address{BPRE,080773BC}
+ */
+POKEAGB_EXTERN void tasks_init(void);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_CORE_TASK_H_ */

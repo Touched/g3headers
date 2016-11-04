@@ -34,6 +34,11 @@ struct FadeControl {
 struct FadeControl pal_fade_control;
 
 /**
+ * @address{BPRE,03003E58}
+ */
+u8* gpu_pal_tag_search_lower_boundary;
+
+/**
  * @address{BPRE,080703EC}
  */
 POKEAGB_EXTERN void gpu_pal_apply(u8* palette, u16 offset, u16 size);
@@ -46,11 +51,31 @@ POKEAGB_EXTERN bool fade_screen(u32 bitmask, s8 speed, u8 to, u8 from, u16 color
 /**
  * @address{BPRE,080704D0}
  */
-POKEAGB_EXTERN void fade_and_return_progress_probably(void);
+POKEAGB_EXTERN DEPRECATED void fade_and_return_progress_probably(void);
 
 /**
  * @address{BPRE,08070474}
  */
 POKEAGB_EXTERN void gpu_pal_upload(void);
+
+/**
+ * @address{BPRE,08070528}
+ */
+POKEAGB_EXTERN void pal_fade_control_and_dead_struct_reset(void);
+
+/**
+ * @address{BPRE,0807DB38}
+ */
+POKEAGB_EXTERN void palette_bg_faded_fill_black(void);
+
+/**
+ * @address{BPRE,080704D0}
+ */
+POKEAGB_EXTERN void process_palfade(void);
+
+/**
+ * @address{BPRE,080088F0}
+ */
+POKEAGB_EXTERN void gpu_pal_allocator_reset(void);
 
 #endif /* POKEAGB_GRAPHICS_PALETTE_H_ */

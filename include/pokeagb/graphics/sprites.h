@@ -194,7 +194,12 @@ POKEAGB_EXTERN void objc_exec(void);
 /**
  * @address{BPRE,08006BA8}
  */
-POKEAGB_EXTERN void obj_sync_something(void);
+POKEAGB_EXTERN DEPRECATED void obj_sync_something(void);
+
+/**
+ * @address{BPRE,08006BA8}
+ */
+POKEAGB_EXTERN void obj_sync_superstate(void);
 
 /**
  * @address{BPRE,08006F8C}
@@ -223,6 +228,16 @@ POKEAGB_EXTERN void gpu_tile_obj_decompress_alloc_tag_and_upload(struct SpriteTi
  * @address{BPRE,080086DC}
  */
 POKEAGB_EXTERN void gpu_tile_obj_alloc_tag_and_upload(struct SpriteTiles* pal);
+
+/**
+ * @address{BPRE,08006B10}
+ */
+POKEAGB_EXTERN void obj_and_aux_reset_all(void);
+
+/**
+ * @address{BPRE,080087C4}
+ */
+POKEAGB_EXTERN void gpu_tile_obj_tags_reset(void);
 
 POKEAGB_END_DECL
 

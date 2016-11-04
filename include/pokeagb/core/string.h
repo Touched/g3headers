@@ -166,10 +166,26 @@ POKEAGB_EXTERN pchar* pstrcat(pchar* dst, const pchar* src);
 POKEAGB_EXTERN u16 pstrlen(pchar* s);
 
 /**
-* Converts int to pstring. Maybe more.
-* @address{BPRE,08008E78}
-*/
+ * Converts int to pstring. Maybe more.
+ * @address{BPRE,08008E78}
+ */
 POKEAGB_EXTERN pchar* fmt_int_10(pchar* dst, u32 num, u8, u8);
+
+/**
+ * @address{BPRE,08002C28}
+ */
+POKEAGB_EXTERN void remo_reset_acknowledgement_flags(void);
+
+/**
+ * @address{BPRE,08003ECC}
+ */
+POKEAGB_EXTERN void rboxes_free(void);
+
+/**
+ * @address{BPRE,0808002DE8}
+ */
+POKEAGB_EXTERN void remoboxes_upload_tilesets();
+ 
 
 POKEAGB_END_DECL
 

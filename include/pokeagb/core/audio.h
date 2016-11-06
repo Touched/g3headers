@@ -8,6 +8,7 @@
 
 #include "../types.h"
 #include "../common.h"
+#include "m4a.h"
 
 POKEAGB_BEGIN_DECL
 

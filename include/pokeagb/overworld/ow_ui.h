@@ -24,7 +24,7 @@ POKEAGB_EXTERN void help_system_disable__sp198(void);
 POKEAGB_EXTERN void sm_close_menu(void);
 
 /**
- * 
+ *
  * @address{BPRE,080F7998}
  */
 POKEAGB_EXTERN void sm_close_description(void);
@@ -35,6 +35,10 @@ POKEAGB_EXTERN void sm_close_description(void);
  */
 POKEAGB_EXTERN void safari_stepscount_close(void);
 
+/**
+ * @address{BPRE,0x080568A8}
+ */
+POKEAGB_EXTERN void c2_overworld_switch_start_menu(void);
 
 POKEAGB_END_DECL
 

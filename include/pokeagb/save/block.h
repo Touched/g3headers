@@ -117,8 +117,9 @@ struct SaveBlock2 {
     u8 options_button_style;
     u8 options_text_speed_maybe;
     u8 field_15[7];
-    u32 field_1C;
-    u8 field_20[8];
+    u32 unown_pid;
+    u32 spinda_pid;
+    u32 field_24;
     u8 pokemon_flags_3[52];
     u8 pokemon_flags_4[52];
     u8 field_90[1044];

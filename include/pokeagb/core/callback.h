@@ -76,16 +76,26 @@ POKEAGB_EXTERN void set_callback1(SuperCallback func);
 POKEAGB_EXTERN void set_callback2(SuperCallback func);
 
 /**
+ *
+ *
+ * @address{BPRE,080565E0}
+ */
+POKEAGB_EXTERN void vblank_handler_set(SuperCallback func);
+
+/**
+ *
+ *
+ * @address{BPRE,080565E0}
+ */
+POKEAGB_EXTERN void hblank_handler_set(SuperCallback func);
+
+
+/**
  * Global game state.
  *
  * @address{BPRE,030030F0}
  */
 extern struct Superstate super;
-
-/**
- * @address{BPRE,080006F4}
- */
-POKEAGB_EXTERN void vblank_hander_set(void (*)(void));
 
 POKEAGB_END_DECL
 

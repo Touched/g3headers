@@ -9,16 +9,15 @@
 #include "../types.h"
 
 struct BgConfig {
-    u8 active : 1;
-    u8 padding : 1;
-    u8 screen_size : 2;
-    u8 priority : 2;
-    u8 mosaic : 1;
-    u8 wraparound : 1;
-    u8 character_base : 2;
-    u8 screen_base : 5;
-    u8 palette : 1; 	/* 1: 256/1, 0: 16/16 */
-    u16 unknown;
+	u16 bgid : 2;
+	u16 character_base : 2;
+	u16 map_base : 5;
+	u16 size : 2;
+	u16 palette : 1;
+	u16 priority : 2;
+	u16 b_padding : 2; // bit field padding
+	u16 padding;
+	
 };
 
 struct BgConfig2 {
@@ -34,6 +33,11 @@ extern struct BgConfig2 bg_config2[4];
  * @address{BPRE,08001618}
  */
 POKEAGB_EXTERN void gpu_tile_bg_drop_all_sets(u8);
+
+/**
+ * @address{BPRE,080F67B8}
+ */
+POKEAGB_EXTERN void tilemaps_sync(void);
 
 /**
  * @address{BPRE,0812D594}
@@ -76,6 +80,11 @@ POKEAGB_EXTERN void bgid_set_tilemap(u8 layer, u8* space);
 POKEAGB_EXTERN void bg_vram_setup(u8 layer, struct BgConfig* config, u8 layers);
 
 /**
+ * @address{BPRE,08001658}
+ */
+POKEAGB_EXTERN void bg_vram_set(u8 mode, u32 *setup_array, u8 array_size);
+
+/**
  * @address{BPRE,080F6878}
  */
 POKEAGB_EXTERN void* decompress_with_fallback_maybe(u8 layer,
@@ -105,8 +114,61 @@ POKEAGB_EXTERN void gpu_sprites_upload(void);
 POKEAGB_EXTERN void copy_queue_process(void);
 
 /**
+ * @address{BPRE,080563F0}
+ */
+POKEAGB_EXTERN void overworld_free_bgmaps(void);
+
+/**
  * @address{BPRE,08002DE8}
  */
 POKEAGB_EXTERN void textbox_something(void);
+
+/**
+ * @address{BPRE,08001D08}
+ */
+POKEAGB_EXTERN void bgid_mod_y_offset(u8 bgid, s16 delta, u8 dir);
+
+/**
+ * @address{BPRE,08001B90}
+ */
+POKEAGB_EXTERN void bgid_mod_x_offset(u8 bgid, s16 delta, u8 dir);
+
+struct REG_BGCNT {
+	u16 priority : 2;
+	u16 char_index : 2; // 0x6000000 + char_index * 0x4000
+	u16 padding : 2;
+	u16 mosiac : 1;
+	u16 color : 1; // 256 or 16
+	u16 map_index : 5;
+	u16 screen_over : 1;
+	u16 size : 2;
+	/* 
+	For "text" backgrounds: 
+	  00 : 256x256 (32x32 tiles) 
+	  01 : 512x256 (64x32 tiles) 
+	  10 : 256x512 (32x64 tiles) 
+	  11 : 512x512 (64x64 tiles) 
+
+	  For rotational backgrounds: 
+	  00 : 128x128 (16x16 tiles) 
+	  01 : 256x256 (32x32 tiles) 
+	  10 : 512x512 (64x64 tiles)
+	  11 : 1024x1024 (128x128 tiles)
+		  
+	*/
+};
+
+/**
+ * BGCNT
+ *
+ * @address{BPRE,04000008}
+ */
+extern struct REG_BGCNT BG_CNT[4];
+
+/**
+ * @address{BPRE,080F67A4}
+ */
+POKEAGB_EXTERN void bgid_mark_for_sync(u8 bgid);
+
 
 #endif /* POKEAGB_GRAPHICS_BACKGROUND_H_ */

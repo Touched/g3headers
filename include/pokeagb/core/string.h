@@ -23,6 +23,12 @@ struct Textbox {
     u8* pixels;
 };
 
+struct TextColor {
+    u8 background;
+    u8 foreground;
+    u8 shadow;
+};
+
 ASSERT_SIZEOF(struct Textbox, 12);
 ASSERT_OFFSETOF(struct Textbox, bg_id, 0);
 ASSERT_OFFSETOF(struct Textbox, x, 1);
@@ -199,6 +205,12 @@ POKEAGB_EXTERN u8 rboxid_init(struct Textbox* textbox);
  * @address{BPRE,08002C48}
  */
 POKEAGB_EXTERN u8 rboxid_draw_text(u8 id, u8 font, pchar* s, u8 x, u8 y, u8 speed, void* callback);
+
+/**
+ * @address{BPRE,0812E51C}
+ */
+POKEAGB_EXTERN u8 rboxid_print(u8 id, u8 font, u8 x, u8 y, struct TextColor* color,
+                               u8 speed, pchar* s);
 
 /**
  * Allocates a textbox and returns its ID.

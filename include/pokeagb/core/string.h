@@ -18,6 +18,7 @@ struct Textbox {
     u8 y;
     u8 width;
     u8 height;
+    u8 pal_id;
     u16 charbase;
     u8* pixels;
 };
@@ -142,7 +143,7 @@ extern pchar fcode_buffer3[FCODE_BUFFER_SIZE];
 extern pchar fcode_buffer4[FCODE_BUFFER_SIZE];
 
 /**
- * Generic buffer also used for strings 
+ * Generic buffer also used for strings
  * @address{BPRE,02021D18}
  */
 extern pchar string_buffer[STRING_BUFFER_SIZE];
@@ -182,10 +183,28 @@ POKEAGB_EXTERN void remo_reset_acknowledgement_flags(void);
 POKEAGB_EXTERN void rboxes_free(void);
 
 /**
- * @address{BPRE,0808002DE8}
+ * @address{BPRE,08002DE8}
  */
 POKEAGB_EXTERN void remoboxes_upload_tilesets();
- 
+
+/**
+ * Allocates a textbox and returns its ID.
+ * @returns Textbox ID or 255 on failure.
+ * @address{BPRE,08003CE4}
+ */
+POKEAGB_EXTERN u8 rboxid_init(struct Textbox* textbox);
+
+/**
+ * Allocates a textbox and returns its ID.
+ * @address{BPRE,08002C48}
+ */
+POKEAGB_EXTERN u8 rboxid_draw_text(u8 id, u8 fbox, pchar* s, u8 x, u8 y, u8 speed, u8 color);
+
+/**
+ * Allocates a textbox and returns its ID.
+ * @address{BPRE,08003FA0}
+ */
+POKEAGB_EXTERN u8 rboxid_tilemap_update(u8 id);
 
 POKEAGB_END_DECL
 

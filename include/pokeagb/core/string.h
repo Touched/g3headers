@@ -198,7 +198,7 @@ POKEAGB_EXTERN u8 rboxid_init(struct Textbox* textbox);
  * Allocates a textbox and returns its ID.
  * @address{BPRE,08002C48}
  */
-POKEAGB_EXTERN u8 rboxid_draw_text(u8 id, u8 fbox, pchar* s, u8 x, u8 y, u8 speed, u8 color);
+POKEAGB_EXTERN u8 rboxid_draw_text(u8 id, u8 font, pchar* s, u8 x, u8 y, u8 speed, void* callback);
 
 /**
  * Allocates a textbox and returns its ID.

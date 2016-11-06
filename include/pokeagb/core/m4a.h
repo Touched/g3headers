@@ -478,7 +478,7 @@ void m4aSoundMode(u32 mode);
  */
 void MPlayOpen(struct MusicPlayerInfo *mplayInfo, struct MusicPlayerTrack *track, u8 a3);
 /**
- * @address{BPRE,081DDCC8}
+ * @address{BPRE,081DDC6C}
  */
 void CgbSound(void);
 /**

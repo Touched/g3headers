@@ -65,6 +65,14 @@ extern struct Task tasks[16];
 POKEAGB_EXTERN bool task_is_running(TaskCallback func);
 
 /**
+ * Find the ID of first task running the given function.
+ *
+ * @returns Task ID or 255 on failure
+ * @address{BPRE,08077688}
+ */
+POKEAGB_EXTERN u8 task_find_id_by_functpr(TaskCallback func);
+
+/**
  * @address{BPRE,080773BC}
  */
 POKEAGB_EXTERN void tasks_init(void);

@@ -210,6 +210,11 @@ POKEAGB_EXTERN u8 template_instanciate_forward_search(struct Template* template,
                                                       u8 priority);
 
 /**
+ * @address{BPRE,08007804}
+ */
+POKEAGB_EXTERN u8 obj_delete_and_free(struct Object*);
+
+/**
  * @address{BPRE,0800F078}
  */
 POKEAGB_EXTERN void gpu_pal_decompress_alloc_tag_and_upload(struct SpritePalette* pal);
@@ -228,6 +233,16 @@ POKEAGB_EXTERN void gpu_tile_obj_decompress_alloc_tag_and_upload(struct SpriteTi
  * @address{BPRE,080086DC}
  */
 POKEAGB_EXTERN void gpu_tile_obj_alloc_tag_and_upload(struct SpriteTiles* pal);
+
+/**
+ * @address{BPRE,08008804}
+ */
+POKEAGB_EXTERN u16 gpu_tile_obj_tag_range_for_tag(u16 sprite_tag);
+
+/**
+ * @address{BPRE,08008A30}
+ */
+POKEAGB_EXTERN u16 gpu_pal_free_by_tag(u16 pal_tag);
 
 /**
  * @address{BPRE,08006B10}

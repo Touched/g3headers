@@ -204,7 +204,7 @@ POKEAGB_EXTERN void obj_sync_superstate(void);
 /**
  * @address{BPRE,08006F8C}
  */
-POKEAGB_EXTERN u8 template_instanciate_forward_search(struct Template* template,
+POKEAGB_EXTERN u8 template_instanciate_forward_search(const struct Template* template,
                                                       u8 x,
                                                       u8 y,
                                                       u8 priority);
@@ -217,27 +217,27 @@ POKEAGB_EXTERN u8 obj_delete_and_free(struct Object*);
 /**
  * @address{BPRE,0800F078}
  */
-POKEAGB_EXTERN void gpu_pal_decompress_alloc_tag_and_upload(struct SpritePalette* pal);
+POKEAGB_EXTERN void gpu_pal_decompress_alloc_tag_and_upload(const struct SpritePalette* pal);
 
 /**
  * @address{BPRE,08008928}
  */
-POKEAGB_EXTERN void gpu_pal_obj_alloc_tag_and_apply(struct SpritePalette* pal);
+POKEAGB_EXTERN void gpu_pal_obj_alloc_tag_and_apply(const struct SpritePalette* pal);
 
 /**
  * @address{BPRE,0800F034}
  */
-POKEAGB_EXTERN void gpu_tile_obj_decompress_alloc_tag_and_upload(struct SpriteTiles* pal);
+POKEAGB_EXTERN void gpu_tile_obj_decompress_alloc_tag_and_upload(const struct SpriteTiles* tile);
 
 /**
  * @address{BPRE,080086DC}
  */
-POKEAGB_EXTERN void gpu_tile_obj_alloc_tag_and_upload(struct SpriteTiles* pal);
+POKEAGB_EXTERN void gpu_tile_obj_alloc_tag_and_upload(const struct SpriteTiles* tile);
 
 /**
  * @address{BPRE,08008804}
  */
-POKEAGB_EXTERN u16 gpu_tile_obj_tag_range_for_tag(u16 sprite_tag);
+POKEAGB_EXTERN u16 gpu_tile_obj_tag_range_for_tag(u16 tile_tag);
 
 /**
  * @address{BPRE,08008A30}

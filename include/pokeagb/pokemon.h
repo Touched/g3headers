@@ -9,5 +9,6 @@
 #include "pokemon/sprites.h"
 #include "pokemon/type.h"
 #include "pokemon/evolution.h"
+#include "pokemon/pokeicons.h"
 
 #endif /* POKEAGB_POKEMON_H_ */

@@ -265,12 +265,6 @@ POKEAGB_EXTERN void obj_free(struct Object *obj);
  */
 POKEAGB_EXTERN void gpu_tile_obj_free_by_tag(u16 tag);
 
-
-/**
- * @address{BPRE,08008A30}
- */
-POKEAGB_EXTERN void gpu_pal_free_by_tag(u16 tag);
-
 /**
  * @address{BPRE,080073DC}
  */

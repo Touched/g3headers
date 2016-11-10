@@ -78,14 +78,14 @@ POKEAGB_EXTERN void set_callback2(SuperCallback func);
 /**
  *
  *
- * @address{BPRE,080565E0}
+ * @address{BPRE,080006F4}
  */
 POKEAGB_EXTERN void vblank_handler_set(SuperCallback func);
 
 /**
  *
  *
- * @address{BPRE,080565E0}
+ * @address{BPRE,08000700}
  */
 POKEAGB_EXTERN void hblank_handler_set(SuperCallback func);
 

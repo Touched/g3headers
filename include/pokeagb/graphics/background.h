@@ -22,11 +22,15 @@ struct BgConfig {
 
 struct BgConfig2 {
     u16 target_tile;
-    u16 *tilemap;
+	u16 padding;
+    u8 *tilemap;
     u32 x;
     u32 y;
 };
 
+/**
+ * @address{BPRE,030008E8}
+ */
 extern struct BgConfig2 bg_config2[4];
 
 /**

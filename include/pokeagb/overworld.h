@@ -8,6 +8,5 @@
 #include "overworld/virtual_map.h"
 #include "overworld/loading.h"
 #include "overworld/ow_ui.h"
-#include "overworld/effects.h"
 
 #endif /* POKEAGB_OVERWORLD_H_ */

@@ -132,12 +132,6 @@ ASSERT_OFFSETOF(struct EvolutionEntry, unknown, 6);
  */
 extern struct EvolutionEntry evolution_table[POKEAGB_POKEMON_SLOTS][EVOLUTIONS_PER_POKEMON];
 
-
-/**
- * @address{BPRE,08045970}
- */
-extern u16 get_base_species(u16);
-
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEMON_EVOLUTION_H_ */

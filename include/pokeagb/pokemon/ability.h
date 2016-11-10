@@ -102,8 +102,7 @@ ASSERT_SIZEOF(enum PokemonAbility, 1);
  *
  * @address{BPRE,0824FC40}
  */
-extern pchar pokemon_ability_names[ABILITY_MAX][POKEAGB_ABILITY_NAME_LENGTH];
-
+extern pchar pokemon_ability_names[ABILITY_MAX];
 
 POKEAGB_END_DECL
 

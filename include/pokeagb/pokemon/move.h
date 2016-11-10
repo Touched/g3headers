@@ -438,17 +438,6 @@ extern struct LearnsetEntry* pokemon_learnset[412];
 
 ASSERT_SIZEOF(struct LearnsetEntry, 2);
 
-
-#define EGGMOVE_MAX 8
-
-/**
- * Pokemon egg moves table
- *
- * @address{BPRE,0825EF0C}
- */
-extern u16 pokemon_eggmoves[0x471];
-
-
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEMON_MOVE_H_ */

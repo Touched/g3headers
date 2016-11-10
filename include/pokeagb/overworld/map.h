@@ -414,54 +414,6 @@ ASSERT_SIZEOF(struct MapHeader, 0x1C);
  */
 POKEAGB_EXTERN struct MapHeader* mapheader_by_mapnumbers(u8 bank, u8 map);
 
-struct wild_pokemon {
-    u8 min_level;
-    u8 max_level;
-    u16 species;
-};
-
-union wild_pokemon_densities {
-    struct wild_pokemon wild_grass[12];
-    struct wild_pokemon wild_water[5];
-    struct wild_pokemon wild_tree[5];
-    struct wild_pokemon wild_fishing[10];
-};
-
-struct pokemon_by_encounter_rate {
-    u8 encounter_chance;
-    u8 padding[3];
-    union wild_pokemon_densities *wild_encounters;
-};
-
-struct map_wild_pokemon_data {
-    u8 map_bank;
-    u8 map_num;
-    u16 padding;
-    struct pokemon_by_encounter_rate *grass_encounter; // 12 slots
-    struct pokemon_by_encounter_rate *water_encounter; // 5 slots 
-    struct pokemon_by_encounter_rate *tree_encounter; // 5 slots
-    struct pokemon_by_encounter_rate *fishing_encounter; // 10 slots
-
-};
-
-#define WILD_MAPS_MAX 133
-
-/**
- * Wild data
- * @address{BPRE,083C9CB8}
- */
-extern struct map_wild_pokemon_data wild_pokemon_data[WILD_MAPS_MAX]; // maybe it's not 133 and I can't count
-
-/**
- * @address{BPRE,08082934}
- */
-extern u8 get_wild_data_index_for_map(void);
-
-/**
- * @address{BPRE,08058F48}
- */
-extern u8 cur_mapdata_block_get_field_at(u16 x_coord, u16 y_coord, u8 unk);
-
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_OVERWORLD_MAP_H_ */

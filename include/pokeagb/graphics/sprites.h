@@ -63,7 +63,7 @@ struct OamData {
     u32 y : 8;
 
     /**
-     * 0=Normal, 1=Affine, 2=Disable, 3=Double Size
+     * 0=Normal, 1=Hidden, 2=Rotscale, 3=Double Size & Rotscale
      */
     u32 affine_mode : 2;
 
@@ -129,7 +129,7 @@ struct SpritePalette {
 struct Template {
     u16 tiles_tag;
     u16 pal_tag;
-    const struct OamData* oam;
+    struct OamData* oam;
     struct Frame** animation;
     struct SpriteTiles* graphics;
     struct RotscaleFrame** rotscale;
@@ -204,7 +204,7 @@ POKEAGB_EXTERN void obj_sync_superstate(void);
 /**
  * @address{BPRE,08006F8C}
  */
-POKEAGB_EXTERN u8 template_instanciate_forward_search(const struct Template* template,
+POKEAGB_EXTERN u8 template_instanciate_forward_search(struct Template* template,
                                                       u8 x,
                                                       u8 y,
                                                       u8 priority);
@@ -212,22 +212,22 @@ POKEAGB_EXTERN u8 template_instanciate_forward_search(const struct Template* tem
 /**
  * @address{BPRE,0800F078}
  */
-POKEAGB_EXTERN void gpu_pal_decompress_alloc_tag_and_upload(const struct SpritePalette* pal);
+POKEAGB_EXTERN void gpu_pal_decompress_alloc_tag_and_upload(struct SpritePalette* pal);
 
 /**
  * @address{BPRE,08008928}
  */
-POKEAGB_EXTERN void gpu_pal_obj_alloc_tag_and_apply(const struct SpritePalette* pal);
+POKEAGB_EXTERN void gpu_pal_obj_alloc_tag_and_apply(struct SpritePalette* pal);
 
 /**
  * @address{BPRE,0800F034}
  */
-POKEAGB_EXTERN void gpu_tile_obj_decompress_alloc_tag_and_upload(const struct SpriteTiles* pal);
+POKEAGB_EXTERN void gpu_tile_obj_decompress_alloc_tag_and_upload(struct SpriteTiles* pal);
 
 /**
  * @address{BPRE,080086DC}
  */
-POKEAGB_EXTERN void gpu_tile_obj_alloc_tag_and_upload(const struct SpriteTiles* pal);
+POKEAGB_EXTERN void gpu_tile_obj_alloc_tag_and_upload(struct SpriteTiles* pal);
 
 /**
  * @address{BPRE,08006B10}
@@ -239,28 +239,6 @@ POKEAGB_EXTERN void obj_and_aux_reset_all(void);
  */
 POKEAGB_EXTERN void gpu_tile_obj_tags_reset(void);
 
-/**
- * @address{BPRE,080836B4}
- */
-POKEAGB_EXTERN void obj_free(struct Object *obj);
- 
- 
-/**
- * @address{BPRE,0800874C}
- */
-POKEAGB_EXTERN void gpu_tile_obj_free_by_tag(u16 tag);
- 
-  
-/**
- * @address{BPRE,08008A30}
- */
-POKEAGB_EXTERN void gpu_pal_free_by_tag(u16 tag);
-  
-/**
- * @address{BPRE,080073DC}
- */
-POKEAGB_EXTERN void obj_delete(u8 id);
- 
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_GRAPHICS_SPRITES_H_ */

@@ -41,6 +41,12 @@ POKEAGB_EXTERN void c1_overworld(void);
 POKEAGB_EXTERN void c2_overworld(void);
 
 /**
+ * Called in c1_overworld if c2 running and not prev quest
+ * @address{BPRE,0805644C}
+ */
+POKEAGB_EXTERN void c1_overworld_normal(u16 remapped_new, u16 remapped_held);
+
+/**
  * Function to be executed after the map loads.
  * @address{BPRE,03005020}
  */

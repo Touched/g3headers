@@ -270,6 +270,26 @@ POKEAGB_EXTERN void gpu_tile_obj_free_by_tag(u16 tag);
  */
 POKEAGB_EXTERN void obj_delete(u8 id);
 
+/**
+ * Bouncing object. Uses private variables for control.
+ * private[0] = 0 - Start object animation before bounce, 1 - Just bounce, other - disable
+ * private[1] = Animation to start if private[0] == 0
+ * private[2] = Direction: 0 - horizontal, 1 - vertical
+ * private[3] = Distance
+ * private[4] = Speed
+ * private[5] = Phase Shift
+ * @address{BPRE,08133904}
+ */
+POKEAGB_EXTERN void oac_pingpong(struct Object*);
+
+/**
+ * Sine wave. Used to animate bouncing objects.
+ * @param phase The current phase or the x in sin(x)
+ * @param scale The amplitude of the wave
+ * @address{BPRE,08044E30}
+ */
+POKEAGB_EXTERN s16 get_pingpong(s16 phase, u16 scale);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_GRAPHICS_SPRITES_H_ */

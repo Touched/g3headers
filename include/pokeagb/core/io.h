@@ -9,219 +9,783 @@
 #include "../common.h"
 #include "../types.h"
 
-/*
- * Macro alternative to icd_io_set, but ofcourse not is vblank synced, which is important for Hblank IRQ
- */
-
-#define ADDR_REG_WININ 0x4000048
-#define WRITE_REG_WININ(value) ((*(volatile uint16_t *)ADDR_REG_WININ) = (value))
-
-#define ADDR_REG_BLDCNT 0x4000050
-#define WRITE_REG_BLDCNT(value) ((*(volatile uint16_t *)ADDR_REG_BLDCNT) = (value))
+/* Marker macro */
+#define __writeonly
 
 /*
- *
- * IO Registers. Sequentially ordered
- *
+ * IO Registers
  */
-
-struct dispstat {
-	u16 v_refresh : 1;
-	u16 h_refresh : 1;
-	u16 vcount_trigger : 1;
-	u16 IRQ_vblank : 1;
-	u16 IRQ_hblank : 1;
-	u16 IRQ_vcount_trigger : 1;
-	u16 padding : 2;
-	u16 vcount_line_trigger : 8;
-};
 
 /**
- * REG_DISPSTAT
+ * LCD Control
+ * @address{BPRE,04000000}
+ */
+volatile u16 REG_DISPCNT;
+#define REG_ID_DISPCNT 0x0
+
+/**
+ * General LCD Status (STAT LYC)
  * @address{BPRE,04000004}
  */
-extern struct dispstat REG_DISPSTAT;
-
+volatile u16 REG_DISPSTAT;
+#define REG_ID_DISPSTAT 0x4
 
 /**
- * REG_VCOUNT
+ * Vertical Counter (LY)
  * @address{BPRE,04000006}
  */
-extern u16 REG_VCOUNT;
+volatile const u16 REG_VCOUNT;
+#define REG_ID_VCOUNT 0x6
 
-#define WIN0_BG0 1
-#define WIN0_BG1 2
-#define WIN0_BG2 4
-#define WIN0_BG3 8
-#define WIN0_SPRITES 16
-#define WIN0_BLENDS 32
-#define WIN1_BG0 256
-#define WIN1_BG1 512
-#define WIN1_BG2 1024	
-#define WIN1_BG3 2048
-#define WIN1_SPRITES 4096
-#define WIN1_BLENDS 8192
-
-struct win_in {
-	u16 win0_BG0 : 1;
-	u16 win0_BG1 : 1;
-	u16 win0_BG2 : 1;
-	u16 win0_BG3 : 1;
-	u16 win0_sprites : 1;
-	u16 win0_blends : 1;
-	u16 padding0 : 2;
-	u16 win1_BG0 : 1;
-	u16 win1_BG1 : 1;
-	u16 win1_BG2 : 1;
-	u16 win1_BG3 : 1;
-	u16 win1_sprites : 1;
-	u16 win1_blends : 1;
-	u16 padding1 : 2;
-};
-
- 
 /**
- * WININ register
+ * BG0 Control
+ * @address{BPRE,04000008}
+ */
+volatile u16 REG_BG0CNT;
+#define REG_ID_BG0CNT 0x8
+
+/**
+ * BG1 Control
+ * @address{BPRE,0400000A}
+ */
+volatile u16 REG_BG1CNT;
+#define REG_ID_BG1CNT 0xA
+
+/**
+ * BG2 Control
+ * @address{BPRE,0400000C}
+ */
+volatile u16 REG_BG2CNT;
+#define REG_ID_BG2CNT 0xC
+
+/**
+ * BG3 Control
+ * @address{BPRE,0400000E}
+ */
+volatile u16 REG_BG3CNT;
+#define REG_ID_BG3CNT 0xE
+
+/**
+ * BG0 X-Offset
+ * @address{BPRE,04000010}
+ */
+volatile __writeonly u16 REG_BG0HOFS;
+#define REG_ID_BG0HOFS 0x10
+
+/**
+ * BG0 Y-Offset
+ * @address{BPRE,04000012}
+ */
+volatile __writeonly u16 REG_BG0VOFS;
+#define REG_ID_BG0VOFS 0x12
+
+/**
+ * BG1 X-Offset
+ * @address{BPRE,04000014}
+ */
+volatile __writeonly u16 REG_BG1HOFS;
+#define REG_ID_BG1HOFS 0x14
+
+/**
+ * BG1 Y-Offset
+ * @address{BPRE,04000016}
+ */
+volatile __writeonly u16 REG_BG1VOFS;
+#define REG_ID_BG1VOFS 0x16
+
+/**
+ * BG2 X-Offset
+ * @address{BPRE,04000018}
+ */
+volatile __writeonly u16 REG_BG2HOFS;
+#define REG_ID_BG2HOFS 0x18
+
+/**
+ * BG2 Y-Offset
+ * @address{BPRE,0400001A}
+ */
+volatile __writeonly u16 REG_BG2VOFS;
+#define REG_ID_BG2VOFS 0x1A
+
+/**
+ * BG3 X-Offset
+ * @address{BPRE,0400001C}
+ */
+volatile __writeonly u16 REG_BG3HOFS;
+#define REG_ID_BG3HOFS 0x1C
+
+/**
+ * BG3 Y-Offset
+ * @address{BPRE,0400001E}
+ */
+volatile __writeonly u16 REG_BG3VOFS;
+#define REG_ID_BG3VOFS 0x1E
+
+/**
+ * BG2 Rotation/Scaling Parameter A (dx)
+ * @address{BPRE,04000020}
+ */
+volatile __writeonly u16 REG_BG2PA;
+#define REG_ID_BG2PA 0x20
+
+/**
+ * BG2 Rotation/Scaling Parameter B (dmx)
+ * @address{BPRE,04000022}
+ */
+volatile __writeonly u16 REG_BG2PB;
+#define REG_ID_BG2PB 0x22
+
+/**
+ * BG2 Rotation/Scaling Parameter C (dy)
+ * @address{BPRE,04000024}
+ */
+volatile __writeonly u16 REG_BG2PC;
+#define REG_ID_BG2PC 0x24
+
+/**
+ * BG2 Rotation/Scaling Parameter D (dmy)
+ * @address{BPRE,04000026}
+ */
+volatile __writeonly u16 REG_BG2PD;
+#define REG_ID_BG2PD 0x26
+
+/**
+ * BG2 Reference Point X-Coordinate
+ * @address{BPRE,04000028}
+ */
+volatile __writeonly u32 REG_BG2X;
+#define REG_ID_BG2X 0x28
+
+/**
+ * BG2 Reference Point Y-Coordinate
+ * @address{BPRE,0400002C}
+ */
+volatile __writeonly u32 REG_BG2Y;
+#define REG_ID_BG2Y 0x2C
+
+/**
+ * BG3 Rotation/Scaling Parameter A (dx)
+ * @address{BPRE,04000030}
+ */
+volatile __writeonly u16 REG_BG3PA;
+#define REG_ID_BG3PA 0x30
+
+/**
+ * BG3 Rotation/Scaling Parameter B (dmx)
+ * @address{BPRE,04000032}
+ */
+volatile __writeonly u16 REG_BG3PB;
+#define REG_ID_BG3PB 0x32
+
+/**
+ * BG3 Rotation/Scaling Parameter C (dy)
+ * @address{BPRE,04000034}
+ */
+volatile __writeonly u16 REG_BG3PC;
+#define REG_ID_BG3PC 0x34
+
+/**
+ * BG3 Rotation/Scaling Parameter D (dmy)
+ * @address{BPRE,04000036}
+ */
+volatile __writeonly u16 REG_BG3PD;
+#define REG_ID_BG3PD 0x36
+
+/**
+ * BG3 Reference Point X-Coordinate
+ * @address{BPRE,04000038}
+ */
+volatile __writeonly u32 REG_BG3X;
+#define REG_ID_BG3X 0x38
+
+/**
+ * BG3 Reference Point Y-Coordinate
+ * @address{BPRE,0400003C}
+ */
+volatile __writeonly u32 REG_BG3Y;
+#define REG_ID_BG3Y 0x3C
+
+/**
+ * Window 0 Horizontal Dimensions
+ * @address{BPRE,04000040}
+ */
+volatile __writeonly u16 REG_WIN0H;
+#define REG_ID_WIN0H 0x40
+
+/**
+ * Window 1 Horizontal Dimensions
+ * @address{BPRE,04000042}
+ */
+volatile __writeonly u16 REG_WIN1H;
+#define REG_ID_WIN1H 0x42
+
+/**
+ * Window 0 Vertical Dimensions
+ * @address{BPRE,04000044}
+ */
+volatile __writeonly u16 REG_WIN0V;
+#define REG_ID_WIN0V 0x44
+
+/**
+ * Window 1 Vertical Dimensions
+ * @address{BPRE,04000046}
+ */
+volatile __writeonly u16 REG_WIN1V;
+#define REG_ID_WIN1V 0x46
+
+/**
+ * Inside of Window 0 and 1
  * @address{BPRE,04000048}
  */
-extern struct win_in REG_WININ;
-
-#define BLD_BG0_SRC 1
-#define BLD_BG1_SRC 2
-#define BLD_BG2_SRC 4
-#define BLD_BG3_SRC 8
-#define BLD_SPRITES_SRC 16
-#define BLD_BACKDROP_SRC 32
-#define BLD_ALPHA_BLEND 64
-#define BLD_LIGHTEN 128
-#define BLD_DARKEN 192
-#define BLD_BG0_DST 256
-#define BLD_BG1_DST 512
-#define BLD_BG2_DST 1024
-#define BLD_BG3_DST 2048
-#define BLD_SPRITES_DST 4096
-#define BLD_BACKDROP_DST 8192
-
-struct bldmod {
-	u16 bg0_src : 1;
-	u16 bg1_src : 1;
-	u16 bg2_src : 1;
-	u16 bg3_src : 1;
-	u16 sprites_src : 1;
-	u16 backdrop : 1;
-	u16 mode : 2;	/*	00: All effects off 
-						01: alpha blend 
-						10: lighten (fade to white) 
-						11: darken (fade to black)
-					*/
-	u16 bg0_dst : 1;
-	u16 bg1_dst : 1;
-	u16 bg2_dst : 1;
-	u16 bg3_dst : 1;
-	u16 sprites_dst : 1;
-	u16 backdrop_dst : 1;
-	u16 padding : 2;
-};
-
+volatile u16 REG_WININ;
+#define REG_ID_WININ 0x48
 
 /**
- * BLDMOD register
+ * Inside of OBJ Window & Outside of Windows
+ * @address{BPRE,0400004A}
+ */
+volatile u16 REG_WINOUT;
+#define REG_ID_WINOUT 0x4A
+
+/**
+ * Mosaic Size
+ * @address{BPRE,0400004C}
+ */
+volatile __writeonly u16 REG_MOSAIC;
+#define REG_ID_MOSAIC 0x4C
+
+/**
+ * Color Special Effects Selection
  * @address{BPRE,04000050}
  */
-extern struct bldmod REG_BLDCNT;
-
-
-struct bld_alpha {
-	u16 coA : 5;
-	u16 padding : 3;
-	u16 coB : 5;
-	u16 padding2 : 3;
-	
-};
-
+volatile u16 REG_BLDCNT;
+#define REG_ID_BLDCNT 0x50
 
 /**
- * bldalpha register
+ * Alpha Blending Coefficients
  * @address{BPRE,04000052}
  */
-extern struct bld_alpha REG_COLEV;
-
-
-struct bldy {
-	u16 fade : 5;
-	u16 padding : 11;
-};
+volatile __writeonly u16 REG_BLDALPHA;
+#define REG_ID_BLDALPHA 0x52
 
 /**
- * BLDY register
+ * Brightness (Fade-In/Out) Coefficient
  * @address{BPRE,04000054}
  */
-extern struct bldy REG_COLEY;
-
-
-struct interrupt_register {
-	u16 vblank_int : 1;
-	u16 hblank_int : 1;
-	u16 vcount_int : 1;
-	u16 timer0_int : 1;
-	u16 timer1_int : 1;
-	u16 timer2_int : 1;
-	u16 timer3_int : 1;
-	u16 serial_comm_int : 1;
-	u16 DMA0_int : 1;
-	u16 DMA1_int : 1;
-	u16 DMA2_int : 1;
-	u16 DMA3_int : 1;
-	u16 key_int : 1;
-	u16 cassette_int : 1;
-	u16 padding : 2;
-};
+volatile __writeonly u16 REG_BLDY;
+#define REG_ID_BLDY 0x54
 
 /**
- * Set a bit to enable an interrupt
- * REG_DISPSTAT
+ * Channel 1 Sweep register       (NR10)
+ * @address{BPRE,04000060}
+ */
+volatile u16 REG_SOUND1CNT_L;
+#define REG_ID_SOUND1CNT_L 0x60
+
+/**
+ * Channel 1 Duty/Length/Envelope (NR11  NR12)
+ * @address{BPRE,04000062}
+ */
+volatile u16 REG_SOUND1CNT_H;
+#define REG_ID_SOUND1CNT_H 0x62
+
+/**
+ * Channel 1 Frequency/Control    (NR13  NR14)
+ * @address{BPRE,04000064}
+ */
+volatile u16 REG_SOUND1CNT_X;
+#define REG_ID_SOUND1CNT_X 0x64
+
+/**
+ * Channel 2 Duty/Length/Envelope (NR21  NR22)
+ * @address{BPRE,04000068}
+ */
+volatile u16 REG_SOUND2CNT_L;
+#define REG_ID_SOUND2CNT_L 0x68
+
+/**
+ * Channel 2 Frequency/Control    (NR23  NR24)
+ * @address{BPRE,0400006C}
+ */
+volatile u16 REG_SOUND2CNT_H;
+#define REG_ID_SOUND2CNT_H 0x6C
+
+/**
+ * Channel 3 Stop/Wave RAM select (NR30)
+ * @address{BPRE,04000070}
+ */
+volatile u16 REG_SOUND3CNT_L;
+#define REG_ID_SOUND3CNT_L 0x70
+
+/**
+ * Channel 3 Length/Volume        (NR31  NR32)
+ * @address{BPRE,04000072}
+ */
+volatile u16 REG_SOUND3CNT_H;
+#define REG_ID_SOUND3CNT_H 0x72
+
+/**
+ * Channel 3 Frequency/Control    (NR33  NR34)
+ * @address{BPRE,04000074}
+ */
+volatile u16 REG_SOUND3CNT_X;
+#define REG_ID_SOUND3CNT_X 0x74
+
+/**
+ * Channel 4 Length/Envelope      (NR41  NR42)
+ * @address{BPRE,04000078}
+ */
+volatile u16 REG_SOUND4CNT_L;
+#define REG_ID_SOUND4CNT_L 0x78
+
+/**
+ * Channel 4 Frequency/Control    (NR43  NR44)
+ * @address{BPRE,0400007C}
+ */
+volatile u16 REG_SOUND4CNT_H;
+#define REG_ID_SOUND4CNT_H 0x7C
+
+/**
+ * Control Stereo/Volume/Enable   (NR50  NR51)
+ * @address{BPRE,04000080}
+ */
+volatile u16 REG_SOUNDCNT_L;
+#define REG_ID_SOUNDCNT_L 0x80
+
+/**
+ * Control Mixing/DMA Control
+ * @address{BPRE,04000082}
+ */
+volatile u16 REG_SOUNDCNT_H;
+#define REG_ID_SOUNDCNT_H 0x82
+
+/**
+ * Control Sound on/off           (NR52)
+ * @address{BPRE,04000084}
+ */
+volatile u16 REG_SOUNDCNT_X;
+#define REG_ID_SOUNDCNT_X 0x84
+
+/**
+ * Channel A FIFO  Data 0-3
+ * @address{BPRE,040000A0}
+ */
+volatile __writeonly u32 REG_FIFO_A;
+#define REG_ID_FIFO_A 0xA0
+
+/**
+ * Channel B FIFO  Data 0-3
+ * @address{BPRE,040000A4}
+ */
+volatile __writeonly u32 REG_FIFO_B;
+#define REG_ID_FIFO_B 0xA4
+
+/**
+ * DMA 0 Source Address
+ * @address{BPRE,040000B0}
+ */
+volatile __writeonly u32 REG_DMA0SAD;
+#define REG_ID_DMA0SAD 0xB0
+
+/**
+ * DMA 0 Destination Address
+ * @address{BPRE,040000B4}
+ */
+volatile __writeonly u32 REG_DMA0DAD;
+#define REG_ID_DMA0DAD 0xB4
+
+/**
+ * DMA 0 Word Count
+ * @address{BPRE,040000B8}
+ */
+volatile u32 REG_DMA0CNT;
+#define REG_ID_DMA0CNT 0xB8
+
+/**
+ * DMA 1 Source Address
+ * @address{BPRE,040000BC}
+ */
+volatile __writeonly u32 REG_DMA1SAD;
+#define REG_ID_DMA1SAD 0xBC
+
+/**
+ * DMA 1 Destination Address
+ * @address{BPRE,040000C0}
+ */
+volatile __writeonly u32 REG_DMA1DAD;
+#define REG_ID_DMA1DAD 0xC0
+
+/**
+ * DMA 1 Word Count
+ * @address{BPRE,040000C4}
+ */
+volatile u32 REG_DMA1CNT;
+#define REG_ID_DMA1CNT 0xC4
+
+/**
+ * DMA 2 Source Address
+ * @address{BPRE,040000C8}
+ */
+volatile __writeonly u32 REG_DMA2SAD;
+#define REG_ID_DMA2SAD 0xC8
+
+/**
+ * DMA 2 Destination Address
+ * @address{BPRE,040000CC}
+ */
+volatile __writeonly u32 REG_DMA2DAD;
+#define REG_ID_DMA2DAD 0xCC
+
+/**
+ * DMA 2 Control
+ * @address{BPRE,040000D2}
+ */
+volatile u32 REG_DMA2CNT;
+#define REG_ID_DMA2CNT 0xD2
+
+/**
+ * DMA 3 Source Address
+ * @address{BPRE,040000D4}
+ */
+volatile __writeonly u32 REG_DMA3SAD;
+#define REG_ID_DMA3SAD 0xD4
+
+/**
+ * DMA 3 Destination Address
+ * @address{BPRE,040000D8}
+ */
+volatile __writeonly u32 REG_DMA3DAD;
+#define REG_ID_DMA3DAD 0xD8
+
+/**
+ * DMA 3 Control
+ * @address{BPRE,040000DE}
+ */
+volatile u32 REG_DMA3CNT;
+#define REG_ID_DMA3CNT 0xDE
+
+/**
+ * Timer 0 Counter/Reload
+ * @address{BPRE,04000100}
+ */
+volatile u16 REG_TM0CNT_L;
+#define REG_ID_TM0CNT_L 0x100
+
+/**
+ * Timer 0 Control
+ * @address{BPRE,04000102}
+ */
+volatile u16 REG_TM0CNT_H;
+#define REG_ID_TM0CNT_H 0x102
+
+/**
+ * Timer 1 Counter/Reload
+ * @address{BPRE,04000104}
+ */
+volatile u16 REG_TM1CNT_L;
+#define REG_ID_TM1CNT_L 0x104
+
+/**
+ * Timer 1 Control
+ * @address{BPRE,04000106}
+ */
+volatile u16 REG_TM1CNT_H;
+#define REG_ID_TM1CNT_H 0x106
+
+/**
+ * Timer 2 Counter/Reload
+ * @address{BPRE,04000108}
+ */
+volatile u16 REG_TM2CNT_L;
+#define REG_ID_TM2CNT_L 0x108
+
+/**
+ * Timer 2 Control
+ * @address{BPRE,0400010A}
+ */
+volatile u16 REG_TM2CNT_H;
+#define REG_ID_TM2CNT_H 0x10A
+
+/**
+ * Timer 3 Counter/Reload
+ * @address{BPRE,0400010C}
+ */
+volatile u16 REG_TM3CNT_L;
+#define REG_ID_TM3CNT_L 0x10C
+
+/**
+ * Timer 3 Control
+ * @address{BPRE,0400010E}
+ */
+volatile u16 REG_TM3CNT_H;
+#define REG_ID_TM3CNT_H 0x10E
+
+/**
+ * SIO Data (Normal-32bit Mode; shared with below)
+ * @address{BPRE,04000120}
+ */
+volatile u32 REG_SIODATA32;
+#define REG_ID_SIODATA32 0x120
+
+/**
+ * SIO Data 0 (Parent)    (Multi-Player Mode)
+ * @address{BPRE,04000120}
+ */
+volatile u16 REG_SIOMULTI0;
+#define REG_ID_SIOMULTI0 0x120
+
+/**
+ * SIO Data 1 (1st Child) (Multi-Player Mode)
+ * @address{BPRE,04000122}
+ */
+volatile u16 REG_SIOMULTI1;
+#define REG_ID_SIOMULTI1 0x122
+
+/**
+ * SIO Data 2 (2nd Child) (Multi-Player Mode)
+ * @address{BPRE,04000124}
+ */
+volatile u16 REG_SIOMULTI2;
+#define REG_ID_SIOMULTI2 0x124
+
+/**
+ * SIO Data 3 (3rd Child) (Multi-Player Mode)
+ * @address{BPRE,04000126}
+ */
+volatile u16 REG_SIOMULTI3;
+#define REG_ID_SIOMULTI3 0x126
+
+/**
+ * SIO Control Register
+ * @address{BPRE,04000128}
+ */
+volatile u16 REG_SIOCNT;
+#define REG_ID_SIOCNT 0x128
+
+/**
+ * SIO Data (Local of MultiPlayer; shared below)
+ * @address{BPRE,0400012A}
+ */
+volatile u16 REG_SIOMLT_SEND;
+#define REG_ID_SIOMLT_SEND 0x12A
+
+/**
+ * SIO Data (Normal-8bit and UART Mode)
+ * @address{BPRE,0400012A}
+ */
+volatile u16 REG_SIODATA8;
+#define REG_ID_SIODATA8 0x12A
+
+/**
+ * Key Status
+ * @address{BPRE,04000130}
+ */
+volatile const u16 REG_KEYINPUT;
+#define REG_ID_KEYINPUT 0x130
+
+/**
+ * Key Interrupt Control
+ * @address{BPRE,04000132}
+ */
+volatile u16 REG_KEYCNT;
+#define REG_ID_KEYCNT 0x132
+
+/**
+ * SIO Mode Select/General Purpose Data
+ * @address{BPRE,04000134}
+ */
+volatile u16 REG_RCNT;
+#define REG_ID_RCNT 0x134
+
+/**
+ * SIO JOY Bus Control
+ * @address{BPRE,04000140}
+ */
+volatile u16 REG_JOYCNT;
+#define REG_ID_JOYCNT 0x140
+
+/**
+ * SIO JOY Bus Receive Data
+ * @address{BPRE,04000150}
+ */
+volatile u32 REG_JOY_RECV;
+#define REG_ID_JOY_RECV 0x150
+
+/**
+ * SIO JOY Bus Transmit Data
+ * @address{BPRE,04000154}
+ */
+volatile u32 REG_JOY_TRANS;
+#define REG_ID_JOY_TRANS 0x154
+
+/**
+ * SIO JOY Bus Receive Status
+ * @address{BPRE,04000158}
+ */
+volatile const u16 REG_JOYSTAT;
+#define REG_ID_JOYSTAT 0x158
+
+/**
+ * Interrupt Enable Register
  * @address{BPRE,04000200}
  */
-extern struct interrupt_register REG_IE;
+volatile u16 REG_IE;
+#define REG_ID_IE 0x200
 
 /**
- * write 1 to corresponding bit to acknowledge interrupt
- * has been completed. REG_DISPSTAT
+ * Interrupt Request Flags / IRQ Acknowledge
  * @address{BPRE,04000202}
  */
-extern struct interrupt_register REG_IF;
-
+volatile u16 REG_IF;
+#define REG_ID_IF 0x202
 
 /**
- * REG_DISPSTAT
+ * Game Pak Waitstate Control
+ * @address{BPRE,04000204}
+ */
+volatile u16 REG_WAITCNT;
+#define REG_ID_WAITCNT 0x204
+
+/**
+ * Interrupt Master Enable Register
  * @address{BPRE,04000208}
  */
-extern u16 REG_IME;
-
-
-/*
- *
- * IO Register dealing functions 
- *
- */
-
+volatile u16 REG_IME;
+#define REG_ID_IME 0x208
 
 /**
- * 0x4000000 + number = reg_id -> the register to modify
+ * Undocumented - Post Boot Flag
+ * @address{BPRE,04000300}
+ */
+volatile u8 REG_POSTFLG;
+#define REG_ID_POSTFLG 0x300
+
+/**
+ * Undocumented - Power Down Control
+ * @address{BPRE,04000301}
+ */
+volatile __writeonly u8 REG_HALTCNT;
+#define REG_ID_HALTCNT 0x301
+
+/*
+ * IO Register Values
+ */
+
+#define DISPCNT_MODE_MASK 7
+#define DISPCNT_MODE0 (0 << 0)
+#define DISPCNT_MODE1 (1 << 0)
+#define DISPCNT_MODE2 (2 << 0)
+#define DISPCNT_MODE3 (3 << 0)
+#define DISPCNT_MODE4 (4 << 0)
+#define DISPCNT_MODE5 (5 << 0)
+/**
+ * Indicates GameBoy Color mode. Read-only.
+ */
+#define DISPCNT_CGB (1 << 3)
+/**
+ * In BG Modes 4 and 5, this indicates the current page for page-flipping (double buffering).
+ */
+#define DISPCNT_PAGE (1 << 4)
+/**
+ * Allows OAM to be updated in H-Blank. Using this feature reduces the
+ * number of sprites that can be displayed per line.
+ */
+#define DISPCNT_OAM_HBLANK (1 << 5)
+#define DISPCNT_OAM_1D (1 << 6)
+/**
+ * Forced VBlank
+ */
+#define DISPCNT_BLANK (1 << 7)
+#define DISPCNT_BG0 (1 << 8)
+#define DISPCNT_BG1 (1 << 9)
+#define DISPCNT_BG2 (1 << 10)
+#define DISPCNT_BG3 (1 << 11)
+#define DISPCNT_OBJ (1 << 12)
+#define DISPCNT_WIN0 (1 << 13)
+#define DISPCNT_WIN1 (1 << 14)
+#define DISPCNT_WINOBJ (1 << 15)
+
+#define DISPSTAT_VBLANK_FLAG (1 << 0)
+#define DISPSTAT_HBLANK_FLAG (1 << 1)
+#define DISPSTAT_VCOUNT_FLAG (1 << 2)
+#define DISPSTAT_VBLANK_IRQ (1 << 3)
+#define DISPSTAT_HBLANK_IRQ (1 << 4)
+#define DISPSTAT_VCOUNT_IRQ (1 << 5)
+/**
+ * @param mode Interrupts to enable
+ * @param vcount VCOUNT value to trigger VCOUNT IRQ at
+ */
+#define DISPSTAT_BUILD(mode, vcount) ((mode) | ((vcount) << 8))
+
+#define WIN_BG0 (1 << 0)
+#define WIN_BG1 (1 << 1)
+#define WIN_BG2 (1 << 2)
+#define WIN_BG3 (1 << 3)
+#define WIN_OBJ (1 << 4)
+#define WIN_BLD (1 << 5)
+/**
+ * @param win0 Window 0 Control
+ * @param win1 Window 1 Control
+ */
+#define WININ_BUILD(win0, win1) ((win0) | ((win1) << 8))
+/**
+ * @param outside Window Outside Control
+ * @param object Object Window Control
+ */
+#define WINOUT_BUILD(outside, object) ((outside) | ((object) << 8))
+
+#define BLDCNT_BG0_SRC (1 << 0)
+#define BLDCNT_BG1_SRC (1 << 1)
+#define BLDCNT_BG2_SRC (1 << 2)
+#define BLDCNT_BG3_SRC (1 << 3)
+#define BLDCNT_SPRITES_SRC (1 << 4)
+#define BLDCNT_BACKDROP_SRC (1 << 5)
+#define BLDCNT_BLEND_MODE_MASK (3 << 6)
+#define BLDCNT_ALPHA_BLEND (1 << 6)
+#define BLDCNT_LIGHTEN (2 << 6)
+#define BLDCNT_DARKEN (3 << 6)
+#define BLDCNT_BG0_DST (1 << 8)
+#define BLDCNT_BG1_DST (1 << 9)
+#define BLDCNT_BG2_DST (1 << 10)
+#define BLDCNT_BG3_DST (1 << 11)
+#define BLDCNT_SPRITES_DST (1 << 12)
+#define BLDCNT_BACKDROP_DST (1 << 13)
+
+/**
+ * @param eva EVA Coefficient (1st Target) (0..16 = 0/16..16/16, 17..31=16/16)
+ * @param ebv EVB Coefficient (2nd Target) (0..16 = 0/16..16/16, 17..31=16/16)
+ */
+#define BLDALPHA_BUILD(eva, evb) ((eva) | ((evb) << 8))
+
+/*
+ * GameFreak Engine IO register buffer and helper functions
+ */
+
+/**
+ * @param reg_id The register to modify (REG_ID_X)
  * @address{BPRE,08000A38}
  */
 POKEAGB_EXTERN void lcd_io_set(u8 reg_id, u16 value);
 
 /**
- *
- * @address{BPRE,08000B68}
+ * @param reg_id The register to read (REG_ID_X)
+ * @address{BPRE,08000AC4}
  */
-POKEAGB_EXTERN void interrupts_enable(u8);
+POKEAGB_EXTERN u16 lcd_io_get(u8 reg_id);
+
+enum Interrupts {
+    INTERRUPT_VBLANK = (1 << 0),
+    INTERRUPT_HBLANK = (1 << 1),
+};
 
 /**
- *
+ * @address{BPRE,08000B68}
+ */
+POKEAGB_EXTERN void interrupts_enable(enum Interrupts disable);
+
+/**
  * @address{BPRE,08000B94}
  */
-POKEAGB_EXTERN void interrupts_disable(u8);
+POKEAGB_EXTERN void interrupts_disable(enum Interrupts disable);
 
 #endif /* POKEAGB_CORE_IO_H_ */

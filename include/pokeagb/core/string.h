@@ -213,6 +213,12 @@ POKEAGB_EXTERN u8 rboxid_print(u8 id, u8 font, u8 x, u8 y, struct TextColor* col
                                u8 speed, pchar* s);
 
 /**
+ * Get the width in pixels of a string.
+ * @address{BPRE,08005ED4}
+ */
+POKEAGB_EXTERN u32 font_get_width_of_string(u8 font, pchar* s, u16);
+
+/**
  * Allocates a textbox and returns its ID.
  * @address{BPRE,08003FA0}
  */

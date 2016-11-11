@@ -8,6 +8,9 @@
 
 #include "../types.h"
 
+#define SCREEN_WIDTH 240
+#define SCREEN_HEIGHT 160
+
 struct BgConfig {
 	u16 bgid : 2;
 	u16 character_base : 2;
@@ -17,7 +20,7 @@ struct BgConfig {
 	u16 priority : 2;
 	u16 b_padding : 2; // bit field padding
 	u16 padding;
-	
+
 };
 
 struct BgConfig2 {
@@ -146,19 +149,19 @@ struct REG_BGCNT {
 	u16 map_index : 5;
 	u16 screen_over : 1;
 	u16 size : 2;
-	/* 
-	For "text" backgrounds: 
-	  00 : 256x256 (32x32 tiles) 
-	  01 : 512x256 (64x32 tiles) 
-	  10 : 256x512 (32x64 tiles) 
-	  11 : 512x512 (64x64 tiles) 
+	/*
+	For "text" backgrounds:
+	  00 : 256x256 (32x32 tiles)
+	  01 : 512x256 (64x32 tiles)
+	  10 : 256x512 (32x64 tiles)
+	  11 : 512x512 (64x64 tiles)
 
-	  For rotational backgrounds: 
-	  00 : 128x128 (16x16 tiles) 
-	  01 : 256x256 (32x32 tiles) 
+	  For rotational backgrounds:
+	  00 : 128x128 (16x16 tiles)
+	  01 : 256x256 (32x32 tiles)
 	  10 : 512x512 (64x64 tiles)
 	  11 : 1024x1024 (128x128 tiles)
-		  
+
 	*/
 };
 

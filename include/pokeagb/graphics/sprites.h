@@ -141,9 +141,9 @@ struct Template {
  */
 struct Object {
     struct OamData final_oam;
-    struct Frame** animation_table;
+    struct Frame (**animation_table)[];
     struct SpriteTiles* gfx_table;
-    struct RotscaleFrame** rotscale_table;
+    struct RotscaleFrame (**rotscale_table)[];
     struct Template* template;
     u32 field18;
     ObjectCallback callback;

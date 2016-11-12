@@ -28,20 +28,16 @@ struct FadeControl {
     u8 delta_y:4; // rate of change of blend coefficient
 };
 
-struct color_bit {
-	u16 red : 5;
-	u16 green : 5;
-	u16 blue : 5;
-	u16 unused : 1;
+struct ColorComponents {
+    u16 red : 5;
+    u16 green : 5;
+    u16 blue : 5;
+    u16 unused : 1;
 };
 
-union color {
-	struct color_bit b; //bit
-	u16 hw; //hword
-};
-
-struct uncomp_palette16 {
-	union color colors[16];
+union Color {
+    struct ColorComponents b; //bit
+    u16 hw; //hword
 };
 
 /**

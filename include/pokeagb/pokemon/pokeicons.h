@@ -23,7 +23,7 @@ extern const u8* pokeicon_table[410];
  * Icons Pal Table
  * @address{BPRE,083D3740}
  */
-extern const struct uncomp_palette16 pokeicon_pals[3];
+extern const u16 pokeicon_pals[3][16];
 
 
 /**
@@ -39,15 +39,14 @@ extern const u8 pokeicon_pal_indices[410];
  * @address{BPRE,0845A3AC}
  */
 extern const void *gfx_heldicons;
- 
- 
+
+
 /**
  * Pal for held items. The yellow box and mail icon
  * @address{BPRE,0845A3EC}
  */
 extern const void *pal_heldicons;
- 
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEICONS_H_ */
-

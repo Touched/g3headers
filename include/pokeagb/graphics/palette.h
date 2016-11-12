@@ -34,7 +34,7 @@ struct color_bit {
 	u16 blue : 5;
 	u16 unused : 1;
 };
-	
+
 union color {
 	struct color_bit b; //bit
 	u16 hw; //hword
@@ -57,7 +57,7 @@ u8* gpu_pal_tag_search_lower_boundary;
 /**
  * @address{BPRE,080703EC}
  */
-POKEAGB_EXTERN void gpu_pal_apply(u8* palette, u16 offset, u16 size);
+POKEAGB_EXTERN void gpu_pal_apply(void* palette, u16 offset, u16 size);
 
 /**
  * @address{BPRE,08070588}

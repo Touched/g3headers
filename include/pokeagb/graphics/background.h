@@ -20,7 +20,6 @@ struct BgConfig {
 	u16 priority : 2;
 	u16 b_padding : 2; // bit field padding
 	u16 padding;
-
 };
 
 struct BgConfig2 {
@@ -84,7 +83,7 @@ POKEAGB_EXTERN void bgid_set_tilemap(u8 layer, u8* space);
 /**
  * @address{BPRE,08001658}
  */
-POKEAGB_EXTERN void bg_vram_setup(u8 layer, struct BgConfig* config, u8 layers);
+POKEAGB_EXTERN void bg_vram_setup(u8 layer, const struct BgConfig* config, u8 layers);
 
 /**
  * @address{BPRE,08001658}

@@ -113,13 +113,13 @@ struct OamData {
  * Tileset Data
  */
 struct SpriteTiles {
-    const u8* data;
+    const void* data;
     u16 size;
     u16 tag;
 };
 
 struct SpritePalette {
-    const u8* data;
+    const void* data;
     u16 tag;
 };
 

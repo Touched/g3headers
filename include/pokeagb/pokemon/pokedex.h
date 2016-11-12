@@ -8,6 +8,7 @@
 
 #include <pokeagb/common.h>
 #include <pokeagb/types.h>
+#include <pokeagb/pokemon/species.h>
 
 POKEAGB_BEGIN_DECL
 
@@ -35,6 +36,23 @@ POKEAGB_EXTERN bool dex_flag_pokedex_index(u16 index, enum DexFlagOperation op);
  * @address{BPRE,08088E74}
  */
 POKEAGB_EXTERN bool dex_flag(u16 index, enum DexFlagOperation op, bool convert_index);
+
+/**
+ * Convert a species index to a Pokedex index.
+ * @address{BPRE,08043298}
+ */
+POKEAGB_EXTERN u16 species_to_pokedex_index(enum PokemonSpecies);
+
+/**
+ * Convert a species index to a Pokedex index.
+ * @address{BPRE,08043200}
+ */
+POKEAGB_EXTERN enum PokemonSpecies pokedex_index_to_species(u16);
+
+/**
+ * @address{BPRE,08251FEE}
+ */
+extern const u16 pokedex_order[SPECIES_MAX - 1];
 
 POKEAGB_END_DECL
 

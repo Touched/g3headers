@@ -29,15 +29,15 @@ struct FadeControl {
 };
 
 struct ColorComponents {
-    u16 red : 5;
-    u16 green : 5;
-    u16 blue : 5;
+    u16 r : 5;
+    u16 g : 5;
+    u16 b : 5;
     u16 unused : 1;
 };
 
 union Color {
-    struct ColorComponents b; //bit
-    u16 hw; //hword
+    struct ColorComponents components;
+    u16 packed;
 };
 
 /**

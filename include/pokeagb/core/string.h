@@ -225,6 +225,18 @@ POKEAGB_EXTERN u32 font_get_width_of_string(u8 font, const pchar* s, u16);
  */
 POKEAGB_EXTERN u8 rboxid_tilemap_update(u8 id);
 
+/**
+ * Clean a textbox. Should be called before rboxid_free.
+ * @address{BPRE,0810F4D8}
+ */
+POKEAGB_EXTERN u8 rboxid_clean(u8 id, bool update);
+
+/**
+ * Free a textbox.
+ * @address{BPRE,08003E3C}
+ */
+POKEAGB_EXTERN u8 rboxid_free(u8 id);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_CORE_STRING_H_ */

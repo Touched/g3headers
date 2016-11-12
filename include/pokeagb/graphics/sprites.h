@@ -268,7 +268,7 @@ POKEAGB_EXTERN void gpu_tile_obj_free_by_tag(u16 tag);
 /**
  * @address{BPRE,080073DC}
  */
-POKEAGB_EXTERN void obj_delete(u8 id);
+POKEAGB_EXTERN void obj_delete(struct Object *obj);
 
 /**
  * Bouncing object. Uses private variables for control.

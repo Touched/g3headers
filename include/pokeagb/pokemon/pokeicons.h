@@ -10,7 +10,7 @@
 #include <pokeagb/core/string.h>
 #include "../graphics/palette.h"
 #include "../graphics/sprites.h"
-
+#include "species.h"
 
 POKEAGB_BEGIN_DECL
 
@@ -46,6 +46,23 @@ extern const void *gfx_heldicons;
  * @address{BPRE,0845A3EC}
  */
 extern const void *pal_heldicons;
+
+/**
+ * Load the icon tiles for the given Pokemon, factoring in forms.
+ *
+ * @param pid Used to fetch the correct Unown form.
+ * @param deoxys Whether to display the correct Deoxys form for this version.
+ *
+ * @address{BPRE,08097054}
+ */
+POKEAGB_EXTERN void* load_party_icon_tiles_with_form(enum PokemonSpecies species,
+                                                    u32 pid, bool deoxys);
+
+/**
+ * Load the icon palette index for the given Pokemon species.
+ * @address{BPRE,080971F8}
+ */
+POKEAGB_EXTERN u8 load_party_icon_palette_index(enum PokemonSpecies species);
 
 POKEAGB_END_DECL
 

@@ -14,10 +14,12 @@
 
 POKEAGB_BEGIN_DECL
 
+#define POKEAGB_POKEMON_ICON_SIZE 1024
+
 /**
  * @address{BPRE,083D37A0}
  */
-extern const u8* pokeicon_table[410];
+extern const u8 pokeicon_table[410][POKEAGB_POKEMON_ICON_SIZE];
 
 /**
  * Icons Pal Table

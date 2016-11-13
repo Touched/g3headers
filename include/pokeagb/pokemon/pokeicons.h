@@ -64,6 +64,21 @@ POKEAGB_EXTERN void* load_party_icon_tiles_with_form(enum PokemonSpecies species
  */
 POKEAGB_EXTERN u8 load_party_icon_palette_index(enum PokemonSpecies species);
 
+/**
+ * @address{BPRE,083D350C}
+ */
+extern const struct Template storage_hand_template;
+
+/**
+ * @address{BPRE,083D2BEC}
+ */
+extern const u8 storage_hand_tiles[0x800];
+
+/**
+ * @address{BPRE,083D2BCC}
+ */
+extern const u16 storage_hand_palette[16];
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEICONS_H_ */

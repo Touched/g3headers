@@ -130,9 +130,9 @@ struct Template {
     u16 tiles_tag;
     u16 pal_tag;
     const struct OamData* oam;
-    struct Frame** animation;
-    struct SpriteTiles* graphics;
-    struct RotscaleFrame** rotscale;
+    const struct Frame (**animation)[];
+    const struct SpriteTiles* graphics;
+    const struct RotscaleFrame (**rotscale)[];
     ObjectCallback callback;
 };
 
@@ -171,12 +171,12 @@ extern struct Object objects[64];
 /**
  * @address{BPRE,08231CFC}
  */
-extern struct RotscaleFrame* rotscale_empty;
+extern const struct RotscaleFrame (*rotscale_empty)[];
 
 /**
  * @address{BPRE,08231CF0}
  */
-extern struct Frame* anim_image_empty;
+extern const struct Frame (*anim_image_empty)[];
 
 #define SPRITE_NO_ANIMATION (&anim_image_empty)
 #define SPRITE_NO_ROTSCALE (&rotscale_empty)

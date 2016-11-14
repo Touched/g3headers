@@ -1,6 +1,10 @@
 #ifndef POKEAGB_VERSION_H_
 #define POKEAGB_VERSION_H_
 
+#include <pokeagb/types.h>
+
+POKEAGB_BEGIN_DECL
+
 /* Derive version from ROM code */
 #if defined(ROM_AXPD) || defined(ROM_AXPE) || defined(ROM_AXPF) || \
   defined(ROM_AXPI) || defined(ROM_AXPJ) || defined(ROM_AXPS)
@@ -67,5 +71,8 @@
   defined(VERSION_EMERALD)
 #define VERSION_RSE
 #endif
+
+
+POKEAGB_END_DECL
 
 #endif /* POKEAGB_VERSION_H_ */

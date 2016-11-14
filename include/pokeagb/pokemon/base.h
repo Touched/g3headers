@@ -12,6 +12,7 @@
 #include <pokeagb/pokemon/type.h>
 #include <pokeagb/pokemon/ability.h>
 #include <pokeagb/overworld/item.h>
+#include <pokeagb/pokemon/species.h>
 
 POKEAGB_BEGIN_DECL
 
@@ -38,6 +39,8 @@ enum PokemonEggGroup {
 
 ASSERT_SIZEOF(enum PokemonEggGroup, 1);
 
+#define POKEMON_GROWTH_MAX 6
+
 enum PokemonExpGrowth {
     EXP_MEDIUM_FAST,
     EXP_ERRATIC,
@@ -46,6 +49,21 @@ enum PokemonExpGrowth {
     EXP_FAST,
     EXP_SLOW
 };
+
+/* struct PokemonExpGrowthCurveTable {
+    u32 EXP_MEDIUM_FAST[SPECIES_MAX];
+    u32 EXP_ERRATIC[SPECIES_MAX];
+    u32 EXP_FLUCTUATING[SPECIES_MAX];
+    u32 EXP_MEDIUM_SLOW[SPECIES_MAX];
+    u32 EXP_FAST[SPECIES_MAX];
+    u32 EXP_SLOW[SPECIES_MAX];
+}; */
+
+/**
+ *
+ * @address{BPRE,08253AE4}
+ */
+extern u32 exp_curves[POKEMON_GROWTH_MAX][100];
 
 ASSERT_SIZEOF(enum PokemonExpGrowth, 1);
 
@@ -102,6 +120,21 @@ extern struct PokemonBaseStat pokemon_base_stats[POKEAGB_POKEMON_SLOTS];
  * @address{BPRE,08245EE0}
  */
 extern pchar pokemon_names[POKEAGB_POKEMON_SLOTS][POKEAGB_POKEMON_NAME_LENGTH];
+
+
+/**
+ *
+ *
+ * @address{BPRE,081E9F10}
+ */
+extern u8 build_edition_identifier;
+
+/**
+ *
+ *
+ * @address{BPRE,081E9F11}
+ */
+extern u8 game_language;
 
 POKEAGB_END_DECL
 

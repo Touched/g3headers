@@ -34,7 +34,8 @@ ASSERT_SIZEOF(struct QuestLogStory, 0x668);
  */
 #pragma pack(push, 1)
 struct SaveBlock1 {
-    struct Coords16 camera_position;
+    s16 camera_x;
+    s16 camera_y;
     struct WarpData location;
     struct WarpData saved_warp;
     struct WarpData field_14;

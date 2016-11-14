@@ -272,10 +272,16 @@ extern u8 scripting_npc;
 POKEAGB_EXTERN void script_env_init_script(void* script);
 
 /**
- * Initialise the script state with the given instruction pointer.
+ * Mark state as script is running
  * @address{BPRE,08069940}
  */
 POKEAGB_EXTERN void script_env_enable(void);
+
+/**
+ * Mark state as script is not running
+ * @address{BPRE,0806994C}
+ */
+POKEAGB_EXTERN void script_env_disable(void);
 
 /**
  * Set a flag

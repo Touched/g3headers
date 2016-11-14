@@ -192,6 +192,11 @@ POKEAGB_EXTERN void oac_nullsub(struct Object* o);
 POKEAGB_EXTERN void objc_exec(void);
 
 /**
+ * @address{BPRE,08006FE0}
+ */
+POKEAGB_EXTERN u8 template_instanciate_reverse_search(struct Template*, u16 x, u16 y, u8 height);
+
+/**
  * @address{BPRE,08006BA8}
  */
 POKEAGB_EXTERN DEPRECATED void obj_sync_something(void);

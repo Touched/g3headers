@@ -231,6 +231,11 @@ POKEAGB_EXTERN u32 font_get_width_of_string(u8 font, const pchar* s, u16);
 POKEAGB_EXTERN void box_related_one(u8, u8, pchar *, u8, u8, u8, u8, u8);
 
 /**
+ * @address{BPRE,080F6CD0}
+ */
+POKEAGB_EXTERN void box_related_one(u8, u8, pchar *, u8, u8, u8, u8, u8);
+
+/**
  * Allocates a textbox and returns its ID.
  * @address{BPRE,08003FA0}
  */
@@ -249,6 +254,7 @@ POKEAGB_EXTERN u8 rboxid_clean(u8 id, bool update);
 POKEAGB_EXTERN u8 rboxid_free(u8 id);
 
 /**
+ *
  * @address{BPRE,080F7768}
  */
 POKEAGB_EXTERN void box_curved(u8 rboxid, u8 player_closed);

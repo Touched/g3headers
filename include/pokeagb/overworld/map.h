@@ -408,11 +408,42 @@ struct MapHeader {
 
 ASSERT_SIZEOF(struct MapHeader, 0x1C);
 
+
+/**
+ * Current map header 
+ * @address{BPRE,02036DFC}
+ */
+ extern struct MapHeader currentmap_header;
+
+/**
+ * Current map header 
+ * @address{BPRE,08058DC4}
+ */ 
+POKEAGB_EXTERN u8 cur_mapdata_get_middle2bit_at(s16 x, s16 y);
+
 /**
  * Fetch the map header for the given map.
  * @address{BPRE,08055238}
  */
 POKEAGB_EXTERN struct MapHeader* mapheader_by_mapnumbers(u8 bank, u8 map);
+
+
+/**
+ * Return height mismatch between NPC and position
+ * @address{BPRE,080681B0}
+ */
+POKEAGB_EXTERN u8 cur_mapdata_height_mismatch(u8 height, s16 x, s16 y);
+
+/**
+ * Check if map light supports flying/teleporting. I.e not indoors or cave.
+ * @address{BPRE,080561FC}
+ */
+POKEAGB_EXTERN bool is_light_level_1_2_3_or_6__opensky(u8 map_light);
+
+/**
+ * @address{BPRE,08056260}
+ */
+extern u8 get_map_name_index(void);
 
 struct wild_pokemon {
     u8 min_level;
@@ -460,7 +491,27 @@ extern u8 get_wild_data_index_for_map(void);
 /**
  * @address{BPRE,08058F48}
  */
-extern u8 cur_mapdata_block_get_field_at(u16 x_coord, u16 y_coord, u8 unk);
+extern u32 cur_mapdata_block_get_field_at(u16 x_coord, u16 y_coord, u8 unk);
+
+
+/**
+ * @address{BPRE,08058F1C}
+ */
+extern u32 blockinfo_get_field(u32 block_info, u8 field);
+
+
+/**
+ * @address{BPRE,0807F748}
+ */
+extern void exec_battle(void);
+
+
+/**
+ * Needs a better name. Logs coords 
+ * and size of object to some structure
+ * @address{BPRE,08063BC4}
+ */
+extern void log_coords_relative_camera(s32* x, s32* y, u8 size_x, u8 size_y);
 
 POKEAGB_END_DECL
 

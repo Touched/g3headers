@@ -177,6 +177,13 @@ POKEAGB_EXTERN void npc_change_sprite(struct NpcState* npc, u8 sprite);
 POKEAGB_EXTERN void npc_turn(struct NpcState* npc, u8 direction);
 
 /**
+ * Exclamation mark animation over npc.
+ *
+ * @address{BPRE,08066920}
+ */
+POKEAGB_EXTERN void an_exclamation_mark(struct NpcState* npc, struct Object* obj);
+
+/**
  * Translate a local ID to an NPC state ID.
  * Map and bank are ignored if local_id != NPC_LOCAL_ID_PLAYER.
  *

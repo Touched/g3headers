@@ -562,7 +562,7 @@ enum PokemonDataRequest {
      * @invariant Needs an extended Pokemon struct instead of PokemonBase.
      * @see Pokemon
      */
-    REQUEST_TOTL_HP = 0x3A,
+    REQUEST_TOTAL_HP = 0x3A,
 
     /**
      * The Pokemon's current attack stat.
@@ -641,11 +641,11 @@ enum PokemonDataRequest {
  * @return The attribute value or amount of bytes copied.
  * @address{BPRE,0803FBE8}
  */
-POKEAGB_EXTERN u32 pokemon_getattr(struct PokemonBase* pokemon,
+POKEAGB_EXTERN u32 pokemon_getattr(void* pokemon,
                                    enum PokemonDataRequest attribute,
                                    pchar* output);
-                                                                      
-                                   
+
+
 /**
  * Set a Pokemon attribute.
  *
@@ -654,7 +654,7 @@ POKEAGB_EXTERN u32 pokemon_getattr(struct PokemonBase* pokemon,
  * @param data Pointer to the new attribute value.
  * @address{BPRE,0804037C}
  */
-POKEAGB_EXTERN void pokemon_setattr(struct PokemonBase* pokemon,
+POKEAGB_EXTERN void pokemon_setattr(void* pokemon,
                                     enum PokemonDataRequest attribute,
                                     void* data);
 

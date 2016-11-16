@@ -134,39 +134,112 @@ extern ScriptCommand* script_cmds_max;
 
 /**
  * Script temporary variable 0x8000
- * @address{BPRE,020375D8}
+ * @address{BPRE,020370B8}
  */
 extern u16 var_8000;
 
 /**
  * Script temporary variable 0x8001
- * @address{BPRE,020375DA}
+ * @address{BPRE,020370BA}
  */
 extern u16 var_8001;
 
 /**
  * Script temporary variable 0x8002
- * @address{BPRE,020375DC}
+ * @address{BPRE,020370BC}
  */
 extern u16 var_8002;
 
 /**
  * Script temporary variable 0x8003
- * @address{BPRE,020375DE}
+ * @address{BPRE,020370BE}
  */
 extern u16 var_8003;
 
 /**
+ * Script temporary variable 0x8004
+ * @address{BPRE,020370C0}
+ */
+extern u16 var_8004;
+
+/**
+ * Script temporary variable 0x8005
+ * @address{BPRE,020370C0}
+ */
+extern u16 var_8005;
+
+/**
+ * Script temporary variable 0x8006
+ * @address{BPRE,020370BE}
+ */
+extern u16 var_8006;
+
+/**
+ * Script temporary variable 0x8007
+ * @address{BPRE,020370BE}
+ */
+extern u16 var_8007;
+
+/**
+ * Script temporary variable 0x8008
+ * @address{BPRE,020370BE}
+ */
+extern u16 var_8008;
+
+/**
+ * Script temporary variable 0x8009
+ * @address{BPRE,020370BE}
+ */
+extern u16 var_8009;
+
+/**
+ * Script temporary variable 0x800A
+ * @address{BPRE,020370BE}
+ */
+extern u16 var_800A;
+
+/**
+ * Script temporary variable 0x800B
+ * @address{BPRE,020370BE}
+ */
+extern u16 var_800B;
+
+/**
+ * Script temporary variable 0x800C
+ * @address{BPRE,020370BE}
+ */
+extern u16 var_800C;
+
+/**
  * Script temporary variable 0x800D
- * @address{BPRE,020375F0}
+ * @address{BPRE,020370BE}
  */
 extern u16 var_800D;
+
+/**
+ * Script temporary variable 0x800E
+ * @address{BPRE,020370BE}
+ */
+extern u16 var_800E;
 
 /**
  * Local ID of the NPC last spoken to.
  * @address{BPRE,020370D2}
  */
 extern u16 var_800F;
+
+/**
+ * Script temporary variable 0x8010
+ * @address{BPRE,020370D6}
+ */
+extern u16 var_8010;
+
+/**
+ * Script temporary variable 0x8011
+ * @address{BPRE,020370D8}
+ */
+extern u16 var_8011;
+
 
 /**
  * Read the value in a script variable
@@ -181,6 +254,12 @@ POKEAGB_EXTERN u16 var_load(u16 variable);
 POKEAGB_EXTERN u16* var_access(u16 variable);
 
 /**
+ * Set a value to a script variable
+ * @address{BPRE,0806E584}
+ */
+POKEAGB_EXTERN u16* var_set(u16 variable, u16 value);
+
+/**
  * NPC state id of the NPC running the script
  * @address{BPRE,03005074}
  */
@@ -193,16 +272,28 @@ extern u8 scripting_npc;
 POKEAGB_EXTERN void script_env_init_script(void* script);
 
 /**
- * Initialise the script state with the given instruction pointer.
+ * Mark state as script is running
  * @address{BPRE,08069940}
  */
 POKEAGB_EXTERN void script_env_enable(void);
+
+/**
+ * Mark state as script is not running
+ * @address{BPRE,0806994C}
+ */
+POKEAGB_EXTERN void script_env_disable(void);
 
 /**
  * Set a flag
  * @address{BPRE,0806E680}
  */
 POKEAGB_EXTERN void flag_set(u16 flag);
+
+/**
+ * Check script_env_2 is enabled 
+ * @address{BPRE,08069958}
+ */
+POKEAGB_EXTERN bool script_env_2_is_enabled(void);
 
 POKEAGB_END_DECL
 

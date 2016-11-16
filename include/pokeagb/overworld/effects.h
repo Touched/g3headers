@@ -15,8 +15,8 @@
 POKEAGB_BEGIN_DECL
 
 struct Coords32 {
-    u32 x;
-    u32 y;
+    s32 x;
+    s32 y;
 };
 
 /* this is very incomplete still TODO Research */

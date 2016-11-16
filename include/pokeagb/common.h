@@ -3,6 +3,8 @@
 
 #include <stddef.h>
 
+#define ABS(x) (x) < 0 ? -(x) : (x)
+
 #define VALUE_TO_STRING(x) #x
 #define VALUE(x) VALUE_TO_STRING(x)
 #define VAR_NAME_VALUE(var) #var "=" VALUE(var)

@@ -732,6 +732,25 @@ POKEAGB_EXTERN void pokemon_slot_purge_full(struct Pokemon* dst);
  */
 POKEAGB_EXTERN void recalculate_stats(struct Pokemon* pokemon);
 
+/**
+ *
+ * @address{BPRE,080404D0}
+ */
+POKEAGB_EXTERN void set_pokemon_data_2(struct Pokemon* pokemon, enum PokemonDataRequest, void* data);
+
+/**
+ *
+ * @address{BPRE,0803E3E8}
+ */
+POKEAGB_EXTERN u16 pokemon_calc_checksum(struct Pokemon* pokemon);
+
+/**
+ *
+ * @address{BPRE,08040FD0}
+ */
+POKEAGB_EXTERN void copy_pokemon_name(pchar* dst, enum PokemonSpecies);
+
+
 enum PokemonGender {
     PKMN_GENDER_BOY = 0,
     PKMN_GENDER_GIRL = 0xFE,

@@ -8,6 +8,8 @@
 
 #include "../types.h"
 
+// this doesn't structured right at. Bit fields broken between bytes
+// and game loads it as though it's a byte. Please review
 struct FadeControl {
     u16 bg_pal_bitfield;
     u16 obj_pal_bitfield;
@@ -89,5 +91,10 @@ POKEAGB_EXTERN void process_palfade(void);
  * @address{BPRE,080088F0}
  */
 POKEAGB_EXTERN void gpu_pal_allocator_reset(void);
+
+/**
+ * @address{BPRE,0807DC00}
+ */
+POKEAGB_EXTERN void pal_fill_black(void);
 
 #endif /* POKEAGB_GRAPHICS_PALETTE_H_ */

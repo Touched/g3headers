@@ -8,6 +8,7 @@
 
 #include <pokeagb/common.h>
 #include <pokeagb/types.h>
+#include <pokeagb/core/callback.h>
 
 POKEAGB_BEGIN_DECL
 
@@ -17,6 +18,8 @@ struct ScriptEnvironment;
  * @return 0 to indicate succcess, 1 to enter wait state.
  */
 typedef u8 (*ScriptCommand)(struct ScriptEnvironment* environment);
+
+typedef u8 (*HMTask)(void);
 
 /**
  * @return 1 when finished, 0 to keep executing.
@@ -164,43 +167,43 @@ extern u16 var_8004;
 
 /**
  * Script temporary variable 0x8005
- * @address{BPRE,020370C0}
+ * @address{BPRE,020370C2}
  */
 extern u16 var_8005;
 
 /**
  * Script temporary variable 0x8006
- * @address{BPRE,020370BE}
+ * @address{BPRE,020370C4}
  */
 extern u16 var_8006;
 
 /**
  * Script temporary variable 0x8007
- * @address{BPRE,020370BE}
+ * @address{BPRE,020370C6}
  */
 extern u16 var_8007;
 
 /**
  * Script temporary variable 0x8008
- * @address{BPRE,020370BE}
+ * @address{BPRE,020370C8}
  */
 extern u16 var_8008;
 
 /**
  * Script temporary variable 0x8009
- * @address{BPRE,020370BE}
+ * @address{BPRE,020370CA}
  */
 extern u16 var_8009;
 
 /**
  * Script temporary variable 0x800A
- * @address{BPRE,020370BE}
+ * @address{BPRE,020370CC}
  */
 extern u16 var_800A;
 
 /**
  * Script temporary variable 0x800B
- * @address{BPRE,020370BE}
+ * @address{BPRE,020370CE}
  */
 extern u16 var_800B;
 
@@ -294,6 +297,38 @@ POKEAGB_EXTERN void flag_set(u16 flag);
  * @address{BPRE,08069958}
  */
 POKEAGB_EXTERN bool script_env_2_is_enabled(void);
+
+
+/**
+ * Function holder to be executed
+ * @address{BPRE,03005024}
+ */
+extern HMTask hm_phase_1;
+
+/**
+ * Special 0x9F
+ * @address{BPRE,080BF8FC}
+ */
+POKEAGB_EXTERN void special_9F(void);
+
+
+/**
+ * Special completed check
+ * @address{BPRE,0807AA70}
+ */
+POKEAGB_EXTERN u8 special_is_finished(void);
+
+/**
+ * Select pokemon launch
+ * @address{BPRE,0811FB28}
+ */
+POKEAGB_EXTERN void select_pokemon_launch(u8, u8, u8, u8, u8, SuperCallback);
+
+/**
+ * Trades Pokemon in slot indicated by var 08004, with opponent's first slot pkmn.
+ * @address{BPRE,08054440}
+ */
+POKEAGB_EXTERN void trade_pokemon(void);
 
 POKEAGB_END_DECL
 

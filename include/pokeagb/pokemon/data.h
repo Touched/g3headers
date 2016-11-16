@@ -745,6 +745,13 @@ enum PokemonGender {
  */
 POKEAGB_BEGIN_DECL u8 pokemon_get_gender(struct Pokemon* pokemon);
 
+#define STATUS_SLEEP_TURNS 7
+#define STATUS_POISON (1 << 3)
+#define STATUS_BURN (1 << 4)
+#define STATUS_FREEZE (1 << 5)
+#define STATUS_PARALYSIS (1 << 6)
+#define STATUS_BAD_POISON (1 << 7)
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEMON_DATA_H_ */

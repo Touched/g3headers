@@ -20,651 +20,651 @@
  * LCD Control
  * @address{BPRE,04000000}
  */
-volatile u16 REG_DISPCNT;
+extern volatile u16 REG_DISPCNT;
 #define REG_ID_DISPCNT 0x0
 
 /**
  * General LCD Status (STAT LYC)
  * @address{BPRE,04000004}
  */
-volatile u16 REG_DISPSTAT;
+extern volatile u16 REG_DISPSTAT;
 #define REG_ID_DISPSTAT 0x4
 
 /**
  * Vertical Counter (LY)
  * @address{BPRE,04000006}
  */
-volatile const u16 REG_VCOUNT;
+extern volatile const u16 REG_VCOUNT;
 #define REG_ID_VCOUNT 0x6
 
 /**
  * BG0 Control
  * @address{BPRE,04000008}
  */
-volatile u16 REG_BG0CNT;
+extern volatile u16 REG_BG0CNT;
 #define REG_ID_BG0CNT 0x8
 
 /**
  * BG1 Control
  * @address{BPRE,0400000A}
  */
-volatile u16 REG_BG1CNT;
+extern volatile u16 REG_BG1CNT;
 #define REG_ID_BG1CNT 0xA
 
 /**
  * BG2 Control
  * @address{BPRE,0400000C}
  */
-volatile u16 REG_BG2CNT;
+extern volatile u16 REG_BG2CNT;
 #define REG_ID_BG2CNT 0xC
 
 /**
  * BG3 Control
  * @address{BPRE,0400000E}
  */
-volatile u16 REG_BG3CNT;
+extern volatile u16 REG_BG3CNT;
 #define REG_ID_BG3CNT 0xE
 
 /**
  * BG0 X-Offset
  * @address{BPRE,04000010}
  */
-volatile __writeonly u16 REG_BG0HOFS;
+extern volatile __writeonly u16 REG_BG0HOFS;
 #define REG_ID_BG0HOFS 0x10
 
 /**
  * BG0 Y-Offset
  * @address{BPRE,04000012}
  */
-volatile __writeonly u16 REG_BG0VOFS;
+extern volatile __writeonly u16 REG_BG0VOFS;
 #define REG_ID_BG0VOFS 0x12
 
 /**
  * BG1 X-Offset
  * @address{BPRE,04000014}
  */
-volatile __writeonly u16 REG_BG1HOFS;
+extern volatile __writeonly u16 REG_BG1HOFS;
 #define REG_ID_BG1HOFS 0x14
 
 /**
  * BG1 Y-Offset
  * @address{BPRE,04000016}
  */
-volatile __writeonly u16 REG_BG1VOFS;
+extern volatile __writeonly u16 REG_BG1VOFS;
 #define REG_ID_BG1VOFS 0x16
 
 /**
  * BG2 X-Offset
  * @address{BPRE,04000018}
  */
-volatile __writeonly u16 REG_BG2HOFS;
+extern volatile __writeonly u16 REG_BG2HOFS;
 #define REG_ID_BG2HOFS 0x18
 
 /**
  * BG2 Y-Offset
  * @address{BPRE,0400001A}
  */
-volatile __writeonly u16 REG_BG2VOFS;
+extern volatile __writeonly u16 REG_BG2VOFS;
 #define REG_ID_BG2VOFS 0x1A
 
 /**
  * BG3 X-Offset
  * @address{BPRE,0400001C}
  */
-volatile __writeonly u16 REG_BG3HOFS;
+extern volatile __writeonly u16 REG_BG3HOFS;
 #define REG_ID_BG3HOFS 0x1C
 
 /**
  * BG3 Y-Offset
  * @address{BPRE,0400001E}
  */
-volatile __writeonly u16 REG_BG3VOFS;
+extern volatile __writeonly u16 REG_BG3VOFS;
 #define REG_ID_BG3VOFS 0x1E
 
 /**
  * BG2 Rotation/Scaling Parameter A (dx)
  * @address{BPRE,04000020}
  */
-volatile __writeonly u16 REG_BG2PA;
+extern volatile __writeonly u16 REG_BG2PA;
 #define REG_ID_BG2PA 0x20
 
 /**
  * BG2 Rotation/Scaling Parameter B (dmx)
  * @address{BPRE,04000022}
  */
-volatile __writeonly u16 REG_BG2PB;
+extern volatile __writeonly u16 REG_BG2PB;
 #define REG_ID_BG2PB 0x22
 
 /**
  * BG2 Rotation/Scaling Parameter C (dy)
  * @address{BPRE,04000024}
  */
-volatile __writeonly u16 REG_BG2PC;
+extern volatile __writeonly u16 REG_BG2PC;
 #define REG_ID_BG2PC 0x24
 
 /**
  * BG2 Rotation/Scaling Parameter D (dmy)
  * @address{BPRE,04000026}
  */
-volatile __writeonly u16 REG_BG2PD;
+extern volatile __writeonly u16 REG_BG2PD;
 #define REG_ID_BG2PD 0x26
 
 /**
  * BG2 Reference Point X-Coordinate
  * @address{BPRE,04000028}
  */
-volatile __writeonly u32 REG_BG2X;
+extern volatile __writeonly u32 REG_BG2X;
 #define REG_ID_BG2X 0x28
 
 /**
  * BG2 Reference Point Y-Coordinate
  * @address{BPRE,0400002C}
  */
-volatile __writeonly u32 REG_BG2Y;
+extern volatile __writeonly u32 REG_BG2Y;
 #define REG_ID_BG2Y 0x2C
 
 /**
  * BG3 Rotation/Scaling Parameter A (dx)
  * @address{BPRE,04000030}
  */
-volatile __writeonly u16 REG_BG3PA;
+extern volatile __writeonly u16 REG_BG3PA;
 #define REG_ID_BG3PA 0x30
 
 /**
  * BG3 Rotation/Scaling Parameter B (dmx)
  * @address{BPRE,04000032}
  */
-volatile __writeonly u16 REG_BG3PB;
+extern volatile __writeonly u16 REG_BG3PB;
 #define REG_ID_BG3PB 0x32
 
 /**
  * BG3 Rotation/Scaling Parameter C (dy)
  * @address{BPRE,04000034}
  */
-volatile __writeonly u16 REG_BG3PC;
+extern volatile __writeonly u16 REG_BG3PC;
 #define REG_ID_BG3PC 0x34
 
 /**
  * BG3 Rotation/Scaling Parameter D (dmy)
  * @address{BPRE,04000036}
  */
-volatile __writeonly u16 REG_BG3PD;
+extern volatile __writeonly u16 REG_BG3PD;
 #define REG_ID_BG3PD 0x36
 
 /**
  * BG3 Reference Point X-Coordinate
  * @address{BPRE,04000038}
  */
-volatile __writeonly u32 REG_BG3X;
+extern volatile __writeonly u32 REG_BG3X;
 #define REG_ID_BG3X 0x38
 
 /**
  * BG3 Reference Point Y-Coordinate
  * @address{BPRE,0400003C}
  */
-volatile __writeonly u32 REG_BG3Y;
+extern volatile __writeonly u32 REG_BG3Y;
 #define REG_ID_BG3Y 0x3C
 
 /**
  * Window 0 Horizontal Dimensions
  * @address{BPRE,04000040}
  */
-volatile __writeonly u16 REG_WIN0H;
+extern volatile __writeonly u16 REG_WIN0H;
 #define REG_ID_WIN0H 0x40
 
 /**
  * Window 1 Horizontal Dimensions
  * @address{BPRE,04000042}
  */
-volatile __writeonly u16 REG_WIN1H;
+extern volatile __writeonly u16 REG_WIN1H;
 #define REG_ID_WIN1H 0x42
 
 /**
  * Window 0 Vertical Dimensions
  * @address{BPRE,04000044}
  */
-volatile __writeonly u16 REG_WIN0V;
+extern volatile __writeonly u16 REG_WIN0V;
 #define REG_ID_WIN0V 0x44
 
 /**
  * Window 1 Vertical Dimensions
  * @address{BPRE,04000046}
  */
-volatile __writeonly u16 REG_WIN1V;
+extern volatile __writeonly u16 REG_WIN1V;
 #define REG_ID_WIN1V 0x46
 
 /**
  * Inside of Window 0 and 1
  * @address{BPRE,04000048}
  */
-volatile u16 REG_WININ;
+extern volatile u16 REG_WININ;
 #define REG_ID_WININ 0x48
 
 /**
  * Inside of OBJ Window & Outside of Windows
  * @address{BPRE,0400004A}
  */
-volatile u16 REG_WINOUT;
+extern volatile u16 REG_WINOUT;
 #define REG_ID_WINOUT 0x4A
 
 /**
  * Mosaic Size
  * @address{BPRE,0400004C}
  */
-volatile __writeonly u16 REG_MOSAIC;
+extern volatile __writeonly u16 REG_MOSAIC;
 #define REG_ID_MOSAIC 0x4C
 
 /**
  * Color Special Effects Selection
  * @address{BPRE,04000050}
  */
-volatile u16 REG_BLDCNT;
+extern volatile u16 REG_BLDCNT;
 #define REG_ID_BLDCNT 0x50
 
 /**
  * Alpha Blending Coefficients
  * @address{BPRE,04000052}
  */
-volatile __writeonly u16 REG_BLDALPHA;
+extern volatile __writeonly u16 REG_BLDALPHA;
 #define REG_ID_BLDALPHA 0x52
 
 /**
  * Brightness (Fade-In/Out) Coefficient
  * @address{BPRE,04000054}
  */
-volatile __writeonly u16 REG_BLDY;
+extern volatile __writeonly u16 REG_BLDY;
 #define REG_ID_BLDY 0x54
 
 /**
  * Channel 1 Sweep register       (NR10)
  * @address{BPRE,04000060}
  */
-volatile u16 REG_SOUND1CNT_L;
+extern volatile u16 REG_SOUND1CNT_L;
 #define REG_ID_SOUND1CNT_L 0x60
 
 /**
  * Channel 1 Duty/Length/Envelope (NR11  NR12)
  * @address{BPRE,04000062}
  */
-volatile u16 REG_SOUND1CNT_H;
+extern volatile u16 REG_SOUND1CNT_H;
 #define REG_ID_SOUND1CNT_H 0x62
 
 /**
  * Channel 1 Frequency/Control    (NR13  NR14)
  * @address{BPRE,04000064}
  */
-volatile u16 REG_SOUND1CNT_X;
+extern volatile u16 REG_SOUND1CNT_X;
 #define REG_ID_SOUND1CNT_X 0x64
 
 /**
  * Channel 2 Duty/Length/Envelope (NR21  NR22)
  * @address{BPRE,04000068}
  */
-volatile u16 REG_SOUND2CNT_L;
+extern volatile u16 REG_SOUND2CNT_L;
 #define REG_ID_SOUND2CNT_L 0x68
 
 /**
  * Channel 2 Frequency/Control    (NR23  NR24)
  * @address{BPRE,0400006C}
  */
-volatile u16 REG_SOUND2CNT_H;
+extern volatile u16 REG_SOUND2CNT_H;
 #define REG_ID_SOUND2CNT_H 0x6C
 
 /**
  * Channel 3 Stop/Wave RAM select (NR30)
  * @address{BPRE,04000070}
  */
-volatile u16 REG_SOUND3CNT_L;
+extern volatile u16 REG_SOUND3CNT_L;
 #define REG_ID_SOUND3CNT_L 0x70
 
 /**
  * Channel 3 Length/Volume        (NR31  NR32)
  * @address{BPRE,04000072}
  */
-volatile u16 REG_SOUND3CNT_H;
+extern volatile u16 REG_SOUND3CNT_H;
 #define REG_ID_SOUND3CNT_H 0x72
 
 /**
  * Channel 3 Frequency/Control    (NR33  NR34)
  * @address{BPRE,04000074}
  */
-volatile u16 REG_SOUND3CNT_X;
+extern volatile u16 REG_SOUND3CNT_X;
 #define REG_ID_SOUND3CNT_X 0x74
 
 /**
  * Channel 4 Length/Envelope      (NR41  NR42)
  * @address{BPRE,04000078}
  */
-volatile u16 REG_SOUND4CNT_L;
+extern volatile u16 REG_SOUND4CNT_L;
 #define REG_ID_SOUND4CNT_L 0x78
 
 /**
  * Channel 4 Frequency/Control    (NR43  NR44)
  * @address{BPRE,0400007C}
  */
-volatile u16 REG_SOUND4CNT_H;
+extern volatile u16 REG_SOUND4CNT_H;
 #define REG_ID_SOUND4CNT_H 0x7C
 
 /**
  * Control Stereo/Volume/Enable   (NR50  NR51)
  * @address{BPRE,04000080}
  */
-volatile u16 REG_SOUNDCNT_L;
+extern volatile u16 REG_SOUNDCNT_L;
 #define REG_ID_SOUNDCNT_L 0x80
 
 /**
  * Control Mixing/DMA Control
  * @address{BPRE,04000082}
  */
-volatile u16 REG_SOUNDCNT_H;
+extern volatile u16 REG_SOUNDCNT_H;
 #define REG_ID_SOUNDCNT_H 0x82
 
 /**
  * Control Sound on/off           (NR52)
  * @address{BPRE,04000084}
  */
-volatile u16 REG_SOUNDCNT_X;
+extern volatile u16 REG_SOUNDCNT_X;
 #define REG_ID_SOUNDCNT_X 0x84
 
 /**
  * Channel A FIFO  Data 0-3
  * @address{BPRE,040000A0}
  */
-volatile __writeonly u32 REG_FIFO_A;
+extern volatile __writeonly u32 REG_FIFO_A;
 #define REG_ID_FIFO_A 0xA0
 
 /**
  * Channel B FIFO  Data 0-3
  * @address{BPRE,040000A4}
  */
-volatile __writeonly u32 REG_FIFO_B;
+extern volatile __writeonly u32 REG_FIFO_B;
 #define REG_ID_FIFO_B 0xA4
 
 /**
  * DMA 0 Source Address
  * @address{BPRE,040000B0}
  */
-volatile __writeonly u32 REG_DMA0SAD;
+extern volatile __writeonly u32 REG_DMA0SAD;
 #define REG_ID_DMA0SAD 0xB0
 
 /**
  * DMA 0 Destination Address
  * @address{BPRE,040000B4}
  */
-volatile __writeonly u32 REG_DMA0DAD;
+extern volatile __writeonly u32 REG_DMA0DAD;
 #define REG_ID_DMA0DAD 0xB4
 
 /**
  * DMA 0 Word Count
  * @address{BPRE,040000B8}
  */
-volatile u32 REG_DMA0CNT;
+extern volatile u32 REG_DMA0CNT;
 #define REG_ID_DMA0CNT 0xB8
 
 /**
  * DMA 1 Source Address
  * @address{BPRE,040000BC}
  */
-volatile __writeonly u32 REG_DMA1SAD;
+extern volatile __writeonly u32 REG_DMA1SAD;
 #define REG_ID_DMA1SAD 0xBC
 
 /**
  * DMA 1 Destination Address
  * @address{BPRE,040000C0}
  */
-volatile __writeonly u32 REG_DMA1DAD;
+extern volatile __writeonly u32 REG_DMA1DAD;
 #define REG_ID_DMA1DAD 0xC0
 
 /**
  * DMA 1 Word Count
  * @address{BPRE,040000C4}
  */
-volatile u32 REG_DMA1CNT;
+extern volatile u32 REG_DMA1CNT;
 #define REG_ID_DMA1CNT 0xC4
 
 /**
  * DMA 2 Source Address
  * @address{BPRE,040000C8}
  */
-volatile __writeonly u32 REG_DMA2SAD;
+extern volatile __writeonly u32 REG_DMA2SAD;
 #define REG_ID_DMA2SAD 0xC8
 
 /**
  * DMA 2 Destination Address
  * @address{BPRE,040000CC}
  */
-volatile __writeonly u32 REG_DMA2DAD;
+extern volatile __writeonly u32 REG_DMA2DAD;
 #define REG_ID_DMA2DAD 0xCC
 
 /**
  * DMA 2 Control
  * @address{BPRE,040000D2}
  */
-volatile u32 REG_DMA2CNT;
+extern volatile u32 REG_DMA2CNT;
 #define REG_ID_DMA2CNT 0xD2
 
 /**
  * DMA 3 Source Address
  * @address{BPRE,040000D4}
  */
-volatile __writeonly u32 REG_DMA3SAD;
+extern volatile __writeonly u32 REG_DMA3SAD;
 #define REG_ID_DMA3SAD 0xD4
 
 /**
  * DMA 3 Destination Address
  * @address{BPRE,040000D8}
  */
-volatile __writeonly u32 REG_DMA3DAD;
+extern volatile __writeonly u32 REG_DMA3DAD;
 #define REG_ID_DMA3DAD 0xD8
 
 /**
  * DMA 3 Control
  * @address{BPRE,040000DE}
  */
-volatile u32 REG_DMA3CNT;
+extern volatile u32 REG_DMA3CNT;
 #define REG_ID_DMA3CNT 0xDE
 
 /**
  * Timer 0 Counter/Reload
  * @address{BPRE,04000100}
  */
-volatile u16 REG_TM0CNT_L;
+extern volatile u16 REG_TM0CNT_L;
 #define REG_ID_TM0CNT_L 0x100
 
 /**
  * Timer 0 Control
  * @address{BPRE,04000102}
  */
-volatile u16 REG_TM0CNT_H;
+extern volatile u16 REG_TM0CNT_H;
 #define REG_ID_TM0CNT_H 0x102
 
 /**
  * Timer 1 Counter/Reload
  * @address{BPRE,04000104}
  */
-volatile u16 REG_TM1CNT_L;
+extern volatile u16 REG_TM1CNT_L;
 #define REG_ID_TM1CNT_L 0x104
 
 /**
  * Timer 1 Control
  * @address{BPRE,04000106}
  */
-volatile u16 REG_TM1CNT_H;
+extern volatile u16 REG_TM1CNT_H;
 #define REG_ID_TM1CNT_H 0x106
 
 /**
  * Timer 2 Counter/Reload
  * @address{BPRE,04000108}
  */
-volatile u16 REG_TM2CNT_L;
+extern volatile u16 REG_TM2CNT_L;
 #define REG_ID_TM2CNT_L 0x108
 
 /**
  * Timer 2 Control
  * @address{BPRE,0400010A}
  */
-volatile u16 REG_TM2CNT_H;
+extern volatile u16 REG_TM2CNT_H;
 #define REG_ID_TM2CNT_H 0x10A
 
 /**
  * Timer 3 Counter/Reload
  * @address{BPRE,0400010C}
  */
-volatile u16 REG_TM3CNT_L;
+extern volatile u16 REG_TM3CNT_L;
 #define REG_ID_TM3CNT_L 0x10C
 
 /**
  * Timer 3 Control
  * @address{BPRE,0400010E}
  */
-volatile u16 REG_TM3CNT_H;
+extern volatile u16 REG_TM3CNT_H;
 #define REG_ID_TM3CNT_H 0x10E
 
 /**
  * SIO Data (Normal-32bit Mode; shared with below)
  * @address{BPRE,04000120}
  */
-volatile u32 REG_SIODATA32;
+extern volatile u32 REG_SIODATA32;
 #define REG_ID_SIODATA32 0x120
 
 /**
  * SIO Data 0 (Parent)    (Multi-Player Mode)
  * @address{BPRE,04000120}
  */
-volatile u16 REG_SIOMULTI0;
+extern volatile u16 REG_SIOMULTI0;
 #define REG_ID_SIOMULTI0 0x120
 
 /**
  * SIO Data 1 (1st Child) (Multi-Player Mode)
  * @address{BPRE,04000122}
  */
-volatile u16 REG_SIOMULTI1;
+extern volatile u16 REG_SIOMULTI1;
 #define REG_ID_SIOMULTI1 0x122
 
 /**
  * SIO Data 2 (2nd Child) (Multi-Player Mode)
  * @address{BPRE,04000124}
  */
-volatile u16 REG_SIOMULTI2;
+extern volatile u16 REG_SIOMULTI2;
 #define REG_ID_SIOMULTI2 0x124
 
 /**
  * SIO Data 3 (3rd Child) (Multi-Player Mode)
  * @address{BPRE,04000126}
  */
-volatile u16 REG_SIOMULTI3;
+extern volatile u16 REG_SIOMULTI3;
 #define REG_ID_SIOMULTI3 0x126
 
 /**
  * SIO Control Register
  * @address{BPRE,04000128}
  */
-volatile u16 REG_SIOCNT;
+extern volatile u16 REG_SIOCNT;
 #define REG_ID_SIOCNT 0x128
 
 /**
  * SIO Data (Local of MultiPlayer; shared below)
  * @address{BPRE,0400012A}
  */
-volatile u16 REG_SIOMLT_SEND;
+extern volatile u16 REG_SIOMLT_SEND;
 #define REG_ID_SIOMLT_SEND 0x12A
 
 /**
  * SIO Data (Normal-8bit and UART Mode)
  * @address{BPRE,0400012A}
  */
-volatile u16 REG_SIODATA8;
+extern volatile u16 REG_SIODATA8;
 #define REG_ID_SIODATA8 0x12A
 
 /**
  * Key Status
  * @address{BPRE,04000130}
  */
-volatile const u16 REG_KEYINPUT;
+extern volatile const u16 REG_KEYINPUT;
 #define REG_ID_KEYINPUT 0x130
 
 /**
  * Key Interrupt Control
  * @address{BPRE,04000132}
  */
-volatile u16 REG_KEYCNT;
+extern volatile u16 REG_KEYCNT;
 #define REG_ID_KEYCNT 0x132
 
 /**
  * SIO Mode Select/General Purpose Data
  * @address{BPRE,04000134}
  */
-volatile u16 REG_RCNT;
+extern volatile u16 REG_RCNT;
 #define REG_ID_RCNT 0x134
 
 /**
  * SIO JOY Bus Control
  * @address{BPRE,04000140}
  */
-volatile u16 REG_JOYCNT;
+extern volatile u16 REG_JOYCNT;
 #define REG_ID_JOYCNT 0x140
 
 /**
  * SIO JOY Bus Receive Data
  * @address{BPRE,04000150}
  */
-volatile u32 REG_JOY_RECV;
+extern volatile u32 REG_JOY_RECV;
 #define REG_ID_JOY_RECV 0x150
 
 /**
  * SIO JOY Bus Transmit Data
  * @address{BPRE,04000154}
  */
-volatile u32 REG_JOY_TRANS;
+extern volatile u32 REG_JOY_TRANS;
 #define REG_ID_JOY_TRANS 0x154
 
 /**
  * SIO JOY Bus Receive Status
  * @address{BPRE,04000158}
  */
-volatile const u16 REG_JOYSTAT;
+extern volatile const u16 REG_JOYSTAT;
 #define REG_ID_JOYSTAT 0x158
 
 /**
  * Interrupt Enable Register
  * @address{BPRE,04000200}
  */
-volatile u16 REG_IE;
+extern volatile u16 REG_IE;
 #define REG_ID_IE 0x200
 
 /**
  * Interrupt Request Flags / IRQ Acknowledge
  * @address{BPRE,04000202}
  */
-volatile u16 REG_IF;
+extern volatile u16 REG_IF;
 #define REG_ID_IF 0x202
 
 /**
  * Game Pak Waitstate Control
  * @address{BPRE,04000204}
  */
-volatile u16 REG_WAITCNT;
+extern volatile u16 REG_WAITCNT;
 #define REG_ID_WAITCNT 0x204
 
 /**
  * Interrupt Master Enable Register
  * @address{BPRE,04000208}
  */
-volatile u16 REG_IME;
+extern volatile u16 REG_IME;
 #define REG_ID_IME 0x208
 
 /**
  * Undocumented - Post Boot Flag
  * @address{BPRE,04000300}
  */
-volatile u8 REG_POSTFLG;
+extern volatile u8 REG_POSTFLG;
 #define REG_ID_POSTFLG 0x300
 
 /**
  * Undocumented - Power Down Control
  * @address{BPRE,04000301}
  */
-volatile __writeonly u8 REG_HALTCNT;
+extern volatile __writeonly u8 REG_HALTCNT;
 #define REG_ID_HALTCNT 0x301
 
 /*

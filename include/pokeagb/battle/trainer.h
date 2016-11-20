@@ -17,7 +17,7 @@
 #define TRAINER_ITEM_COUNT 4
 
 struct TrainerMoneyRate {
-    u8 class;
+    u8 trainer_class;
     u8 money;
     u16 field2;
 };
@@ -53,7 +53,7 @@ enum TrainerPartyFlag {
  */
 struct Trainer {
     enum TrainerPartyFlag flags;
-    u8 class;
+    u8 trainer_class;
     u8 music;
     u8 sprite;
     pchar name[10];

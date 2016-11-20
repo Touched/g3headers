@@ -144,7 +144,7 @@ struct Object {
     struct Frame (**animation_table)[];
     struct SpriteTiles* gfx_table;
     struct RotscaleFrame (**rotscale_table)[];
-    struct Template* template;
+    struct Template* object_template;
     u32 field18;
     ObjectCallback callback;
     struct Coords16 pos1;
@@ -154,7 +154,7 @@ struct Object {
     u8 anim_frame;
     u8 anim_delay;
     u8 counter;
-    u16 private[8];
+    u16 priv[8];
     u8 bitfield2;
     u8 bitfield;
     u16 anim_data_offset;
@@ -209,7 +209,7 @@ POKEAGB_EXTERN void obj_sync_superstate(void);
 /**
  * @address{BPRE,08006F8C}
  */
-POKEAGB_EXTERN u8 template_instanciate_forward_search(const struct Template* template,
+POKEAGB_EXTERN u8 template_instanciate_forward_search(const struct Template*,
                                                       u8 x,
                                                       u8 y,
                                                       u8 priority);

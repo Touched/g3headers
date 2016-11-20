@@ -159,7 +159,7 @@ POKEAGB_EXTERN struct RomNpc* rom_npc_by_local_id_and_map(u8 local_id, u8 map, u
  *
  * @address{BPRE,0805E72C}
  */
-POKEAGB_EXTERN u8 npc_instanciation_something(struct RomNpc* template,
+POKEAGB_EXTERN u8 npc_instanciation_something(struct RomNpc*,
                                               u8 map,
                                               u8 bank,
                                               s16 x_shift,

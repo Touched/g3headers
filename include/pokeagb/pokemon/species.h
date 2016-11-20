@@ -403,4 +403,6 @@ enum PokemonSpecies {
 
 ASSERT_SIZEOF(enum PokemonSpecies, 2);
 
+POKEAGB_END_DECL
+
 #endif /* POKEAGB_POKEMON_SPECIES_H_ */

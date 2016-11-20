@@ -762,7 +762,7 @@ enum PokemonGender {
  *
  * @address{BPRE,0803F720}
  */
-POKEAGB_BEGIN_DECL u8 pokemon_get_gender(struct Pokemon* pokemon);
+POKEAGB_EXTERN u8 pokemon_get_gender(struct Pokemon* pokemon);
 
 #define STATUS_SLEEP_TURNS 7
 #define STATUS_POISON (1 << 3)

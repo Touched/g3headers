@@ -46,14 +46,12 @@ struct Superstate {
     u16* vblank_counter;
     u32 field_24;
 
-    struct Buttons {
-        u16 held;
-        u16 new;
-        u16 held_remapped;
-        u16 new_remapped;
-        u16 new_and_repeated;
-        u16 countdown;
-    } buttons;
+    u16 buttons_held;
+    u16 buttons_new;
+    u16 buttons_held_remapped;
+    u16 buttons_new_remapped;
+    u16 buttons_new_and_repeated;
+    u16 buttons_countdown;
 
     u32 unused_apparently;
     struct OamData sprites[128];
@@ -88,6 +86,13 @@ POKEAGB_EXTERN void vblank_handler_set(SuperCallback func);
  * @address{BPRE,08000700}
  */
 POKEAGB_EXTERN void hblank_handler_set(SuperCallback func);
+
+/**
+ *
+ *
+ * @address{BPRE,080567DC}
+ */
+POKEAGB_EXTERN void c2_exit_to_overworld_2_switch(void);
 
 
 /**

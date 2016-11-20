@@ -31,7 +31,7 @@
  * Assert (at compile time) that a type is of a given size.
  */
 #define ASSERT_SIZEOF(type, size)                                     \
-    _Static_assert(sizeof(type) == size,                              \
+    STATIC_ASSERT(sizeof(type) == size,                               \
                    "Expected size of `"                               \
                    #type "` to be " #size ".")
 

@@ -45,12 +45,12 @@ union Color {
 /**
  * @address{BPRE,02037AB8}
  */
-struct FadeControl pal_fade_control;
+extern struct FadeControl pal_fade_control;
 
 /**
  * @address{BPRE,03003E58}
  */
-u8* gpu_pal_tag_search_lower_boundary;
+extern u8* gpu_pal_tag_search_lower_boundary;
 
 /**
  * @address{BPRE,080703EC}

@@ -750,6 +750,12 @@ POKEAGB_EXTERN u16 pokemon_calc_checksum(struct Pokemon* pokemon);
  */
 POKEAGB_EXTERN void copy_pokemon_name(pchar* dst, enum PokemonSpecies);
 
+/**
+ * Adds a string terminator (in place) to the end of the 10 byte
+ * Pokemon string if it needs it.
+ * @address{BPRE,08008D28}
+ */
+POKEAGB_EXTERN void pokemon_nickname_to_string(pchar* nickname);
 
 enum PokemonGender {
     PKMN_GENDER_BOY = 0,

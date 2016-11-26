@@ -23,6 +23,34 @@ struct Textbox {
     u8* pixels;
 };
 
+struct FontRenderState {
+    pchar* text;
+    u8 textbox_id;
+    u8 font_id;
+    u8 menu_cursor_1_a;
+    u8 menu_cursor_1_b;
+    u8 menu_cursor_2_a;
+    u8 menu_cursor_2_b;
+    u8 field_A;
+    u8 field_B;
+    u8 field_C;
+    u8 field_D;
+    u8 gap_E[2];
+    u32 field_10;
+    struct
+    {
+        u8 font_type;
+        u8 field_1;
+        u16 frames_visible_counter;
+        u32 field_4;
+    } sub;
+    u8 mode;
+    u8 text_speed;
+    u8 wait_frames;
+    u8 field_1F;
+    u8 field_20;
+};
+
 struct TextColor {
     u8 background;
     u8 foreground;

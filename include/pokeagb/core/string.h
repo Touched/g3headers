@@ -137,6 +137,18 @@ POKEAGB_EXTERN void textbox_task_delete_scroll_arrows(u8 task_id);
 #define STRING_BUFFER_SIZE 1000
 
 /**
+ * Return pointers to the strings for use by the string decoder.
+ * @address{BPRE,08231E70}
+ */
+extern const pchar* (*const script_buffer_functions[])(void);
+
+/**
+ * Generic buffer for strings.
+ * @address{BPRE,02022100}
+ */
+extern pchar fcode_buffer0[FCODE_BUFFER_SIZE];
+
+/**
  * Generic buffer for strings.
  * @address{BPRE,02021CD0}
  */

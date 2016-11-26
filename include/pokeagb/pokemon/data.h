@@ -665,6 +665,18 @@ POKEAGB_EXTERN void pokemon_setattr(void* pokemon,
 POKEAGB_EXTERN int level_by_exp(struct PokemonBase* pokemon);
 
 /**
+ * The amount of Pokemon in the player's party.
+ * @address{BPRE,02024029}
+ */
+extern u8 pokemon_quantity;
+
+/**
+ * Count the number of Pokemon in the player's party and update pokemon_quantity.
+ * @address{BPRE,08040C3E}
+ */
+POKEAGB_EXTERN u8 party_count_pokemon(void);
+
+/**
  * @address{BPRE,02024284}
  */
 extern struct Pokemon party_player[POKEMON_PARTY_SIZE];

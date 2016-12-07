@@ -245,6 +245,18 @@ POKEAGB_EXTERN void gpu_tile_obj_alloc_tag_and_upload(const struct SpriteTiles* 
 POKEAGB_EXTERN u16 gpu_tile_obj_tag_range_for_tag(u16 tile_tag);
 
 /**
+ * Given a tag, returns it's index in the sprite pal RAM
+ * @address{BPRE,080089E8}
+ */
+POKEAGB_EXTERN u8 gpu_pal_tags_index_of(u16 pal_tag);
+
+/**
+ * List of pal tags for objects used, indexed by pal slot
+ * @address{BPRE,03000DE8}
+ */
+extern u8 gpu_pal_tags[0x20];
+
+/**
  * @address{BPRE,08008A30}
  */
 POKEAGB_EXTERN u16 gpu_pal_free_by_tag(u16 pal_tag);

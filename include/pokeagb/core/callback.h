@@ -96,12 +96,26 @@ POKEAGB_EXTERN void c2_exit_to_overworld_2_switch(void);
 
 
 /**
+ *
+ *
+ * @address{BPRE,0x80568C4}
+ */
+POKEAGB_EXTERN void c2_exit_to_overworld_continue_music_scripts(void);
+
+/**
+ *
+ *
+ * @address{BPRE,08087E64}
+ */
+ 
+ POKEAGB_END_DECL void dp12_abort(void);
+
+/**
  * Global game state.
  *
  * @address{BPRE,030030F0}
  */
 extern struct Superstate super;
 
-POKEAGB_END_DECL
 
 #endif /* POKEAGB_CORE_CALLBACK_H_ */

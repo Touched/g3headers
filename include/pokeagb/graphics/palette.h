@@ -97,4 +97,9 @@ POKEAGB_EXTERN void gpu_pal_allocator_reset(void);
  */
 POKEAGB_EXTERN void pal_fill_black(void);
 
+/**
+ * @address{BPRE,08150408}
+ */
+POKEAGB_EXTERN u8* stdpal_get(u8 id);
+
 #endif /* POKEAGB_GRAPHICS_PALETTE_H_ */

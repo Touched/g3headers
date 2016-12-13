@@ -3,7 +3,9 @@
 
 #include <stddef.h>
 
-#define ABS(x) (x) < 0 ? -(x) : (x)
+#define ABS(x) ((x) < 0 ? -(x) : (x))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 #define VALUE_TO_STRING(x) #x
 #define VALUE(x) VALUE_TO_STRING(x)

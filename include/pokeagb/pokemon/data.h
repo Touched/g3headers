@@ -17,6 +17,7 @@ POKEAGB_BEGIN_DECL
 
 #define POKEMON_MOVE_SLOTS 4
 #define POKEMON_PARTY_SIZE 6
+#define POKEMON_STAT_COUNT 6
 
 /**
  * Pokemon Language.
@@ -781,6 +782,56 @@ enum PokemonGender {
  * @address{BPRE,0803F720}
  */
 POKEAGB_EXTERN u8 pokemon_get_gender(struct Pokemon* pokemon);
+
+enum PokemonNature {
+    NATURE_HARDY,
+    NATURE_LONELY,
+    NATURE_BRAVE,
+    NATURE_ADAMANT,
+    NATURE_NAUGHTY,
+    NATURE_BOLD,
+    NATURE_DOCILE,
+    NATURE_RELAXED,
+    NATURE_IMPISH,
+    NATURE_LAX,
+    NATURE_TIMID,
+    NATURE_HASTY,
+    NATURE_SERIOUS,
+    NATURE_JOLLY,
+    NATURE_NAIVE,
+    NATURE_MODEST,
+    NATURE_MILD,
+    NATURE_QUIET,
+    NATURE_BASHFUL,
+    NATURE_RASH,
+    NATURE_CALM,
+    NATURE_GENTLE,
+    NATURE_SASSY,
+    NATURE_CAREFUL,
+    NATURE_QUIRKY,
+    NATURE_MAX,
+};
+
+/**
+ * Nature stat bonus table. HP is not included, so the stat order here
+ * is: attack, defense, speed, special attack, special_defense.  The
+ * value will be -1 to indicate the nature decreases the stat, and +1
+ * to indicate and increase in the stat.
+ * @address{BPRE,08252B48}
+ */
+extern s8 nature_stat_bonuses[NATURE_MAX][POKEMON_STAT_COUNT - 1];
+
+/**
+ * Apply nature bonuses to a stat.
+ * @address{BPRE,08043698}
+ */
+POKEAGB_EXTERN u16 nature_stat_mod(enum PokemonNature nature, u16 stat_value, u8 stat_index);
+
+/**
+ * Get the nature for a Pokemon.
+ * @address{BPRE,08042E9C}
+ */
+POKEAGB_EXTERN enum PokemonNature pokemon_get_nature(void* pokemon);
 
 #define STATUS_SLEEP_TURNS 7
 #define STATUS_POISON (1 << 3)

@@ -210,6 +210,12 @@ POKEAGB_EXTERN u8 npc_id_by_local_id(u8 local_id, u8 map, u8 bank);
  */
 POKEAGB_EXTERN bool npc_id_by_local_id_and_map_ret_success(u8 local_id, u8 map, u8 bank, u8* id);
 
+/**
+ * Get the NPC id at the given coordinates and height.
+ * @address{BPRE,0805F894}
+ */
+POKEAGB_EXTERN u8 npc_id_by_pos_and_height(u16 x, u16 y, u8 height);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_OVERWORLD_NPC_H_ */

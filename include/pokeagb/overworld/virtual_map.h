@@ -58,6 +58,12 @@ POKEAGB_EXTERN u16 cur_mapdata_get_blockid_at(u16 x, u16 y);
 POKEAGB_EXTERN void setmaptile_four_nibbles(u16 x, u16 y, u16 tile);
 
 /**
+ * Get the height bits at the given coordinates.
+ * @address{BPRE,08058D44}
+ */
+POKEAGB_EXTERN void cur_mapdata_get_height_bits_at(u16 x, u16 y);
+
+/**
  * Redraw the tile at the given position.
  * Uses virtual map coordinates.
  * @address{BPRE,0805A8E8}

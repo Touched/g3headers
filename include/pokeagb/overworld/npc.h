@@ -55,11 +55,14 @@ struct NpcState {
     u8 field23;
 };
 
+
 /**
  * The player's movement state.
  */
 struct Walkrun {
-    u8 bitfield;
+    u8 step_speed : 3;
+    u8 is_surfing : 1;
+    u8 bitfield : 4;
     u8 bike;
     u8 running2;
     u8 running1;

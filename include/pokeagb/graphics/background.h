@@ -63,12 +63,12 @@ POKEAGB_EXTERN void bgid_nullify_tilemap(u8);
 /**
  * @address{BPRE,080017D0}
  */
-POKEAGB_EXTERN u16 gpu_copy_to_tileset(u8 layer, u8* tiles, u16 size, u16 offset);
+POKEAGB_EXTERN u16 gpu_copy_to_tileset(u8 layer, const void* tiles, u16 size, u16 offset);
 
 /**
  * @address{BPRE,08002040}
  */
-POKEAGB_EXTERN void gpu_copy_tilemap(u8 layer, u8* map, u16 size_or_null, u16 offset);
+POKEAGB_EXTERN void gpu_copy_tilemap(u8 layer, const void* map, u16 size_or_null, u16 offset);
 
 /**
  * @address{BPRE,080020BC}

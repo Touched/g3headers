@@ -55,7 +55,7 @@ extern u8* gpu_pal_tag_search_lower_boundary;
 /**
  * @address{BPRE,080703EC}
  */
-POKEAGB_EXTERN void gpu_pal_apply(void* palette, u16 offset, u16 size);
+POKEAGB_EXTERN void gpu_pal_apply(const void* palette, u16 offset, u16 size);
 
 /**
  * @address{BPRE,08070588}

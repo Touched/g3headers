@@ -55,34 +55,6 @@ struct NpcState {
     u8 field23;
 };
 
-
-/**
- * The player's movement state.
- */
-struct Walkrun {
-    u8 step_speed : 3;
-    u8 is_surfing : 1;
-    u8 bitfield : 4;
-    u8 bike;
-    u8 running2;
-    u8 running1;
-    u8 oamid;
-    u8 npcid;
-    u8 lock;
-    u8 gender;
-    u8 xmode;
-    u8 field9;
-    u8 fieldA;
-    u8 fieldB;
-    u32 fieldC;
-    u32 field10;
-    u32 field14;
-    u8 field18;
-    u8 field19;
-    u16 field1A;
-    u16 most_recent_override_tile;
-};
-
 /**
  * An NPC in the ROM.
  */
@@ -218,6 +190,12 @@ POKEAGB_EXTERN bool npc_id_by_local_id_and_map_ret_success(u8 local_id, u8 map, 
  * @address{BPRE,0805F894}
  */
 POKEAGB_EXTERN u8 npc_id_by_pos_and_height(u16 x, u16 y, u8 height);
+
+/**
+ * Move the coordinates one square in the given direction.
+ * @address{BPRE,08063A20}
+ */
+POKEAGB_EXTERN void coordinates_move_direction(u8 direction, u16* x, u16* y);
 
 POKEAGB_END_DECL
 

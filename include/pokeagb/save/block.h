@@ -102,6 +102,33 @@ enum Gender {
     GENDER_FEMALE,
 };
 
+enum OptionsButtonMode {
+    OPTIONS_BUTTON_MODE_NORMAL,
+    OPTIONS_BUTTON_MODE_LR,
+    OPTIONS_BUTTON_MODE_L_EQUALS_A
+};
+
+enum OptionsTextSpeed {
+    OPTIONS_TEXT_SPEED_SLOW,
+    OPTIONS_TEXT_SPEED_MID,
+    OPTIONS_TEXT_SPEED_FAST
+};
+
+enum OptionsSound {
+    OPTIONS_SOUND_MONO,
+    OPTIONS_SOUND_STEREO
+};
+
+enum OptionsBattleStyle {
+    OPTIONS_BATTLE_STYLE_SHIFT,
+    OPTIONS_BATTLE_STYLE_SET
+};
+
+enum OptionsBattleScene {
+    OPTIONS_BATTLE_SCENE_ON,
+    OPTIONS_BATTLE_SCENE_OFF,
+};
+
 /**
  * Trainer and miscellaneous save data.
  */
@@ -115,9 +142,13 @@ struct SaveBlock2 {
     u8 playtime_minutes;
     u8 playtime_seconds;
     u8 playtime_frames;
-    u8 options_button_style;
-    u8 options_text_speed_maybe;
-    u8 field_15[7];
+    enum OptionsButtonMode options_button_style;
+    enum OptionsTextSpeed options_text_speed : 3;
+    u8 options_window_frame : 5;
+    enum OptionsSound options_sound : 1;
+    enum OptionsBattleStyle options_battle_style : 1;
+    enum OptionsBattleScene options_battle_scene_off : 1;
+    u8 field_15[6];
     u32 unown_pid;
     u32 spinda_pid;
     u32 field_24;
@@ -160,6 +191,24 @@ extern struct SaveBlock2* saveblock2;
  * @address{BPRE,03005010}
  */
 extern struct SaveBlock3* saveblock3;
+
+/**
+ * Move the saveblocks around.
+ * @address{BPRE,0804C058}
+ */
+POKEAGB_EXTERN void saveblock_randomize_position(void);
+
+/**
+ * Reset the save globals mapped to save memory (outside of the saveblocks)
+ * @address{BPRE,08054A28}
+ */
+POKEAGB_EXTERN void reset_save_mapped_memory(void);
+
+/**
+ * Clean saveblocks.
+ * @address{BPRE,08054A18}
+ */
+POKEAGB_EXTERN void initialize_savebocks();
 
 POKEAGB_END_DECL
 

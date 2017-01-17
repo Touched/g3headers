@@ -295,6 +295,13 @@ POKEAGB_EXTERN void oac_pingpong(struct Object*);
  */
 POKEAGB_EXTERN s16 get_pingpong(s16 phase, u16 scale);
 
+/**
+ * A sine wave with a 180 degree period.
+ * @param phase The current phase.
+ * @address{BPRE,08044E6C}
+ */
+POKEAGB_EXTERN s16 get_spring_animation(s16 phase);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_GRAPHICS_SPRITES_H_ */

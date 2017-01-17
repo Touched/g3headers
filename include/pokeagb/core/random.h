@@ -27,6 +27,19 @@ POKEAGB_EXTERN u16 rand();
  */
 POKEAGB_EXTERN void set_rand_seed(u16 seed);
 
+/**
+ * Start TM1CNT. Used for gathering entropy.
+ * @address{BPRE,08000558}
+ */
+void start_timer1(void);
+
+/**
+ * Gather entropy setting the seed to the amount of time it takes for
+ * the player perform a given action.
+ * @address{BPRE,08000564}
+ */
+void seed_from_timer1(void);
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_CORE_RANDOM_H_ */

@@ -63,6 +63,30 @@ POKEAGB_EXTERN u16 save_calculate_checksum(void* data, u16 size);
  */
 extern u32 save_count;
 
+/**
+ * Move the saveblocks around.
+ * @address{BPRE,0804C058}
+ */
+POKEAGB_EXTERN void saveblock_randomize_position(void);
+
+/**
+ * Reset globals used for tracking save failure and count.
+ * @address{BPRE,080D9750}
+ */
+POKEAGB_EXTERN void flash_reset_globals(void);
+
+/**
+ * Read the saved game.
+ * @address{BPRE,080DA4FC}
+ */
+POKEAGB_EXTERN void flash_read(u8 mode);
+
+/**
+ * The result of reading the save.
+ * @address{BPRE,030053A0}
+ */
+extern u16 save_load_result;
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_SAVE_FLASH_H_ */

@@ -83,12 +83,12 @@ POKEAGB_EXTERN void bgid_set_tilemap(u8 layer, u8* space);
 /**
  * @address{BPRE,08001658}
  */
-POKEAGB_EXTERN void bg_vram_setup(u8 layer, const struct BgConfig* config, u8 layers);
+POKEAGB_EXTERN void bg_vram_setup(u8 mode, const struct BgConfig* config, u8 layers);
 
 /**
  * @address{BPRE,08001658}
  */
-POKEAGB_EXTERN void bg_vram_set(u8 mode, u32 *setup_array, u8 array_size);
+POKEAGB_EXTERN DEPRECATED void bg_vram_set(u8 mode, u32 *setup_array, u8 array_size);
 
 /**
  * @address{BPRE,080F6878}

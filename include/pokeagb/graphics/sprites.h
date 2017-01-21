@@ -41,8 +41,15 @@ struct Coords16 {
  */
 struct Frame {
     u16 data;
-    u16 duration;
+    u8 duration : 6;
+    u8 hflip : 1;
+    u8 vflip : 1;
 };
+
+ASSERT_SIZEOF(struct Frame, 4);
+
+#define FRAME_LOOP 0xFFFE
+#define FRAME_END 0xFFFF
 
 /**
  * Rotation/Scaling frame
@@ -130,9 +137,13 @@ struct Template {
     u16 tiles_tag;
     u16 pal_tag;
     const struct OamData* oam;
-    const struct Frame (**animation)[];
+
+    /**
+     * Animation table. Each entry is a pointer to an array of frames.
+     */
+    const struct Frame **animation;
     const struct SpriteTiles* graphics;
-    const struct RotscaleFrame (**rotscale)[];
+    const struct RotscaleFrame **rotscale;
     ObjectCallback callback;
 };
 
@@ -141,9 +152,9 @@ struct Template {
  */
 struct Object {
     struct OamData final_oam;
-    struct Frame (**animation_table)[];
+    struct Frame **animation_table;
     struct SpriteTiles* gfx_table;
-    struct RotscaleFrame (**rotscale_table)[];
+    struct RotscaleFrame **rotscale_table;
     struct Template* object_template;
     u32 field18;
     ObjectCallback callback;
@@ -159,6 +170,13 @@ struct Object {
     u8 bitfield;
     u16 anim_data_offset;
     u8 field42;
+
+    /**
+     * Changes order of sprites in OAM. Allows fine-grained control of
+     * hardware sprite priority. A lower value indicates higher
+     * priority.  Sprites must have equal priority in OAM for this to
+     * have any effect.
+     */
     u8 y_height_related;
 };
 
@@ -171,12 +189,12 @@ extern struct Object objects[64];
 /**
  * @address{BPRE,08231CFC}
  */
-extern const struct RotscaleFrame (*rotscale_empty)[];
+extern const struct RotscaleFrame *rotscale_empty;
 
 /**
  * @address{BPRE,08231CF0}
  */
-extern const struct Frame (*anim_image_empty)[];
+extern const struct Frame *anim_image_empty;
 
 #define SPRITE_NO_ANIMATION (&anim_image_empty)
 #define SPRITE_NO_ROTSCALE (&rotscale_empty)
@@ -194,7 +212,7 @@ POKEAGB_EXTERN void objc_exec(void);
 /**
  * @address{BPRE,08006FE0}
  */
-POKEAGB_EXTERN u8 template_instanciate_reverse_search(struct Template*, u16 x, u16 y, u8 height);
+POKEAGB_EXTERN u8 template_instanciate_reverse_search(struct Template*, s16 x, s16 y, u8 height);
 
 /**
  * @address{BPRE,08006BA8}
@@ -301,6 +319,18 @@ POKEAGB_EXTERN s16 get_pingpong(s16 phase, u16 scale);
  * @address{BPRE,08044E6C}
  */
 POKEAGB_EXTERN s16 get_spring_animation(s16 phase);
+
+/**
+ * Duplicate the object and place it at the given coordinates. Used for reflective surfaces.
+ * @address{BPRE,0805FB6C}
+ */
+POKEAGB_EXTERN u8 object_clone(struct Object* src, s16 x, s16 y, u8 priority);
+
+/**
+ * Duplicate the object and place it at the given coordinates. Used for reflective surfaces.
+ * @address{BPRE,0800838C}
+ */
+POKEAGB_EXTERN u8 obj_anim_image_start(struct Object* obj, u8 index);
 
 POKEAGB_END_DECL
 

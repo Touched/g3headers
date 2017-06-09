@@ -48,6 +48,16 @@ POKEAGB_EXTERN void* memcpy(void* dst, const void* src, u32 size);
  */
 POKEAGB_EXTERN void memset(void* dst, u8 value, u32 size);
 
+/**
+ * @address{BPRE,08002B80}
+ */
+POKEAGB_EXTERN void init_malloc(void* memory, u32 size);
+
+/**
+ * @address{BPRE,02000000}
+ */
+extern u8 dynamic_area[0x1C000];
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_CORE_MEMORY_H_ */

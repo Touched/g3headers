@@ -23,6 +23,34 @@ struct Textbox {
     u8* pixels;
 };
 
+struct FontRenderState {
+    pchar* text;
+    u8 textbox_id;
+    u8 font_id;
+    u8 menu_cursor_1_a;
+    u8 menu_cursor_1_b;
+    u8 menu_cursor_2_a;
+    u8 menu_cursor_2_b;
+    u8 field_A;
+    u8 field_B;
+    u8 field_C;
+    u8 field_D;
+    u8 gap_E[2];
+    u32 field_10;
+    struct
+    {
+        u8 font_type;
+        u8 field_1;
+        u16 frames_visible_counter;
+        u32 field_4;
+    } sub;
+    u8 mode;
+    u8 text_speed;
+    u8 wait_frames;
+    u8 field_1F;
+    u8 field_20;
+};
+
 struct TextColor {
     u8 background;
     u8 foreground;
@@ -135,6 +163,18 @@ POKEAGB_EXTERN void textbox_task_delete_scroll_arrows(u8 task_id);
 
 #define FCODE_BUFFER_SIZE 20
 #define STRING_BUFFER_SIZE 1000
+
+/**
+ * Return pointers to the strings for use by the string decoder.
+ * @address{BPRE,08231E70}
+ */
+extern const pchar* (*const script_buffer_functions[])(void);
+
+/**
+ * Generic buffer for strings.
+ * @address{BPRE,02022100}
+ */
+extern pchar fcode_buffer0[FCODE_BUFFER_SIZE];
 
 /**
  * Generic buffer for strings.

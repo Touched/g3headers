@@ -51,6 +51,13 @@ POKEAGB_EXTERN void oe_stop(struct Object* obj, u8 animation);
  */
 POKEAGB_EXTERN void oe_active_list_remove(u8 animation);
 
+/**
+ * Calculate the position of the OE effect. Seems to translate NPC
+ * coordinates to screen coordinates.
+ * @address{BPRE,08063BC4}
+ */
+POKEAGB_EXTERN void oe_adjust_coordinates(s16* x, s16* y, u16 x_offset, u16 y_offset);
+
 
 POKEAGB_END_DECL
 

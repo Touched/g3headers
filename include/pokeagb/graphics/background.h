@@ -71,12 +71,12 @@ POKEAGB_EXTERN void bgid_nullify_tilemap(u8);
 /**
  * @address{BPRE,080017D0}
  */
-POKEAGB_EXTERN u16 gpu_copy_to_tileset(u8 layer, u8* tiles, u16 size, u16 offset);
+POKEAGB_EXTERN u16 gpu_copy_to_tileset(u8 layer, const void* tiles, u16 size, u16 offset);
 
 /**
  * @address{BPRE,08002040}
  */
-POKEAGB_EXTERN void gpu_copy_tilemap(u8 layer, u8* map, u16 size_or_null, u16 offset);
+POKEAGB_EXTERN void gpu_copy_tilemap(u8 layer, const void* map, u16 size_or_null, u16 offset);
 
 /**
  * @address{BPRE,080020BC}
@@ -91,12 +91,12 @@ POKEAGB_EXTERN void bgid_set_tilemap(u8 layer, u8* space);
 /**
  * @address{BPRE,08001658}
  */
-POKEAGB_EXTERN void bg_vram_setup(u8 layer, const struct BgConfig* config, u8 layers);
+POKEAGB_EXTERN void bg_vram_setup(u8 mode, const struct BgConfig* config, u8 layers);
 
 /**
  * @address{BPRE,08001658}
  */
-POKEAGB_EXTERN void bg_vram_set(u8 mode, u32 *setup_array, u8 array_size);
+POKEAGB_EXTERN DEPRECATED void bg_vram_set(u8 mode, u32 *setup_array, u8 array_size);
 
 /**
  * @address{BPRE,080F6878}

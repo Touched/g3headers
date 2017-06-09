@@ -30,7 +30,7 @@ struct BgConfig2 {
     u32 y;
 };
 
-struct mapblock_16color {
+struct TileMapBlock4BPP {
     u16 tile_offset : 8;
     u16 disable : 2; // not sure, could possible be part of tile offset
     u16 h_flip : 1;

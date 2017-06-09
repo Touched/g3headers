@@ -30,6 +30,14 @@ struct BgConfig2 {
     u32 y;
 };
 
+struct TileMapBlock4BPP {
+    u16 tile_offset : 8;
+    u16 disable : 2; // not sure, could possible be part of tile offset
+    u16 h_flip : 1;
+    u16 v_flip : 1;
+    u16 pal_slot : 4;
+};
+
 /**
  * @address{BPRE,030008E8}
  */
@@ -132,12 +140,12 @@ POKEAGB_EXTERN void textbox_something(void);
 /**
  * @address{BPRE,08001D08}
  */
-POKEAGB_EXTERN void bgid_mod_y_offset(u8 bgid, s16 delta, u8 dir);
+POKEAGB_EXTERN void bgid_mod_y_offset(u8 bgid, s32 delta, u8 dir);
 
 /**
  * @address{BPRE,08001B90}
  */
-POKEAGB_EXTERN void bgid_mod_x_offset(u8 bgid, s16 delta, u8 dir);
+POKEAGB_EXTERN void bgid_mod_x_offset(u8 bgid, s32 delta, u8 dir);
 
 struct REG_BGCNT {
 	u16 priority : 2;
@@ -176,5 +184,16 @@ extern struct REG_BGCNT BG_CNT[4];
  */
 POKEAGB_EXTERN void bgid_mark_for_sync(u8 bgid);
 
+/**
+ * BG Rotscale maybe
+ * @address{BPRE,08001E80}
+ */
+POKEAGB_EXTERN void rot_scale_bg(u8 bgid, u32 xpos, u32 ypos, u16 x_pos, u16 y_pos, u16 delta_x, u16 delta_y, u8 dir_maybe);
+
+/**
+ * BG2 Rotscale
+ * @address{BPRE,08001E80}
+ */
+POKEAGB_EXTERN void bg2_scale_bg(u8 bgid, u32 xposls8, u32 yposls8, u16 x_pos, u16 y_pos, u16 scale_x, u16 scale_y, u8 dir_maybe);
 
 #endif /* POKEAGB_GRAPHICS_BACKGROUND_H_ */

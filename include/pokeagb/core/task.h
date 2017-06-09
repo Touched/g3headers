@@ -27,7 +27,7 @@ struct Task {
     u8 prev;
     u8 next;
     u8 priority;
-    u16 priv[16]; /**< State variables */
+    s16 priv[16]; /**< State variables */
 };
 
 /**

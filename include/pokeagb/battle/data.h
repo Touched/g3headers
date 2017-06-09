@@ -10,6 +10,7 @@
 #include "../common.h"
 #include "../core/string.h"
 #include "../pokemon.h"
+#include "../graphics/sprites.h"
 
 POKEAGB_BEGIN_DECL
 
@@ -68,6 +69,17 @@ struct BattlePokemon {
 };
 
 ASSERT_SIZEOF(struct BattlePokemon, 0x58);
+
+/**
+ * @address{BPRE,0826056C}
+ */
+extern struct SpriteTiles ball_tiles[11];
+
+/**
+ * @address{BPRE,082605CC}
+ */
+extern struct SpritePalette ball_palettes[11];
+
 
 /**
  * @address{BPRE,02023BC4}
@@ -150,6 +162,15 @@ extern u8 bs_mode_pbs_index;
  * @address{BPRE,02023D68}
  */
 extern enum Item b_message_held_item;
+
+
+/**
+ * Given a ball item id, gives index of ball gfx table
+ *
+ * @address{BPRE,080EF52C}
+ */
+POKEAGB_EXTERN u8 ball_number_to_ball_processing_index(u16 item_id);
+
 
 POKEAGB_END_DECL
 

@@ -240,6 +240,20 @@ POKEAGB_EXTERN void rboxes_free(void);
 POKEAGB_EXTERN void remoboxes_upload_tilesets();
 
 /**
+ * creates new rbox using string. Rbox tiles address returned, and
+ * rboxid written to buffer. 
+ * @address{BPRE,0804A648}
+ */
+POKEAGB_EXTERN u32 write_to_rbox(pchar* string, u8 unk, u8 unk2, u8* rboxid_buffer);
+
+
+/**
+ * @address{BPRE,0804A6E8}
+ */
+POKEAGB_EXTERN u8 rbox_to_vram(void* vram_addr, void* src_pixels, u8 tiles_to_copy_maybe);
+
+
+/**
  * Allocates a textbox and returns its ID.
  * @returns Textbox ID or 255 on failure.
  * @address{BPRE,08003CE4}
@@ -299,6 +313,14 @@ POKEAGB_EXTERN u8 rboxid_free(u8 id);
  */
 POKEAGB_EXTERN void box_curved(u8 rboxid, u8 player_closed);
 
+
+/**
+ *
+ * @address{BPRE,080D87BC}
+ */
+POKEAGB_EXTERN void battle_show_message(pchar* str, u8 unk);
+
+
 /**
  *
  * @address{BPRE,080694C8}
@@ -310,6 +332,43 @@ POKEAGB_EXTERN void textbox_fdecode_auto_and_task_add(pchar* str);
  * @address{BPRE,080694F4}
  */
 POKEAGB_EXTERN void textbox_close(void);
+
+/**
+ * Rbox init, but for a special battle box
+ * @address{BPRE,08003B24}
+ */
+POKEAGB_EXTERN void rbox_init_battlebox(struct Textbox*);
+
+/**
+ * 
+ * @address{BPRE,0800F380}
+ */
+POKEAGB_EXTERN void battlebox_mark_usable(void);
+
+/**
+ * If A is pressed and Dialog has reached it's end, returns 0 to mark completion
+ * @address{BPRE,08002E64}
+ */
+POKEAGB_EXTERN bool dialogid_was_acknowledged(u8);
+
+/**
+ * string substitution based on assigned buffer ids
+ * @address{BPRE,08008FCC}
+ */
+POKEAGB_EXTERN pchar* fdecoder(pchar* dst, pchar* src);
+
+
+/**
+ * @address{BPRE,08004950}
+ */
+POKEAGB_EXTERN u32 rboxid_get_field(u8 rid, u8 field);
+
+
+/**
+ * string substitution based on assigned buffer ids
+ * @address{BPRE,0812E5A4}
+ */
+POKEAGB_EXTERN void rboxid_add_812E5A4(u8, u8, u8, u8, u8, u8, u32*, u8, pchar*);
 
 POKEAGB_END_DECL
 

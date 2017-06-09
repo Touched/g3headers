@@ -34,4 +34,10 @@ extern struct SpritePalette pokemon_palette_shiny[POKEAGB_POKEMON_SLOTS];
 
 POKEAGB_END_DECL
 
+
+/**
+ * @address{BPRE,08235E6C}
+ */
+u32 pokemon_player_xy_table[POKEAGB_POKEMON_SLOTS];
+
 #endif /* POKEAGB_POKEMON_SPRITES_H_ */

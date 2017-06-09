@@ -41,8 +41,15 @@ struct Coords16 {
  */
 struct Frame {
     u16 data;
-    u16 duration;
+    u8 duration : 6;
+    u8 hflip : 1;
+    u8 vflip : 1;
 };
+
+ASSERT_SIZEOF(struct Frame, 4);
+
+#define FRAME_LOOP 0xFFFE
+#define FRAME_END 0xFFFF
 
 /**
  * Rotation/Scaling frame
@@ -131,9 +138,13 @@ struct Template {
     u16 tiles_tag;
     u16 pal_tag;
     const struct OamData* oam;
-    const struct Frame (**animation)[];
+
+    /**
+     * Animation table. Each entry is a pointer to an array of frames.
+     */
+    const struct Frame **animation;
     const struct SpriteTiles* graphics;
-    const struct RotscaleFrame (**rotscale)[];
+    const struct RotscaleFrame **rotscale;
     ObjectCallback callback;
 };
 
@@ -142,9 +153,9 @@ struct Template {
  */
 struct Object {
     struct OamData final_oam;
-    struct Frame (**animation_table)[];
+    struct Frame **animation_table;
     struct SpriteTiles* gfx_table;
-    struct RotscaleFrame (**rotscale_table)[];
+    struct RotscaleFrame **rotscale_table;
     struct Template* object_template;
     u32 field18;
     ObjectCallback callback;
@@ -160,6 +171,13 @@ struct Object {
     u8 bitfield;
     u16 anim_data_offset;
     u8 field42;
+
+    /**
+     * Changes order of sprites in OAM. Allows fine-grained control of
+     * hardware sprite priority. A lower value indicates higher
+     * priority.  Sprites must have equal priority in OAM for this to
+     * have any effect.
+     */
     u8 y_height_related;
 };
 
@@ -172,12 +190,12 @@ extern struct Object objects[64];
 /**
  * @address{BPRE,08231CFC}
  */
-extern const struct RotscaleFrame (*rotscale_empty)[];
+extern const struct RotscaleFrame *rotscale_empty;
 
 /**
  * @address{BPRE,08231CF0}
  */
-extern const struct Frame (*anim_image_empty)[];
+extern const struct Frame *anim_image_empty;
 
 #define SPRITE_NO_ANIMATION (&anim_image_empty)
 #define SPRITE_NO_ROTSCALE (&rotscale_empty)
@@ -320,7 +338,6 @@ POKEAGB_EXTERN void obj_id_set_rotscale(u8 objid, u32 pa, u32 pb, u32 pc, u32 pd
  */
 POKEAGB_EXTERN void obj_anim_image_start(struct Object* obj, u8 animation_num);
 
-
 /**
  * Given a tag, return's it's index in sprite pal RAM
  * @address{BPRE,080089E8}
@@ -332,6 +349,19 @@ POKEAGB_EXTERN void obj_anim_image_start(struct Object* obj, u8 animation_num);
   * @address{BPRE,03000DE8}
   */
   extern u8 gpu_pal_tags[0x20];
+
+/* A sine wave with a 180 degree period.
+ * @param phase The current phase.
+ * @address{BPRE,08044E6C}
+ */
+POKEAGB_EXTERN s16 get_spring_animation(s16 phase);
+
+/**
+ * Duplicate the object and place it at the given coordinates. Used for reflective surfaces.
+ * @address{BPRE,0805FB6C}
+ */
+POKEAGB_EXTERN u8 object_clone(struct Object* src, s16 x, s16 y, u8 priority);
+
 
 POKEAGB_END_DECL
 

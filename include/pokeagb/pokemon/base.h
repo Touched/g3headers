@@ -136,6 +136,14 @@ extern u8 build_edition_identifier;
  */
 extern u8 game_language;
 
+/**
+ * gets Pokemon's weight if index = 1
+ *
+ * @address{BPRE, 08088E38}
+ */
+ extern u32 pokemon_get_weight(u16 species, u8 index);
+ 
+
 POKEAGB_END_DECL
 
 #endif /* POKEAGB_POKEMON_BASE_H_ */

@@ -10,5 +10,6 @@
 #include "core/string.h"
 #include "core/task.h"
 #include "core/bios.h"
+#include "core/math.h"
 
 #endif /* POKEAGB_CORE_H_ */

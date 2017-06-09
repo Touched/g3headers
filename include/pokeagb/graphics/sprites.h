@@ -32,8 +32,8 @@ struct Coords8 {
  * 16 bit coordinates;
  */
 struct Coords16 {
-    u16 x;
-    u16 y;
+    s16 x;
+    s16 y;
 };
 
 /**
@@ -88,8 +88,9 @@ struct OamData {
     u32 shape : 2;
 
     u32 x : 9;
-    u32 matrix_num : 5; // bits 3/4 are h-flip/v-flip if not in affine mode
-
+    u32 matrix_num : 3; // bits 3/4 are h-flip/v-flip if not in affine mode
+    u32 h_flip : 1;
+    u32 v_flip : 1;
     /**
      * Size  Square   Horizontal  Vertical
      * 0     8x8      16x8        8x16
@@ -194,7 +195,7 @@ POKEAGB_EXTERN void objc_exec(void);
 /**
  * @address{BPRE,08006FE0}
  */
-POKEAGB_EXTERN u8 template_instanciate_reverse_search(struct Template*, u16 x, u16 y, u8 height);
+POKEAGB_EXTERN u8 template_instanciate_reverse_search(struct Template*, s16 x, s16 y, u8 height);
 
 /**
  * @address{BPRE,08006BA8}
@@ -210,8 +211,8 @@ POKEAGB_EXTERN void obj_sync_superstate(void);
  * @address{BPRE,08006F8C}
  */
 POKEAGB_EXTERN u8 template_instanciate_forward_search(const struct Template*,
-                                                      u8 x,
-                                                      u8 y,
+                                                      u16 x,
+                                                      u16 y,
                                                       u8 priority);
 
 /**
@@ -222,39 +223,27 @@ POKEAGB_EXTERN u8 obj_delete_and_free(struct Object*);
 /**
  * @address{BPRE,0800F078}
  */
-POKEAGB_EXTERN void gpu_pal_decompress_alloc_tag_and_upload(const struct SpritePalette* pal);
+POKEAGB_EXTERN void gpu_pal_decompress_alloc_tag_and_upload(struct SpritePalette* pal);
 
 /**
  * @address{BPRE,08008928}
  */
-POKEAGB_EXTERN void gpu_pal_obj_alloc_tag_and_apply(const struct SpritePalette* pal);
+POKEAGB_EXTERN void gpu_pal_obj_alloc_tag_and_apply(struct SpritePalette* pal);
 
 /**
  * @address{BPRE,0800F034}
  */
-POKEAGB_EXTERN void gpu_tile_obj_decompress_alloc_tag_and_upload(const struct SpriteTiles* tile);
+POKEAGB_EXTERN void gpu_tile_obj_decompress_alloc_tag_and_upload(struct SpriteTiles* tile);
 
 /**
  * @address{BPRE,080086DC}
  */
-POKEAGB_EXTERN void gpu_tile_obj_alloc_tag_and_upload(const struct SpriteTiles* tile);
+POKEAGB_EXTERN void gpu_tile_obj_alloc_tag_and_upload(struct SpriteTiles* tile);
 
 /**
  * @address{BPRE,08008804}
  */
 POKEAGB_EXTERN u16 gpu_tile_obj_tag_range_for_tag(u16 tile_tag);
-
-/**
- * Given a tag, returns it's index in the sprite pal RAM
- * @address{BPRE,080089E8}
- */
-POKEAGB_EXTERN u8 gpu_pal_tags_index_of(u16 pal_tag);
-
-/**
- * List of pal tags for objects used, indexed by pal slot
- * @address{BPRE,03000DE8}
- */
-extern u8 gpu_pal_tags[0x20];
 
 /**
  * @address{BPRE,08008A30}
@@ -306,6 +295,43 @@ POKEAGB_EXTERN void oac_pingpong(struct Object*);
  * @address{BPRE,08044E30}
  */
 POKEAGB_EXTERN s16 get_pingpong(s16 phase, u16 scale);
+
+/**
+ * reset affine
+ * @address{BPRE,08007390}
+ */
+POKEAGB_EXTERN void affine_reset_all(void);
+
+/**
+ * apply palfade for transparent objects
+ * @address{BPRE,08070588}
+ */
+POKEAGB_EXTERN void obj_apply_bldpalfade(u32, s16, s16, s16, u32);
+
+/**
+ * set oam matrix rotscale manually
+ * @address{BPRE,08075858}
+ */
+POKEAGB_EXTERN void obj_id_set_rotscale(u8 objid, u32 pa, u32 pb, u32 pc, u32 pd);
+
+/**
+ * set oam animation start
+ * @address{BPRE,0800838C}
+ */
+POKEAGB_EXTERN void obj_anim_image_start(struct Object* obj, u8 animation_num);
+
+
+/**
+ * Given a tag, return's it's index in sprite pal RAM
+ * @address{BPRE,080089E8}
+ */
+ POKEAGB_EXTERN u8 gpu_pal_tags_index_of(u16 pal_tag);
+
+ /**
+  * List of pal tags for objects used, indexed by pal slot
+  * @address{BPRE,03000DE8}
+  */
+  extern u8 gpu_pal_tags[0x20];
 
 POKEAGB_END_DECL
 

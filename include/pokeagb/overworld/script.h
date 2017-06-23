@@ -293,6 +293,12 @@ POKEAGB_EXTERN void script_env_disable(void);
 POKEAGB_EXTERN void flag_set(u16 flag);
 
 /**
+ * Check a flag's status
+ * @address{BPRE,0806E6D0}
+ */
+ POKEAGB_EXTERN bool flag_check(u16 flag);
+
+/**
  * Check script_env_2 is enabled 
  * @address{BPRE,08069958}
  */

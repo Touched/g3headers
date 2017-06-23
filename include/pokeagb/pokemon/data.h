@@ -833,6 +833,18 @@ POKEAGB_EXTERN u16 nature_stat_mod(enum PokemonNature nature, u16 stat_value, u8
  */
 POKEAGB_EXTERN enum PokemonNature pokemon_get_nature(void* pokemon);
 
+/**
+ * Get the nature from a PID
+ * @address{BPRE,08042EB4}
+ */
+POKEAGB_EXTERN enum PokemonNature get_nature_from_pid(u32 pid);
+
+/**
+ * Restore a Pokemon's PP fully
+ * @address{BPRE,080442E4}
+ */
+ POKEAGB_EXTERN void pokemon_restore_pp(struct Pokemon* pokemon);
+
 #define STATUS_SLEEP_TURNS 7
 #define STATUS_POISON (1 << 3)
 #define STATUS_BURN (1 << 4)

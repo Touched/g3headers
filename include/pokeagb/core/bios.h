@@ -21,7 +21,7 @@ POKEAGB_EXTERN void lz77UnCompVram(void* src, void* dst);
  *
  * @address{BPRE,081E3B64}
  */
-POKEAGB_EXTERN void CpuSet(void* dst, void* src, u32 mode)
+POKEAGB_EXTERN void CpuSet(void* src, void* dst, u32 mode)
 
 POKEAGB_END_DECL
 
